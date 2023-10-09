@@ -1,0 +1,17 @@
+{
+  "name": "s4-bupa-integration",
+  "version": "1.0.0",
+  "description": "Simplifed BusinessPartner model for SAP S/4HANA",
+  "files": [
+    "bupa/"
+  ],
+  "keywords": [
+    "SAP S/4HANA",
+    "SAP",
+    "BusinessPartner",
+    "CDS",
+    "CAP"
+  ],
+  "author": "",
+  "license": "ISC"
+}
