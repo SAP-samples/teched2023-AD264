@@ -50,9 +50,12 @@
       "db": {
         "kind": "sql"
       },
-      "API_BUSINESS_PARTNER": {
+      "S4": {
         "kind": "odata-v2",
-        "model": "srv/external/API_BUSINESS_PARTNER",
+        "model": "s4-bupa-integration",
+        "credentials": {
+          "url": "http://www.foo.com"
+        },
         "[sandbox]": {
           "credentials": {
             "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BUSINESS_PARTNER/"

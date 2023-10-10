@@ -1,7 +1,7 @@
 module.exports = (async function() {
 
   const cds = require('@sap/cds');
-  const S4bupa = await cds.connect.to('API_BUSINESS_PARTNER')
+  const S4bupa = await cds.connect.to('S4')
 
   // Delegate Value Help reads for Customers to S4 backend
   this.on('READ', ['Customers', 'CustomerAddresses'], (req) => {
