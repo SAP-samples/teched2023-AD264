@@ -33,14 +33,14 @@ annotate IncidentsService.Incidents with @(
   UI: {
     // insert table column
     LineItem : [
-      ...up to {Value: title},
-      { Value: customer.name, Label: 'Customer' },
+      ...up to { Value: title },
+      { Value: customer.name, Label: '{i18n>Customer}' },
       ...
     ],
     // insert customer + address to field group on object page
-    FieldGroup #GeneralInformation : {
+    FieldGroup #GeneratedGroup1 : {
       Data: [
-        { Value: customer_ID, Label: 'Customer'},
+        { Value: customer_ID, Label: '{i18n>Customer}'},
         { Label: 'Address', $Type  : 'UI.DataFieldForAnnotation', Target : 'customerAddress/@Communication.Contact' },
         ...
       ]
@@ -53,3 +53,22 @@ annotate IncidentsService.Incidents:customer with @Common: {
   Text:customer.name,
   TextArrangement: #TextFirst
 };
+
+annotate IncidentsService.Incidents with {
+  customer @(Common.ValueList : {
+    $Type : 'Common.ValueListType',
+    CollectionPath : 'Customers',
+    Parameters : [
+      {
+        $Type : 'Common.ValueListParameterInOut',
+        LocalDataProperty : customer_ID,
+        ValueListProperty : 'ID',
+      },
+      {
+        $Type : 'Common.ValueListParameterDisplayOnly',
+        ValueListProperty : 'name',
+      }
+    ],
+  },
+  Common.ValueListWithFixedValues : false
+)};
