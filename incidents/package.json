@@ -6,7 +6,7 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
-    "@sap-cloud-sdk/http-client": "^2.9.0",
+    "@sap-cloud-sdk/http-client": "^3",
     "@sap/cds": "^7",
     "express": "^4",
     "s4-bupa-integration": "file:../s4-bupa-integration"
