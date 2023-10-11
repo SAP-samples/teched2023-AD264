@@ -1,22 +1,26 @@
+# AD264 - Build Extensions with SAP Cloud Application Programming Model (CAP)
+
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/teched2023-AD264)](https://api.reuse.software/info/github.com/SAP-samples/teched2023-AD264)
 
-# Session ID - Session Title
 
 ## Description
 
-This repository contains the material for the SAP TechEd 2022 session called Session ID - Session Title.  
+This repository contains the material for the SAP TechEd 2023 session called<br>
+_Build Extensions with SAP Cloud Application Programming Model_.
 
 ## Overview
 
-This session introduces attendees to...
+Find out how to quickly develop side-by-side extensions using SAP Cloud Application Programming Model (CAP). Learn to define domain models and services in CDS language, all within minutes. Discover streamlined integration with SAP S/4HANA through minimal coding, leveraging both synchronous and asynchronous APIs.
 
 ## Requirements
 
-The requirements to follow the exercises in this repository are...
+The requirements to follow the exercises in this repository are
+
+- Either a subscription for SAP Business Application Studio, or a local VS Code with Node.js >= 18 installed
+- A browser, preferably Google Chrome
+
 
 ## Exercises
-
-Provide the exercise content here directly in README.md using [markdown](https://guides.github.com/features/mastering-markdown/) and linking to the specific exercise pages, below is an example.
 
 - [Getting Started](exercises/ex0/)
 - [Exercise 1 - First Exercise Description](exercises/ex1/)
@@ -26,19 +30,13 @@ Provide the exercise content here directly in README.md using [markdown](https:/
     - [Exercise 2.1 - Exercise 2 Sub Exercise 1 Description](exercises/ex2#exercise-21-sub-exercise-1-description)
     - [Exercise 2.2 - Exercise 2 Sub Exercise 2 Description](exercises/ex2#exercise-22-sub-exercise-2-description)
 
-  
-**OR** Link to the Tutorial Navigator for example...
-
-Start the exercises [here](https://developers.sap.com/tutorials/abap-environment-trial-onboarding.html).
-
-**IMPORTANT**
-
-Your repo must contain the .reuse and LICENSES folder and the License section below. DO NOT REMOVE the section or folders/files. Also, remove all unused template assets(images, folders, etc) from the exercises folder. 
 
 ## Contributing
+
 Please read the [CONTRIBUTING.md](./CONTRIBUTING.md) to understand the contribution guidelines.
 
 ## Code of Conduct
+
 Please read the [SAP Open Source Code of Conduct](https://github.com/SAP-samples/.github/blob/main/CODE_OF_CONDUCT.md).
 
 ## How to obtain support
