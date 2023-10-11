@@ -18,7 +18,7 @@
     "start": "cds run"
   },
   "engines": {
-    "node": "^16.15"
+    "node": "^18"
   },
   "eslintConfig": {
     "extends": "eslint:recommended",
