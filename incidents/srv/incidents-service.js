@@ -4,9 +4,10 @@ module.exports = (async function() {
   const S4bupa = await cds.connect.to('API_BUSINESS_PARTNER')
 
   // Delegate Value Help reads for Customers to S4 backend
-  this.on('READ', ['Customers', 'CustomerAddresses'], (req) => {
+  this.on('READ', ['Customers', 'CustomerAddresses'], async (req) => {
     console.log(`>> delegating '${req.target.name}' to S4 service...`, req.query)
-    return S4bupa.run(req.query)
+    const result = await S4bupa.run(req.query)
+    return result
   })
 
   const db = await cds.connect.to('db')     // our primary database
