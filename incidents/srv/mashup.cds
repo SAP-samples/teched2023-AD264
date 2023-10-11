@@ -1,4 +1,4 @@
-using { acme.incmgt, IncidentsService } from './incidents-service';
+using { acme.incmgt, ProcessorService } from './processor-service';
 using { s4 } from 's4-bupa-integration/bupa';
 
 // add Customers to Incidents
@@ -7,13 +7,13 @@ extend incmgt.Incidents with {
 }
 
 // expose Customers and addresses
-extend service IncidentsService with {
+extend service ProcessorService with {
   @readonly entity Customers as projection on s4.simple.Customers;
   @readonly entity CustomerAddress as projection on s4.simple.CustomerAddress;
 }
 
 // Connect Incidents with CustomerAddress. Note the 'on' condition.
-extend projection IncidentsService.Incidents  {
+extend projection ProcessorService.Incidents  {
   customerAddress: Association to s4.simple.CustomerAddress on customerAddress.bupaID = customer.ID
 }
 
@@ -29,7 +29,7 @@ annotate s4.simple.CustomerAddresses with @cds.persistence: { table:true, skip:f
 using from '../app/fiori';
 
 // more UI annotations
-annotate IncidentsService.Incidents with @(
+annotate ProcessorService.Incidents with @(
   UI: {
     // insert table column
     LineItem : [
@@ -49,12 +49,12 @@ annotate IncidentsService.Incidents with @(
 );
 
 // show customer name + ID
-annotate IncidentsService.Incidents:customer with @Common: {
+annotate ProcessorService.Incidents:customer with @Common: {
   Text:customer.name,
   TextArrangement: #TextFirst
 };
 
-annotate IncidentsService.Incidents with {
+annotate ProcessorService.Incidents with {
   customer @(Common.ValueList : {
     $Type : 'Common.ValueListType',
     CollectionPath : 'Customers',

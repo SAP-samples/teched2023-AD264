@@ -58,6 +58,23 @@
             "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BUSINESS_PARTNER/"
           }
         }
+      },
+      "[development]": {
+        "auth": {
+          "kind": "mocked",
+          "users": {
+            "incident.support@tester.sap.com": {
+              "password": "initial",
+              "roles": ["support"]
+            },
+            "alice": {
+              "roles": ["support"]
+            },
+            "bob": {
+              "roles": ["support"]
+            }
+          }
+        }
       }
     }
   }

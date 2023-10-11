@@ -1,4 +1,4 @@
-using { IncidentsService as service, acme.incmgt, cuid } from '../srv/incidents-service';
+using { ProcessorService as service, acme.incmgt, cuid } from '../srv/processor-service';
 
 
 annotate cuid:ID with @title: 'ID';
