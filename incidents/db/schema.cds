@@ -9,7 +9,7 @@ entity Incidents : cuid, managed {
   title        : String                  @title : 'Title';
   urgency      : Association to Urgency  @title: 'Urgency';
   status       : Association to Status   @title: 'Status';
-  conversations : Composition of many Conversations;
+  conversations : Composition of many Conversations  on conversations.incidents = $self;
 }
 
 entity Status : CodeList {

@@ -12,7 +12,7 @@
     "s4-bupa-integration": "file:../s4-bupa-integration"
   },
   "devDependencies": {
-    "@cap-js/sqlite": "^1.3.1"
+    "sqlite3": "^5.1.6"
   },
   "scripts": {
     "start": "cds-serve"
@@ -65,13 +65,19 @@
           "users": {
             "incident.support@tester.sap.com": {
               "password": "initial",
-              "roles": ["support"]
+              "roles": [
+                "support"
+              ]
             },
             "alice": {
-              "roles": ["support"]
+              "roles": [
+                "support"
+              ]
             },
             "bob": {
-              "roles": ["support"]
+              "roles": [
+                "support"
+              ]
             }
           }
         }
