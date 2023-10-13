@@ -14,21 +14,21 @@ entity Incidents : cuid, managed {
 
 entity Status : CodeList {
   key code        : String enum {
-        new        = 'N'    @title: 'New'         @description: 'An incident that has been logged but not yet worked on.';
-        assigned   = 'A'    @title: 'In Process'  @description: 'Case is being actively worked on';
-        in_process = 'I'    @title: 'In Process'  @description: 'Case is being actively worked on';
-        on_hold    = 'H'    @title: 'On Hold'     @description: 'Incident has been put on hold';
-        resolved   = 'R'    @title: 'Resolved'    @description: 'Resolution has been found';
-        closed     = 'C'    @title: 'Closed'      @description: 'Incident was acknowleged closed by end user';
+        new        = 'N';
+        assigned   = 'A';
+        in_process = 'I';
+        on_hold    = 'H';
+        resolved   = 'R';
+        closed     = 'C';
       };
       criticality : Integer;
 }
 
 entity Urgency : CodeList {
   key code : String enum {
-        high   = 'H' @title: 'High' ;
-        medium = 'M' @title: 'Medium';
-        low    = 'L' @title: 'Low';
+        high   = 'H';
+        medium = 'M';
+        low    = 'L';
       };
 }
 
