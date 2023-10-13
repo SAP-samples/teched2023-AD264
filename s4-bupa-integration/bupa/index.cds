@@ -1,9 +1,25 @@
 using { API_BUSINESS_PARTNER as external } from './API_BUSINESS_PARTNER';
 
-service S4 {
+extend service external with {
   event BusinessPartner.Changed @(topic : 'sap.s4.beh.businesspartner.v1.BusinessPartner.Changed.v1') {
     BusinessPartner : external.A_BusinessPartner:BusinessPartner;
   }
+  event BusinessPartner.Created @(topic : 'sap.s4.beh.businesspartner.v1.BusinessPartner.Created.v1') {
+    BusinessPartner : external.A_BusinessPartner:BusinessPartner;
+  }
+}
+
+// service S4 as projection on external {
+//   BusinessPartner.Changed,
+//   BusinessPartner.Created,
+//   A_SupplierPurchasingOrg { ID }
+// }
+
+service S4 {
+
+  event BusinessPartner.Changed : external.BusinessPartner.Changed;
+  // event BusinessPartner.Changed : projection on external.BusinessPartner.Changed { BusinessPartner };
+
   entity Customers         as projection on external.A_BusinessPartner {
     key BusinessPartner           as ID,
         BusinessPartnerFullName   as name,
@@ -23,8 +39,8 @@ service S4 {
   // view that helps reduce n addresses per customer to 1
   entity CustomerAddress   as projection on CustomerAddresses group by bupaID order by
     bupaID;
-}
 
+}
 
 
 // --- UI annotations - could also go into a separate file
