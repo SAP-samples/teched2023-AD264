@@ -76,7 +76,7 @@ Now connect the two entities.  In the `New Relationship` dialog:
 - Stay with the proposed `conversations` and `incidents` fields.
 
 
-<details open>
+<details>
 <summary>All in all, the entities shall look like this:</summary>
 
 ![Incidents and Conversations entities in graphical modeler](assets/Incidents-Conversations-graphical.png)
