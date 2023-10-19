@@ -7,17 +7,24 @@ Also, you will get familiar with CAP and the CDS language.
 
 ## Create a Project
 
-<!-- ![New CAP Project](assets/BAS-NewProject.png)
+👉 In SAP Business Application Studio, create a new _CAP Project_.  Name it `incidents-mgt`, for example.
 
-![New CAP Project - Details](assets/BAS-NewProject-Details.png) -->
+<details>
+<summary>These screenshots help you find the project wizard:</summary>
+
+![New CAP Project](assets/BAS-NewProject.png)
+
+![New CAP Project - Details](assets/BAS-NewProject-Details.png)
+
+</details>
 
 
 ## Add Incidents
 
-Create a file `data-model.cds` in the `db` folder.
-There, add an `Incidents` entity with a key field `ID` and a `title`.  Choose appropriate types.
+👉 Create a file `data-model.cds` in the `db` folder.
+There, add an `Incidents` entity with a key field `ID` and a `title`.  Choose appropriate data types.  See the [documentation](https://cap.cloud.sap/docs/cds/cdl) for the syntax of entity defintions.
 
-> Use code completion (intellisense) to pick a fitting data type.
+> Tip: Use code completion (intellisense) to pick a fitting data type.
 
 <details>
 <summary>This is how it should like:</summary>
@@ -32,12 +39,13 @@ entity Incidents {
 
 ## Use Common Predefined Aspects
 
-The situation of `ID` key fields is so common that there is a prebuilt CDS aspect available named `cuid`.  It can be imported with `using ... from '@sap/cds/common';` and used in an entity with the `:` (colon) syntax.
+The situation of `ID` key fields is so common that there is a prebuilt CDS aspect available named `cuid` that provides just that.<br>
+It can be imported with `using ... from '@sap/cds/common';` and used in an entity with the `:` (colon) syntax.
 
 Also, the `Incidents` entity shall carry information on when it was created and updated and by whom.  There is a `managed` aspect from `@sap/cds/common` that does that.
 
-So:
-- Replace the hand-crafted `ID` field with `cuid`
+👉 Make use of the two aspects:
+- Replace the hand-crafted `ID` field with `cuid`<br>
 - Add the `managed` aspect.
 
 
@@ -53,7 +61,9 @@ entity Incidents : cuid, managed {
 ```
 </details>
 
-> Take a few moments and check out what the `@sap/cds/common` package has to offer in addition.  In the editor, hold <kbd>Ctrl</kbd> (or <kbd>⌘</kbd>) and hover over the `managed` text.  Click to naviate inside.
+<p>
+
+👉 Take a few moments and check out what the `@sap/cds/common` package has to offer in addition.  In the editor, hold <kbd>Ctrl</kbd> (or <kbd>⌘</kbd>) and hover over the `managed` text.  Click to naviate inside.
 See the [documentation](https://cap.cloud.sap/docs/cds/common) for more.
 
 
@@ -61,17 +71,18 @@ See the [documentation](https://cap.cloud.sap/docs/cds/common) for more.
 
 An incident shall hold a number of messages to build a conversation history.
 
-To create such a relationship, the **graphical CDS modeler** is a great tool.  To open it for the `data-model.cds` file, there two options:
+To create such a relationship, the **graphical CDS modeler** is a great tool.
+👉 Open it for the `data-model.cds` file using one of two options:
 - Right click the `data-model.cds` file.  Select `Open With` > `CDS Graphical Modeler`
-- Open the project **Storyboard** through the command palette:
-  - <kbd>F1</kbd> > `Open Storyboard`
+- Open it through the project **Storyboard**:
+  - Press <kbd>F1</kbd> > `Open Storyboard`
   - Click on the `Incidents` entity > `Open in Graphical Modeler`
 
-In the canvas, add a `Conversations` entity.
+👉 In the canvas, add a `Conversations` entity.
 - In the `Aspects` tab in the property sheet, add the `ID` key field from `cuid`.
 - Add `timestamp`, `author`, and `message` fields with appropriate types.
 
-Now connect the two entities.  In the `New Relationship` dialog:
+👉 Now connect the two entities.  In the `New Relationship` dialog:
 - Pick the type so that whenever an `Incident` instance is deleted, all its conversations are deleted as well.
 - Stay with the proposed `conversations` and `incidents` fields.
 
