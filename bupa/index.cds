@@ -1,7 +1,5 @@
 using {API_BUSINESS_PARTNER as S4} from './API_BUSINESS_PARTNER';
 
-namespace s4.simple; // meaning these are simplified S4 definitions
-
 // event definition
 extend service S4 {
   // https://api.sap.com/event/CE_BUSINESSPARTNEREVENTS/resource
