@@ -1,17 +1,27 @@
 {
-  "name": "s4-bupa-integration",
+  "name": "incidents-mgt",
   "version": "1.0.0",
-  "description": "Simplifed BusinessPartner model for SAP S/4HANA",
-  "files": [
-    "bupa/"
-  ],
-  "keywords": [
-    "SAP S/4HANA",
-    "SAP",
-    "BusinessPartner",
-    "CDS",
-    "CAP"
-  ],
-  "author": "",
-  "private": true
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap/cds": "^7",
+    "express": "^4",
+    "s4-bupa-integration": "github:SAP-samples/teched2023-AD264#bupa-integration-package"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^1"
+  },
+  "scripts": {
+    "start": "cds-serve"
+  },
+  "cds": {
+    "requires": {
+      "API_BUSINESS_PARTNER": {
+        "kind": "odata-v2",
+        "model": "srv/external/API_BUSINESS_PARTNER"
+      }
+    }
+  }
 }
