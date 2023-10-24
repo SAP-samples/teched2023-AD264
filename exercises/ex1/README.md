@@ -9,7 +9,7 @@ The conceptual domain model for this _Incidents Management_ application is as fo
 
 - *Customers* can create *Incidents* (either directly or via agents)
 - *Incidents* have a title, a status and and urgency level
-- *Incidents* contain a *Conversation* history consiting of several messages
+- *Incidents* contain a *Conversation* history consisting of several messages
 
 <p>
 
@@ -18,7 +18,9 @@ The conceptual domain model for this _Incidents Management_ application is as fo
 
 ## Create a Project
 
-👉 In SAP Business Application Studio, create a new _CAP Project_.  Name it `incidents-mgt`, for example.
+👉 In SAP Business Application Studio, create a new _CAP Project_.
+- Name it `incidents-mgt`, for example.
+- Accept the rest of the defaults.  No sample code needed; you will fill the project as you go.
 
 <details>
 <summary>These screenshots help you find the project wizard:</summary>
@@ -28,6 +30,9 @@ The conceptual domain model for this _Incidents Management_ application is as fo
 ![New CAP Project - Details](assets/BAS-NewProject-Details.png)
 
 </details>
+<p>
+
+> You might also create the project with `cds init incidents-mgt` on the command line in the `/home/user/projects` folder.
 
 
 ## Add Incidents
@@ -86,7 +91,7 @@ See the [documentation](https://cap.cloud.sap/docs/cds/common) for more.
 
 An incident shall hold a number of messages to build a conversation history.
 
-To create such a relationship, the **graphical CDS modeler** is a great tool.<br>
+To create such a relationship, the **graphical CDS modeler** in SAP Business Application Studio is a great tool.<br>
 👉 Open it for the `data-model.cds` file using one of two options:
 - Right click the `data-model.cds` file.  Select `Open With` > `CDS Graphical Modeler`
 - Or open the modeler through the project **Storyboard**:
@@ -123,10 +128,12 @@ entity Conversations : cuid, managed {
 }
 ```
 
-> To open the code editor, just double-click on the `db/data-model.cds` file in the explorer tree.
-
 </details>
 
+> To open the code editor, just double-click on the `db/data-model.cds` file in the explorer tree.
+
+> In the following exercises, feel free to use the graphical modeler or the code editor as you like. Find out what works for you.<br>
+In the solutions though, we will print the textual form, as it's more convenient to copy/paste.
 
 ## Create a CDS Service
 
