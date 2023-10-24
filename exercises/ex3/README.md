@@ -216,12 +216,12 @@ The SAP Fiori UI also reflects the changed data in the incidents list:
 
 ![Updated customer list](assets/updated-customer.png)
 
-> Note that we can't test the event roundtrip in the `cds watch --profile sandbox` mode, as the sandbox system of SAP API Business Hub does not support modifications.  You would need to use a dedicated SAP S/4HANA system here.  See this [tutorial](https://developers.sap.com/tutorials/btp-app-ext-service-s4hc-register.html) for how to register your own SAP S/4HANA system.
+> Note that we can't test the event roundtrip in the `cds watch --profile sandbox` mode, as the sandbox system of _SAP Business Accelerator Hub_ does not support modifications.  You would need to use a dedicated SAP S/4HANA system here.  See this [tutorial](https://developers.sap.com/tutorials/btp-app-ext-service-s4hc-register.html) for how to register your own SAP S/4HANA system.
 
 
 ## Summary
 
-In this and the last exercise, you've now learned how to add an integration package.  You've also seen that quite some application code could be avoided because of it:
+In this and the last exercise, you've learned how to add an integration package.  You've also seen that quite some application code could be avoided, namely:
 
 - The BusinessPartner API description for the structure (entities, types etc), as CDS model
 - The BusinessPartner event definitions, as CDS model
@@ -232,6 +232,7 @@ Depending on the application scenario, more and higher-level features can be add
 
 - CDS projections for model parts that are often used, like a `Customers` definition.
 - Additional annotations, like for SAP Fiori Elements
+- Translated content like i18n files
 
 The following picture shows how the integration/reuse package and the application project work together on a technical level.
 
