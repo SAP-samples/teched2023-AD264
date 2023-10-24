@@ -140,7 +140,6 @@ In the solutions though, we will print the textual form, as it's more convenient
 There shall be an API for incidents processors to maintain incidents.
 
 👉 In a new file `srv/processor-service.cds`, create a [CDS service](https://cap.cloud.sap/docs/cds/cdl#service-definitions) that exposes a one-to-one projection on `Incidents`.<br>
-👉 Also [annotate](https://cap.cloud.sap/docs/cds/cdl#annotations) the projection entity with `@odata.draft.enabled` so that incidents can be modified with an SAP Fiori Elements UI.
 
 <details>
 <summary>This is how the service should like:</summary>
@@ -185,7 +184,7 @@ Take a moment and check the output for what is going on:
     .../@sap/cds/common.cds
   ```
 
-- An in-memory SQLite database got created.  This holds the application data (which we don't have yet)
+- An in-memory [SQLite database](https://cap.cloud.sap/docs/guides/databases-sqlite) got created.  This holds the application data (which we don't have yet).
   ```sh
   [cds] - connect to db > sqlite { database: ':memory:' }
   /> successfully deployed to in-memory database.
@@ -197,7 +196,9 @@ Take a moment and check the output for what is going on:
   ```
 
 
-👉 Now <kbd>Ctrl</kbd>-click on the `http://localhost:4004` link in the terminal.  The application is opened with an address like `https://port4004-workspaces-ws-...applicationstudio.cloud.sap/` (if you work locally, this would be http://localhost:4004).
+👉 Now <kbd>Ctrl+Click</kbd> on the `http://localhost:4004` link in the terminal.
+- In SAP Business Application Studio, this URL gets automatically transformed to an address like `https://port4004-workspaces-ws-...applicationstudio.cloud.sap/`
+- If you work locally, this would be http://localhost:4004.
 
 
 ## Add Sample Data
