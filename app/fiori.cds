@@ -107,14 +107,14 @@ annotate service.Incidents with @(
     }
 );
 annotate service.Status with {
-    code @Common.Text : descr
+    code @Common.Text : name
 };
 annotate service.Urgency with {
-    code @Common.Text : descr
+    code @Common.Text : name
 };
 annotate service.Incidents with {
-    status  @Common.Text : status.descr;
-    urgency @Common.Text : urgency.descr;
+    status  @Common.Text : status.name;
+    urgency @Common.Text : urgency.name;
 };
 
 annotate service.Conversations with @(
