@@ -1,7 +1,7 @@
 using { ProcessorService as service, incidents } from '../srv/processor-service';
 
 
-annotate cuid:ID with @title: 'ID';
+annotate cuid:ID with @title: '{i18n>id}';
 
 annotate service.Incidents with @(
     UI.LineItem : [
@@ -25,7 +25,7 @@ annotate service.Incidents with @(
     ]
 );
 annotate service.Incidents with @(
-    UI.FieldGroup #GeneratedGroup1 : {
+    UI.FieldGroup #GeneralInformation : {
         $Type : 'UI.FieldGroupType',
         Data : [
             {
@@ -44,8 +44,8 @@ annotate service.Incidents with @(
                 {
             $Type : 'UI.ReferenceFacet',
             ID : 'GeneratedFacet1',
-            Label : 'General Information',
-            Target : '@UI.FieldGroup#GeneratedGroup1',
+            Label : '{i18n>generalInformation}',
+            Target : '@UI.FieldGroup#GeneralInformations',
         },
                 {
                     $Type : 'UI.ReferenceFacet',
