@@ -164,7 +164,7 @@ Before starting the application again, it's time to turn the current in-memory d
 
 👉 So, kill `cds watch`, then execute:
 
-```
+```sh
 cds deploy --with-mocks --to sqlite
 ```
 
@@ -176,7 +176,7 @@ cds deploy --with-mocks --to sqlite
 
 👉 Start the application with a hint to use a SQLite database (which in this case means a persistent DB):
 
-```
+```sh
 CDS_REQUIRES_DB=sqlite cds watch
 ```
 
