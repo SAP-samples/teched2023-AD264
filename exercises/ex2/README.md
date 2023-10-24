@@ -55,6 +55,8 @@ node_modules/s4-bupa-integration
 └── package.json
 ```
 
+You see a bunch of files that will get explained as you progress.
+
 👉 To make the application's CDS model use the package, add this line to the top of `db/data-model.cds`:
 
 ```cds
@@ -136,20 +138,20 @@ service ... {
 You see that
 
 - The external `API_BUSINESS_PARTNER` is mocked, i.e. served in the application although in production it would come from remote. This is because we haven't specified yet how to connect it to a real remote data source.
-- The CSV file with the mock data got deployed.
+- A CSV file `.../data/API_BUSINESS_PARTNER-A_BusinessPartner.csv` with mock data got deployed.<br>Where does it come from?  Yes, the integration package.  See the file tree from the beginning where it's listed.
 
-> `cds watch` runs in a 'mock mode' by default.  In production, this won't happen, as the application is started with `cds run`.  See the [documentation](https://cap.cloud.sap/docs/guides/extensibility/composition#testing-locally) for how `cds watch` binds to services.
+> `cds watch` runs in a 'mock mode' by default.  In production, this won't happen, as the application is started with `cds-serve`.  See the [documentation](https://cap.cloud.sap/docs/guides/extensibility/composition#testing-locally) for how `cds watch` binds to services.
 
-👉 Go the home page of the application (the one listing all the service endpoints).  You can now see the `/odata/v4/api-business-partner` service with all its entities under _Service Endpoints_.
+👉 Go the home page of the application (the one listing all the service endpoints).<br>
+
+You can see the `/odata/v4/api-business-partner` service with all its entities under _Service Endpoints_.
+Data is available at `/odata/v4/api-business-partner/A_BusinessPartner`.
 
 ![Business Partner in endpoint list](./assets/api-business-partner-service.png)
 
-Data is available at `/odata/v4/api-business-partner/A_BusinessPartner`.
-
 ## Delegate calls to remote system
 
-To make the value help for `Customers` work, we need to redirect the request to the remote system (or our mock).
-Otherwise, the framework would read it from a local DB table, which does not exist.
+To make requests for `Customers` work for real, you need to redirect them to the remote system.
 
 👉 In file `srv/processor-service.js`, add this content to the `init` function:
 
@@ -162,13 +164,14 @@ Otherwise, the framework would read it from a local DB table, which does not exi
       const result = await S4bupa.run(req.query)
       return result
     })
-  }
 ```
+
+> Note how you don't need to code against any low-level layer here.  It's just the service name `API_BUSINESS_PARTNER` that is relevant.  The rest is wired up behind the scenes or outside of the application code.  How?  Keep on reading!
 
 
 ## Test with Remote System
 
-As a ready-to-use remote service, we use the sandbox system of _SAP Business Accelerator Hub_.
+As a ready-to-use stand-in for an SAP S4/HANA system, we use the sandbox system of _SAP Business Accelerator Hub_.
 
 > To use your own SAP S/4HANA Cloud system, see this [tutorial](https://developers.sap.com/tutorials/btp-app-ext-service-s4hc-use.html). You don't need it for this tutorial though.
 
