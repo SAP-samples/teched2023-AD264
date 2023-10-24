@@ -298,4 +298,4 @@ annotate service.Incidents:customer with @Common: {
 
 You have added basic capabilities to call out to a remote service.
 
-Continue to - [Exercise 3](../ex3/README.md) to see how this can be enhanced.
+Continue to [exercise 3](../ex3/README.md) to see how this can be enhanced.

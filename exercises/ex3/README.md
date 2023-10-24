@@ -6,7 +6,7 @@ This raises a **performance issue**: when showing potentially hundreds of incide
 We use a different approach by **replicating remote data on demand**.
 
 The scenario will look like this:
-- The user enters a new incident and selects the customer through a value help.  This value help shows only _remote_ customer data.
+- The user enters a new incident and selects the customer through the value help.  The value help shows only _remote_ customer data.
 - As soon as the incident record is created, the customer data is written to a local replica table.
 - Further requests for the incident's customer are served from this replica table.
 - Replicated records will be updated if a remote customer changes.
@@ -18,6 +18,8 @@ annotate Customers with @cds.persistence: { table,skip:false };
 ```
 
 The annotation `@cds.persistence: {table,skip:false}` turns the view above into a table with the same signature (`ID` and `name` columns).  See the [documentation](https://cap.cloud.sap/docs/cds/annotations#persistence) for more on annotations that influence persistence.
+
+> You could have added the annotation directly to the `Customers` definition.  The result would be the same.  With the [`annotate` directive](https://cap.cloud.sap/docs/cds/cdl#the-annotate-directive) though, you get the powers to enhance entities (even external/base/reuse entities!) at different places in your application.
 
 ## Replicate Data On Demand
 
@@ -32,10 +34,10 @@ Now there is code needed to replicate the customer record whenever an incident i
   this.after (['CREATE','UPDATE'], 'Incidents', async (data) => {
     const { customer_ID: ID } = data
     if (ID) {
-      let replicated = await db.exists (Customers,ID)
+      const replicated = await db.exists (Customers,ID)
       if (!replicated) {
         console.log ('>> Updating customer', ID)
-        let customer = await S4bupa.read (Customers,ID)
+        const customer = await S4bupa.read (Customers,ID)
         await INSERT(customer) .into (Customers)
       }
     }
@@ -49,9 +51,9 @@ In the log, you can see the `>> Updating customer` line, confirming that replica
 
 With the [REST client for VS Code](https://marketplace.visualstudio.com/items?itemName=humao.rest-client), you can conveniently test the same flow without the UI.
 
-👉 Create a file `tests.http` and this content:
+👉 Create a file `tests.http` with this content:
 
-```
+```http
 ###
 # @name IncidentsCreate
 
