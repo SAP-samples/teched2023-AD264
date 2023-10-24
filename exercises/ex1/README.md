@@ -1,9 +1,20 @@
 # Exercise 1 - Create the Application
 
 In this exercise, you will build a small application with SAP Cloud Application Programming Model (CAP).
-You will use it throughout the exercises
 
+You will use this application scenario throughout the exercises.
 Also, you will get familiar with CAP and the CDS language.
+
+The conceptual domain model for this _Incidents Management_ application is as follows:
+
+- *Customers* can create *Incidents* (either directly or via agents)
+- *Incidents* have a title, a status and and urgency level
+- *Incidents* contain a *Conversation* history consiting of several messages
+
+<p>
+
+![Domain model](assets/domain.drawio.svg)
+
 
 ## Create a Project
 
@@ -48,7 +59,7 @@ It can be imported with `using ... from '@sap/cds/common';` and used in an entit
 
 Also, the `Incidents` entity shall carry information on when it was created and updated and by whom.  There is a `managed` aspect from `@sap/cds/common` that does that.
 
-👉 Make use of the two aspects:
+👉 Make use of the two aspects and:
 - Replace the hand-crafted `ID` field with `cuid`<br>
 - Add the `managed` aspect.
 
@@ -128,12 +139,11 @@ There shall be an API for incidents processors to maintain incidents.
 <summary>This is how the service should like:</summary>
 
 ```cds
-using { incidents.mgt as db } from '../db/data-model';
+using { incidents.mgt } from '../db/data-model';
 
 service ProcessorService {
 
-  @odata.draft.enabled
-  entity Incidents as projection on db.Incidents;
+  entity Incidents as projection on mgt.Incidents;
 
 }
 ```
@@ -211,7 +221,7 @@ touch db/data/incidents.mgt-Conversations.csv
 👉 On the applications index page, click on the `Incidents` link which runs a `GET /odata/v4/processor/Incidents` request.<br>
 
 
-### Test out-of-the-box Features
+## Test OData Features
 
 👉 Use the URL from above and list incidents
 - with their conversation messages,
@@ -232,22 +242,86 @@ to the URL.
 
 </details>
 
+<p>
 
+## Add another Service
 
-<!-- On the application's index page, go to **Incidents → Fiori preview**, which opens an SAP Fiori elements list page for the `Incidents` entity.  It should look like this:
+In the service above, you have used only the very minimal form of a [CDS projection](https://cap.cloud.sap/docs/cds/cdl#views-and-projections), which basically does a one-to-one exposure of an entity to the API surface:
 
-![Incidents UI](assets/InitialUI.png)
+```cds
+service ProcessorService {
+  entity Incidents as projection on mgt.Incidents;
+}
+```
 
-> With regards to the UI screens that you see here: this is not a tutorial on SAP Fiori.  Instead, we use the minimal screens necessary to illustrate the relevant points.  For a full-fledged SAP Fiori Elements application using CAP, see the [SFlight application](https://github.com/SAP-samples/cap-sflight/). -->
+However, projections go way beyond this and provide powerful means to express queries for specific application scenarios.
+- When mapped to relational databases, such projections are in fact translated to SQL views.
+- Ypu will soon see non-DB uses of projections, though.
 
+👉 Explore projections and services!  Add a 'statistics service' that shows
+- Incidents' `title`
+- Their `status`, but like `New` instead of `N`.  Hint: use a [path expression](https://cap.cloud.sap/docs/cds/cql#path-expressions) for the `name`.
+- Only urgent incidents.  Hint: use a [`where` condition](https://cap.cloud.sap/docs/cds/cql).
 
+The result shall be available at `/odata/v4/statistics/UrgentIncidents`. What's the name of the CDS service that matches to this URL?
 
-<!-- ## Take a Look Behind the Scenes -->
+Also, use the editor's code completion that guides you along the syntax.<br>
+
+<details>
+<summary>Solution:</summary>
+
+In a separate `srv/statistics-service.cds` file, add this:
+
+```cds
+service StatisticsService {
+
+  entity UrgentIncidents as projection on mgt.Incidents {
+    title,                  // expose as is
+    status.name as status,  // expose with alias name using a path expression
+  }
+  where urgency.code = 'H'  // filter
+}
+```
+</details>
+
+<p>
+
+👉 If you got this, add these fields with more advanced syntax:
+- `modified` :  a concatenated string from `modifiedAt` and `modifiedBy` (use the `str1 || str2` syntax)
+- `convCount` :  a count for the number of conversation messages.  Hint: SQL has a `count()` function.  Don't forget the `group by` clause.
+
+<details>
+<summary>Solution:</summary>
+
+```cds
+service StatisticsService {
+
+  entity UrgentIncidents as projection on mgt.Incidents {
+    title,                  // expose as is
+    status.name as status,  // expose with alias name using a path expression
+
+    modifiedAt || ' (' || modifiedBy || ')' as modified : String,
+    count(conversations.ID) as convCount : Integer
+  }
+  where urgency.code = 'H' // filter
+  group by ID              // needed for count() to work
+}
+```
+</details>
+
+<p>
+
+Remember: you got all of this power without a single line of (Javascript or Java) code!
 
 
 ## Summary
 
 You've now created a basic version of the Incidents Management Application.
 
-Continue to - [Exercise 2 - Exercise 2 Description](../ex2/README.md)
+Still it's very powerful as it
+- Exposes **rich (OData) API's and metadata**.  You will see OData clients like SAP Fiori Elements UI soon.
+- Deploys to a **database out-of-the-box**.
+- Let's you stay **focused on the domain model** without the need to write imperative code for simple CRUD requests.
+- Keeps boilerplate **files to the minimum**.  Just count the actual files in the project.
 
+Now continue to [exercise 2](../ex2/README.md), where you will extend the application with remote capabilities.

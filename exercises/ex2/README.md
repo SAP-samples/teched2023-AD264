@@ -289,3 +289,8 @@ Now Open _Fiori preview_ for the `Incidents` entity.
 
 **Create a new incident** and **select a customer** using the value help. When pressing _Save_, watch the console output of the application and see the `>> delegating to S4 service...` message.
 
+## Summary
+
+You have added basic capabilities to call out to a remote service.
+
+Continue to - [Exercise 3](../ex3/README.md) to see how this can be enhanced.

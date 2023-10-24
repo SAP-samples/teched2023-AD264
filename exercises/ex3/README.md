@@ -143,11 +143,13 @@ But who is the **event emitter**?  Usually it's the remote data source, i.e. the
 It uses the [`emit` API](https://cap.cloud.sap/docs/node.js/core-services#srv-emit-event) to send out an event:
 
 ```js
+  ...
   this.after('UPDATE', A_BusinessPartner, async data => {
     const event = { BusinessPartner: data.BusinessPartner }
     console.log('>> BusinessPartner.Changed', event)
     await this.emit('BusinessPartner.Changed', event);
   })
+  ...
 ```
 
 This means whenever you change data through the `API_BUSINESS_PARTNER` mock service, a local event is emitted.
@@ -163,13 +165,13 @@ Before starting the application again, it's time to turn the current in-memory d
 cds deploy --with-mocks --to sqlite
 ```
 
-👉 Start the application with a hint to use a SQLite database, which means a persistent one in this case:
+👉 Start the application with a hint to use a SQLite database (which in this case means a persistent DB):
 
 ```
 CDS_REQUIRES_DB=sqlite cds watch
 ```
 
-> `CDS_REQUIRES_DB=sqlite` has the same effect as `"cds": { "requires": { db:"sqlite" } }` in `package.json`
+> `CDS_REQUIRES_DB=sqlite` has the same effect as `"cds": { "requires": { db:"sqlite" } }` in `package.json`, only that the latter is a permanent setting.
 
 The application runs as before.  In the log, however, you no longer see a database deployment, but a line like:
 
@@ -217,14 +219,14 @@ The SAP Fiori UI also reflects the changed data in the incidents list:
 
 In this and the last exercise, you've now learned how to add an integration package.  You've also seen that quite some application code could be avoided because of it:
 
-- The BusinessPartner API description for both structure (entities, types etc)
-- The BusinessPartner event definitions
+- The BusinessPartner API description for the structure (entities, types etc), as CDS model
+- The BusinessPartner event definitions, as CDS model
 - The service mock implementation and sample data
 - Event emitters for local testing
 
 Depending on the application scenario, more and higher-level features can be added in such packages, like
 
-- CDS projections for model parts that are often used, like the `Customers` definition.
+- CDS projections for model parts that are often used, like a `Customers` definition.
 - Additional annotations, like for SAP Fiori Elements
 
 The following picture shows how the integration/reuse package and the application project work together on a technical level.
