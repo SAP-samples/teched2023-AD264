@@ -264,11 +264,11 @@ service ProcessorService {
 
 However, projections go way beyond this and provide powerful means to express queries for specific application scenarios.
 - When mapped to relational databases, such projections are in fact translated to SQL views.
-- Ypu will soon see non-DB uses of projections, though.
+- You will soon see non-DB uses of projections.
 
-👉 Explore projections and services!  Add a 'statistics service' that shows
+👉 Now explore projections and services.  Add a 'statistics service' that shows
 - Incidents' `title`
-- Their `status`, but like `New` instead of `N`.  Hint: use a [path expression](https://cap.cloud.sap/docs/cds/cql#path-expressions) for the `name`.
+- Their `status`, but showing `New` instead of `N` etc.  Hint: use a [path expression](https://cap.cloud.sap/docs/cds/cql#path-expressions) for the `name`.
 - Only urgent incidents.  Hint: use a [`where` condition](https://cap.cloud.sap/docs/cds/cql).
 
 The result shall be available at `/odata/v4/statistics/UrgentIncidents`. What's the name of the CDS service that matches to this URL?
@@ -324,10 +324,8 @@ Remember: you got all of this power without a single line of (Javascript or Java
 
 ## Summary
 
-You've now created a basic version of the Incidents Management Application.
-
-Still it's very powerful as it
-- Exposes **rich (OData) API's and metadata**.  You will see OData clients like SAP Fiori Elements UI soon.
+You've now created a basic version of the Incidents Management Application.  Still it's very powerful as it:
+- Exposes **rich API's** and OData metadata.  You will see OData clients like SAP Fiori Elements UI soon.
 - Deploys to a **database out-of-the-box**.
 - Let's you stay **focused on the domain model** without the need to write imperative code for simple CRUD requests.
 - Keeps boilerplate **files to the minimum**.  Just count the actual files in the project.
