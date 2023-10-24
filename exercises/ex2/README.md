@@ -7,7 +7,9 @@ Customer data is available in _SAP S/4HANA Cloud_ as part of the _Business Partn
 
 ## Checkout Base Version of the Application
 
-To give you a consistent start for the upcoming tasks, there is a start version of the application available.  It basically matches to what you did in the last exercise.
+To give you a consistent start for the upcoming tasks, there is a start version of the application available.  It basically matches to what you did in the last exercise plus has some UI bits and pieces.
+
+> We recommend to start from this branch. You can save your previous work by pushing it to a Github repository, for example.
 
 👉 Checkout the `start` branch of the repository:
 
