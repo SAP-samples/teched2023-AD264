@@ -152,10 +152,10 @@ It uses the [`emit` API](https://cap.cloud.sap/docs/node.js/core-services#srv-em
     console.log('>> BusinessPartner.Changed', event)
     await this.emit('BusinessPartner.Changed', event);
   })
-  this.after('CREATE', A_BusinessPartner, async data =>  ...)
+  this.after('CREATE', A_BusinessPartner, ...)
 ```
 
-This means whenever you change data through the `API_BUSINESS_PARTNER` mock service, a local event is emitted.
+This means whenever you change or create data through the `API_BUSINESS_PARTNER` mock service, a local event is emitted.
 Also note how the event name `BusinessPartner.Changed` matches to the event definition from the CDS code above.
 
 ## Put it all together
@@ -167,6 +167,12 @@ Before starting the application again, it's time to turn the current in-memory d
 ```
 cds deploy --with-mocks --to sqlite
 ```
+
+> This deploys the current SQL equivalent of your CDS model to a persistent database.  This also means that after changes to the data model (new fields, entities etc.), you need to execute the `cds deploy ...` command again.  Keep this in mind in case you see errors like _table/view not found_.
+
+<!-- You might also want to open the `db.sqlite` file and inspect the contents of the database:
+![Database content](assets/sqlite-dump.png) -->
+
 
 👉 Start the application with a hint to use a SQLite database (which in this case means a persistent DB):
 
@@ -183,11 +189,6 @@ The application runs as before.  In the log, however, you no longer see a databa
 [cds] - connect to db > sqlite { url: 'db.sqlite' }
 ...
 ```
-
-> This also means that after changes to the data model (new fields, entities etc.), you need to execute the `cds deploy ...` command again.  Keep this in mind in case you see errors like _table/view not found_.
-
-<!-- You might also want to open the `db.sqlite` file and inspect the contents of the database:
-![Database content](assets/sqlite-dump.png) -->
 
 👉 In your file `tests.http`, first execute the 2 requests to **create an incident** again (see [section above](#test-without-ui)).
 
