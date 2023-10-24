@@ -239,4 +239,4 @@ The following picture shows how the integration/reuse package and the applicatio
 ![](assets/reuse-overview.drawio.svg)
 
 
-Let's do a general [wrap-up](6.-Summary) of what you have seen.
+Let's do a general [wrap-up](../summary/) of what you have seen.
