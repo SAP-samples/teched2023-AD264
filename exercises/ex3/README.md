@@ -19,7 +19,7 @@ annotate Customers with @cds.persistence: { table,skip:false };
 
 The annotation `@cds.persistence: {table,skip:false}` turns the view above into a table with the same signature (`ID` and `name` columns).  See the [documentation](https://cap.cloud.sap/docs/cds/annotations#persistence) for more on annotations that influence persistence.
 
-> You could have added the annotation directly to the `Customers` definition.  The result would be the same.  With the [`annotate` directive](https://cap.cloud.sap/docs/cds/cdl#the-annotate-directive) though, you get the powers to enhance entities (even external/base/reuse entities!) at different places in your application.
+> You could have added the annotation directly to the `Customers` definition.  The result would be the same.  With the [`annotate` directive](https://cap.cloud.sap/docs/cds/cdl#the-annotate-directive) though, you get the power to enhance entities (even external/base/reuse entities!) at different places in your application.
 
 ## Replicate Data On Demand
 
@@ -53,7 +53,7 @@ With the [REST client for VS Code](https://marketplace.visualstudio.com/items?it
 
 👉 Create a file `tests.http` with this content:
 
-```http
+```
 ###
 # @name IncidentsCreate
 
@@ -73,7 +73,7 @@ Content-Type: application/json
 ```
 
 👉 Click `Send Request` above the `POST .../Incidents` line. This will create the record in a draft tate.<br>
-👉 Click `Send Request` above the `POST .../draftActivate` line. This corresponds to the `Save` ction in the UI.
+👉 Click `Send Request` above the `POST .../draftActivate` line. This corresponds to the `Save` action in the UI.
 
   > This second request is needed for all changes to entities managed by [SAP Fiori's draft](https://cap.cloud.sap/docs/advanced/fiori#draft-support) mechanism.
 
@@ -89,7 +89,7 @@ Let's see what the integration package provides.
 👉 Open `node_modules/s4-bupa-integration/bupa/index.cds`
 
 <details>
-<summary>Quick question: how can you jump to this file fast?</summary>
+<summary>Quick question: how can you jump to this file real quick?</summary>
 
 Use the `cds watch` output in the console. The file is listed there because it is loaded when the application starts.
 
@@ -111,14 +111,14 @@ event BusinessPartner.Changed @(topic : 'sap.s4.beh.businesspartner.v1.BusinessP
 }
 ```
 
-The benefits are:
+The benefits of these 'modeled' event definitions are:
 - [CAP's support for events and messaging](https://cap.cloud.sap/docs/guides/messaging) can automatically _subscribe_ to message brokers and _emit_ events behind the scenes.
 - Also, event names like `BusinessPartner.Changed` are semantically closer to the domain and easier to read than the underlying technical events like `sap.s4.beh.businesspartner.v1.BusinessPartner.Changed.v1`.
 
 
 ## React to Events
 
-The piece to close the loop is code to **consume events** in the application.
+To close the loop, add code to **consume events**.
 
 👉 In `srv/processor-service.js`, add this event handler:
 
@@ -140,7 +140,8 @@ The piece to close the loop is code to **consume events** in the application.
 
 But who is the **event emitter**?  Usually it's the remote data source, i.e. the SAP S4/HANA system.  For local runs, it would be great if something could **emit events when testing**.  Luckily, there is alreday a simple event emitter in the integration package!
 
-👉 Open file `node_modules/s4-bupa-integration/bupa/API_BUSINESS_PARTNER.js`. You know how you can open it real quick, don't you? :)
+👉 Open file `node_modules/s4-bupa-integration/bupa/API_BUSINESS_PARTNER.js`.<br>
+You know how you can open it real quick, don't you? :)
 
 It uses the [`emit` API](https://cap.cloud.sap/docs/node.js/core-services#srv-emit-event) to send out an event:
 
@@ -151,7 +152,7 @@ It uses the [`emit` API](https://cap.cloud.sap/docs/node.js/core-services#srv-em
     console.log('>> BusinessPartner.Changed', event)
     await this.emit('BusinessPartner.Changed', event);
   })
-  ...
+  this.after('CREATE', A_BusinessPartner, async data =>  ...)
 ```
 
 This means whenever you change data through the `API_BUSINESS_PARTNER` mock service, a local event is emitted.
