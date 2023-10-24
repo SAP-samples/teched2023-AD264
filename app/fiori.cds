@@ -45,7 +45,7 @@ annotate service.Incidents with @(
             $Type : 'UI.ReferenceFacet',
             ID : 'GeneratedFacet1',
             Label : '{i18n>generalInformation}',
-            Target : '@UI.FieldGroup#GeneralInformations',
+            Target : '@UI.FieldGroup#GeneralInformation',
         },
                 {
                     $Type : 'UI.ReferenceFacet',
