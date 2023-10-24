@@ -12,9 +12,9 @@ from '@sap/cds/common';
  * Incidents created by Customers.
  */
 entity Incidents : cuid, managed {
-  title        : String                                   @title : 'Title';
-  urgency      : Association to Urgency  default 'Medium' @title : 'Urgency';
-  status       : Association to Status   default 'New'    @title : 'Status';
+  title         : String                                   @title : '{i18n>Title}';
+  urgency       : Association to Urgency  default 'Medium' @title : '{i18n>Urgency}';
+  status        : Association to Status   default 'New'    @title : '{i18n>Status}';
   conversations : Composition of many Conversations  on conversations.incidents = $self;
 }
 
