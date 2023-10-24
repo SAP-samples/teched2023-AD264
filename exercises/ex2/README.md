@@ -175,32 +175,32 @@ As a ready-to-use stand-in for an SAP S4/HANA system, we use the sandbox system 
 
 > To use your own SAP S/4HANA Cloud system, see this [tutorial](https://developers.sap.com/tutorials/btp-app-ext-service-s4hc-use.html). You don't need it for this tutorial though.
 
-1. Create a **new file `.env`** in the `incidents` folder and add **environment variables** that hold the URL of the sandbox as well as a personal API Key:
+👉 Create a **new file `.env`** in the root folder and add **environment variables** that hold the URL of the sandbox as well as a personal API Key:
 
-    ```properties
-    DEBUG=remote
-    cds.requires.API_BUSINESS_PARTNER.[sandbox].credentials.url=https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BUSINESS_PARTNER/
-    cds.requires.API_BUSINESS_PARTNER.[sandbox].credentials.headers.APIKey=<Copied API Key>
-    ```
+```properties
+DEBUG=remote
+cds.requires.API_BUSINESS_PARTNER.[sandbox].credentials.url=https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BUSINESS_PARTNER/
+cds.requires.API_BUSINESS_PARTNER.[sandbox].credentials.headers.APIKey=<Copied API Key>
+```
 
-    Note the `[sandbox]` segment which denotes a [configuration profile](https://cap.cloud.sap/docs/node.js/cds-env#profiles) named `sandbox`.  The name has no special meaning.  You will see below how to use it.
+Note the `[sandbox]` segment which denotes a [configuration profile](https://cap.cloud.sap/docs/node.js/cds-env#profiles) named `sandbox`.  The name has no special meaning.  You will see below how to use it.
 
-2. Get an **API key**:
+👉 Get an **API key**:
 
-    - Go to [SAP Business Accelerator Hub](https://api.sap.com).
-    - On the top right corner, expand the _Hi ..._ dropdown.  Choose _Settings_.
-    - Click on _Show API Key_. Choose _Copy Key and Close_.
+- Go to [SAP Business Accelerator Hub](https://api.sap.com).
+- On the top right corner, expand the _Hi ..._ dropdown.  Choose _Settings_.
+- Click on _Show API Key_. Choose _Copy Key and Close_.
 
-      ![Get API key from SAP API Business Hub](./assets/hub-api-key.png)
+  ![Get API key from SAP API Business Hub](./assets/hub-api-key.png)
 
-3. **Add the key** to the `.env` file
+👉 **Add the key** to the `.env` file
 
-    > By putting the key in a separate file, you can exclude it from the Git repository (see the `.gitignore` file).<br>
-    >
-    > Also note how the `cds.requires.API_BUSINESS_PARTNER` structure in the `.env file` matches to the `package.json` configuration.<br>
-    To learn about more configuration options for CAP Node.js applications, see the [documentation](https://cap.cloud.sap/docs/node.js/cds-env).
+By putting the key in a separate file, you can exclude it from the Git repository (see the `.gitignore` file).<br>
 
-Now kill the server with <kbd>Ctrl+C</kbd> and run again with the `sandbox` profile activated:
+> Note how the `cds.requires.API_BUSINESS_PARTNER` structure in the `.env file` matches to the `package.json` configuration.<br>
+To learn about more configuration options for CAP Node.js applications, see the [documentation](https://cap.cloud.sap/docs/node.js/cds-env).
+
+👉 Now kill the server with <kbd>Ctrl+C</kbd> and run again with the `sandbox` profile activated:
 
 ```sh
 cds watch --profile sandbox
@@ -219,7 +219,7 @@ In the server log, you can see that the configuration is effective:
 
 On the application's index page, the **mocked service is gone**, because it is no longer served in the application. Instead, it is assumed to be **running in a remote system**.  Through the configuration above, the system knows how to connect to it.
 
-Open `/odata/v4/processor/Customers` to see the data coming from the remote system.
+👉 Open `/odata/v4/processor/Customers` to see the data coming from the remote system.
 
 > If you get a `401` error instead, check your API key in the `.env` file.  After a change in the configuration, kill the server with <kbd>Ctrl+C</kbd> and start it again.
 
@@ -290,9 +290,9 @@ annotate service.Incidents:customer with @Common: {
 
 ## Verify in UI
 
-Now Open _Fiori preview_ for the `Incidents` entity.
+👉 Now Open _Fiori preview_ for the `Incidents` entity.
 
-**Create a new incident** and **select a customer** using the value help. When pressing _Save_, watch the console output of the application and see the `>> delegating to S4 service...` message.
+👉 **Create a new incident** and **select a customer** using the value help. When pressing _Save_, watch the console output of the application and see the `>> delegating to S4 service...` message.
 
 ## Summary
 
