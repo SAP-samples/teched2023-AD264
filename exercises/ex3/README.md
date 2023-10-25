@@ -62,7 +62,7 @@ Content-Type: application/json
 
 {
   "title": "New incident",
-  "customer_ID": "Z100001"
+  "customer_ID": "1001039"
 }
 
 ###
@@ -192,16 +192,16 @@ The application runs as before.  In the log, however, you no longer see a databa
 
 👉 In your file `tests.http`, first execute the 2 requests to **create an incident** again (see [section above](#test-without-ui)).
 
-Now **change customer** `Z100001` with an HTTP request. Add this request to the `http` file:
+Now **change customer** `1001039` with an HTTP request. Add this request to the `http` file:
 
 ```
 ###
-PUT http://localhost:4004/odata/v4/api-business-partner/A_BusinessPartner/Z100001
+PUT http://localhost:4004/odata/v4/api-business-partner/A_BusinessPartner/1001039
 Authorization: Basic carol:
 Content-Type: application/json
 
 {
-  "BusinessPartnerFullName": "Albus Percival Wulfric Brian Dumbledore"
+  "BusinessPartnerFullName": "Cathrine Cloudy"
 }
 ```
 
