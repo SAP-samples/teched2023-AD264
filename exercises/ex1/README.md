@@ -342,6 +342,8 @@ Also, use the editor's code completion that guides you along the syntax.<br>
 In a separate `srv/statistics-service.cds` file, add this:
 
 ```cds
+using { incidents.mgt } from '../db/data-model';
+
 service StatisticsService {
 
   entity UrgentIncidents as projection on mgt.Incidents {
@@ -363,6 +365,8 @@ service StatisticsService {
 <summary>Solution:</summary>
 
 ```cds
+using { incidents.mgt } from '../db/data-model';
+
 service StatisticsService {
 
   entity UrgentIncidents as projection on mgt.Incidents {
