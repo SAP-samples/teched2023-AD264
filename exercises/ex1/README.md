@@ -115,15 +115,19 @@ To create such a relationship, the **graphical CDS modeler** in SAP Business App
 As text, it looks like this:
 
 ```cds
+using { cuid, managed } from '@sap/cds/common';
+
+namespace incidents.mgt;
+
 entity Incidents : cuid, managed {
-  title : String(100);
+  title         : String(100);
   conversations : Composition of many Conversations on conversations.incidents = $self;
 }
 
 entity Conversations : cuid, managed {
   timestamp : DateTime;
-  author : String(100);
-  message : String;
+  author    : String(100);
+  message   : String;
   incidents : Association to Incidents;
 }
 ```
@@ -250,7 +254,64 @@ to the URL.
 
 </details>
 
+## Add a Simple UI
+
+👉 Click on _Incidents_ > _Fiori Preview_.  This creates an SAP Fiori Elements application on the fly that displays data (Incidents) in a list.
+
+The list seems to be empty altough there is data available .  This is because no columns are configured.  Let's change that.
+
+👉 Add a file `app/fiori.cds` with this content:
+
+```cds
+using { ProcessorService as service } from '../srv/processor-service';
+
+annotate service.Incidents with @UI : {
+  LineItem  : [
+    { $Type : 'UI.DataField', Value : title},
+    { $Type : 'UI.DataField', Value : modifiedAt },
+    { $Type : 'UI.DataField', Value : modifiedBy },
+  ],
+};
+```
+
+which creates 3 columns:
+
+![Fiori list page with 3 columns](assets/Fiori-simple.png)
+
+There is even preconfigured labels for the `modifiedAt` and `modifiedBy` columns.<br>
+👉 Do you know how to look them up?  Hint: use editor features.
+
+<details>
+<summary>See how:</summary>
+
+On the `managed` aspect in `db/data-model.cds`, select _Go to References_ from the context menu.  Expand `common.cds`, and check the `annotate...` entries until you find the `@title` annotations:
+
+![Dialog with all references of the managed aspect](assets/Editor-GoToReferences.png)
+
+You can see that the actual strings are fetched from a resource bundle that is addressed with a `{i18n>...}` key.  See the [localization guide](https://cap.cloud.sap/docs/guides/i18n) for more.
+
+</details>
+
 <p>
+
+The label for the `title` column seems to be wrong, though.<br>
+👉 Fix it by adding the appropriate [CDS annotation](https://cap.cloud.sap/docs/advanced/fiori#prefer-title-and-description) to the `Incidents.title` element.
+
+<details>
+<summary>This is how you can do it:</summary>
+
+Add a `@title:'Title'` annotation to the `Incidents` definition.  Make sure to place it correctly before the semicolon.  Watch out for syntax errors.
+
+```cds
+entity Incidents : cuid, managed {
+  title         : String(100) @title : 'Title';   // <--
+  ...
+}
+```
+
+Note that annotations can be added at [different places in the CDS syntax](https://cap.cloud.sap/docs/cds/cdl#annotations).
+
+</details>
 
 ## Add another Service
 
@@ -312,7 +373,7 @@ service StatisticsService {
     count(conversations.ID) as convCount : Integer
   }
   where urgency.code = 'H' // filter
-  group by ID              // needed for count() to work
+  group by ID              // needed for count()
 }
 ```
 </details>
