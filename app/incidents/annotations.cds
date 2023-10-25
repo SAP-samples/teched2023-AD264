@@ -1,7 +1,4 @@
-using { ProcessorService as service, incidents } from '../srv/processor-service';
-
-
-annotate cuid:ID with @title: '{i18n>id}';
+using { ProcessorService as service, incidents } from '../../srv/processor-service';
 
 annotate service.Incidents with @(
     UI.LineItem : [
