@@ -260,7 +260,7 @@ to the URL.
 
 The list seems to be empty although there is data available .  This is because no columns are configured.  Let's change that.
 
-👉 Add a file `app/fiori.cds` with this content:
+👉 Add a file `app/annotations.cds` with this content:
 
 ```cds
 using { ProcessorService as service } from '../srv/processor-service';

@@ -246,7 +246,7 @@ It doesn't matter whether you want to connect against cloud or on-premises syste
 
 The UI needs some more annotations to show the changed data.
 
-👉 First, some basic annotations that refer to `Customers` itself.  Add it to `app/fiori`:
+👉 First, some basic annotations that refer to `Customers` itself.  Add it to `app/incidents/annotations.cds`:
 
 ```cds
 annotate service.Customers with @UI.Identification : [{ Value:name }];
@@ -257,7 +257,7 @@ annotate service.Customers with {
 };
 ```
 
-👉 Also in `app/fiori.cds`, add annotations that refer to `Incidents` and its association to `Customers`:
+👉 Also in `app/incidents/annotations.cds`, add annotations that refer to `Incidents` and its association to `Customers`:
 
 ```cds
 annotate service.Incidents with @(
@@ -290,7 +290,12 @@ annotate service.Incidents:customer with @Common: {
 
 ## Verify in UI
 
-👉 Now Open _Fiori preview_ for the `Incidents` entity.
+👉 Now click on the `/incidents/webapp/index.html` link on the index page.
+This file is part of the SAP Fiori Elements app in folder `app/incidents/webapp/`.
+
+![](assets/fiori-app-html.png)
+
+> For more on SAP Fiori elements, see [session AD161 - Build Full-Stack Applications with SAP Build Code Tools](https://github.com/SAP-samples/teched2023-AD161/blob/main/exercises/Ex7/README.md).  There, you can also learn about the dedicated tools for the UI annotations.  You don't need to type them manually.
 
 👉 **Create a new incident** and **select a customer** using the value help. When pressing _Save_, watch the console output of the application and see the `>> delegating to S4 service...` message.
 
