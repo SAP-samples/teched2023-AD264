@@ -256,9 +256,9 @@ to the URL.
 
 ## Add a Simple UI
 
-👉 Click on _Incidents_ > _Fiori Preview_.  This creates an SAP Fiori Elements application on the fly that displays data (Incidents) in a list.
+👉 Click on _Incidents_ > _[Fiori Preview](https://cap.cloud.sap/docs/advanced/fiori#sap-fiori-preview)_ on the index page of the application.  This opens an SAP Fiori Elements application that was created on the fly.  It displays the entity's data in a list.
 
-The list seems to be empty altough there is data available .  This is because no columns are configured.  Let's change that.
+The list seems to be empty although there is data available .  This is because no columns are configured.  Let's change that.
 
 👉 Add a file `app/fiori.cds` with this content:
 
@@ -284,11 +284,11 @@ There is even preconfigured labels for the `modifiedAt` and `modifiedBy` columns
 <details>
 <summary>See how:</summary>
 
-On the `managed` aspect in `db/data-model.cds`, select _Go to References_ from the context menu.  Expand `common.cds`, and check the `annotate...` entries until you find the `@title` annotations:
+On the `managed` aspect in `db/data-model.cds`, select _Go to References_ from the context menu.  Expand `common.cds` in the right-hand tree and check the `annotate managed` entries until you see the `@title` annotations:
 
 ![Dialog with all references of the managed aspect](assets/Editor-GoToReferences.png)
 
-You can see that the actual strings are fetched from a resource bundle that is addressed with a `{i18n>...}` key.  See the [localization guide](https://cap.cloud.sap/docs/guides/i18n) for more.
+The actual strings seem to be fetched from a resource bundle that is addressed with a `{i18n>...}` key.  See the [localization guide](https://cap.cloud.sap/docs/guides/i18n) for how this works.
 
 </details>
 
