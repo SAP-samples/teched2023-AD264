@@ -1,4 +1,4 @@
-# Exercise 2 - Basic Service Integration
+# Exercise 2 - Service Integration with SAP S/4 HANA
 
 In this exercise, you will add `Customers` to `Incidents` to specify who created an incident.
 

@@ -23,8 +23,8 @@ The requirements to follow the exercises in this repository are
 ## Exercises
 
 - [Getting Started](exercises/ex0/)
-- [Exercise 1 - Create a Basic CAP Application](exercises/ex1/)
-- [Exercise 2 - Basic Service Integration](exercises/ex2/)
+- [Exercise 1 - Introduction to CAP](exercises/ex1/)
+- [Exercise 2 - Service Integration with SAP S/4HANA](exercises/ex2/)
 - [Exercise 3 - Replication and Events](exercises/ex3/)
 - [Summary](exercises/summary/)
 

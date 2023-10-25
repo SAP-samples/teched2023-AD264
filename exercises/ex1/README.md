@@ -1,4 +1,4 @@
-# Exercise 1 - Create the Application
+# Exercise 1 - Introduction to CAP
 
 In this exercise, you will build a small application with SAP Cloud Application Programming Model (CAP).
 
