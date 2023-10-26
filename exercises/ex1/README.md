@@ -57,7 +57,7 @@ entity Incidents {
 ```
 </details>
 
-## Use Common Predefined Aspects
+## Use Predefined Aspects
 
 The situation of `ID` key fields is so common that there is a prebuilt CDS aspect available named `cuid` that provides just that.<br>
 It can be imported with `using ... from '@sap/cds/common';` and used in an entity with the `:` (colon) syntax.
@@ -346,7 +346,7 @@ Note that annotations can be added at [different places in the CDS syntax](https
 
 </details>
 
-## Add another Service
+## Add Another Service
 
 In the service above, you have used only the very minimal form of a [CDS projection](https://cap.cloud.sap/docs/cds/cdl#views-and-projections), which basically does a one-to-one exposure of an entity to the API surface:
 
