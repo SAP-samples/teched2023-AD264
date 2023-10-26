@@ -324,7 +324,7 @@ annotate service.Incidents with @UI : {
   LineItem  : [
     { $Type : 'UI.DataField', Value : title},
     { $Type : 'UI.DataField', Value : modifiedAt },
-    { $Type : 'UI.DataField', Value : status.name },
+    { $Type : 'UI.DataField', Value : status.name, Label: 'Status' },
   ],
 };
 ```
