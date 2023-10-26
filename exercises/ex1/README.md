@@ -73,6 +73,8 @@ Also, the `Incidents` entity shall carry information on when it was created and 
 ```cds
 using { cuid, managed } from '@sap/cds/common';
 
+namespace incidents.mgt;
+
 entity Incidents : cuid, managed {
   title        : String;
 }
@@ -100,7 +102,8 @@ To create such a relationship, the **graphical CDS modeler** in SAP Business App
 - In the `Aspects` tab in the property sheet, add the `ID` key field from CDS aspect `cuid`.
 - Add `timestamp`, `author`, and `message` fields with appropriate types.
 
-👉 Now connect the two entities.  In the `New Relationship` dialog:
+👉 Now **connect** the two entities.  Hover over one of the entities and find the `Add Relationship` button from the flyout menu. <br>
+In the `New Relationship` dialog:
 - Choose a releationship type so that whenever an `Incident` instance is deleted, all its conversations are deleted as well.
 - Stay with the proposed `conversations` and `incidents` fields.
 
@@ -208,6 +211,7 @@ service ProcessorService {
 
   ![Start application, terminal output](assets/StartApp-Terminal.png)
   </details>
+
   <p>
 
 Take a moment and check the output for what is going on:
@@ -236,6 +240,23 @@ Take a moment and check the output for what is going on:
 👉 Now <kbd>Ctrl+Click</kbd> on the `http://localhost:4004` link in the terminal.
 - In SAP Business Application Studio, this URL gets automatically transformed to an address like `https://port4004-workspaces-ws-...applicationstudio.cloud.sap/`
 - If you work locally, this would be http://localhost:4004.
+
+On the index page, all endpoints are listed along with the entities that they expose.
+
+![Index page with list of endpoints and entities](assets/IndexPage.png)
+
+The _Fiori preview_ link you will use later.
+
+👉 Do you know why the service URL path is `/processor`?  What's the `$metadata` link?
+
+<details>
+<summary>Here is why:</summary>
+
+You named the CDS service `ProcessorService`, and the runtime system infers the URL `processor` by stripping off `Service`.  You can configure this explicitly using the [`@path` annotation](https://cap.cloud.sap/docs/node.js/cds-serve#path).
+
+The `$metadata` URL serves the metadata document required for the [OData protocol](https://cap.cloud.sap/docs/advanced/odata).  You will soon see OData in action.
+
+</details>
 
 ## Add Sample Data
 
@@ -419,6 +440,8 @@ Remember: you got all of this power without a single line of (Javascript or Java
 
 
 ## Test OData Features
+
+Let's inspect some of the built-in features of [OData](https://cap.cloud.sap/docs/advanced/odata).
 
 👉 In the browser, use the service URL `.../odata/v4/processor/Incidents` and
 - list incidents
