@@ -333,7 +333,7 @@ which creates 3 columns:
 
 ![Fiori list page with 3 columns](assets/Fiori-simple.png)
 
-There is even preconfigured labels for the `modifiedAt` and `status.name` columns.<br>
+There is even a preconfigured label for the `modifiedAt` column.<br>
 👉 Do you know how to look them up?  Hint: use editor features.
 
 <details>
@@ -344,8 +344,6 @@ On the `managed` aspect in `db/data-model.cds`, select _Go to References_ from t
 ![Dialog with all references of the managed aspect](assets/Editor-GoToReferences.png)
 
 The actual strings seem to be fetched from a resource bundle that is addressed with a `{i18n>...}` key.  See the [localization guide](https://cap.cloud.sap/docs/guides/i18n) for how this works.
-
-Same holds true for the `CodeList` aspect, which provides the `Name` label.
 
 </details>
 
