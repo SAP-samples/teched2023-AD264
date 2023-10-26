@@ -38,11 +38,9 @@ The conceptual domain model for this _Incidents Management_ application is as fo
 ## Add Incidents
 
 👉 Create a file `data-model.cds` in the `db` folder.
-- There, add an `Incidents` entity with a key field `ID` and a `title`.
+- There, add an `Incidents` [entity](https://cap.cloud.sap/docs/cds/cdl#entities) with a key field `ID` and a `title`.
 - Choose appropriate data types.  Use code completion (intellisense) to pick a fitting data type.
 - Also, add a namespace `incidents.mgt` to the beginning of the file, so that the entity's full name is `incidents.mgt.Incidents`
-
-> See the [documentation](https://cap.cloud.sap/docs/cds/cdl) for the syntax of entity definitions.
 
 <details>
 <summary>This is how it should like:</summary>
@@ -62,7 +60,7 @@ entity Incidents {
 The situation of `ID` key fields is so common that there is a prebuilt CDS aspect available named `cuid` that provides just that.<br>
 It can be imported with `using ... from '@sap/cds/common';` and used in an entity with the `:` (colon) syntax.
 
-Also, the `Incidents` entity shall carry information on when it was created and updated and by whom.  There is a `managed` aspect from `@sap/cds/common` that does that.
+Also, the `Incidents` entity shall carry information on when it was created and updated and by whom.  There is a [`managed` aspect from `@sap/cds/common`](https://cap.cloud.sap/docs/cds/common#aspect-managed) that does that.
 
 👉 Make use of the two aspects and:
 - Replace the hand-crafted `ID` field with `cuid`<br>
@@ -83,7 +81,7 @@ entity Incidents : cuid, managed {
 
 <p>
 
-👉 Take a few moments and check out what the `@sap/cds/common` package has to offer in addition.  In the editor, hold <kbd>Ctrl</kbd> (or <kbd>⌘</kbd>) and hover over the `managed` text.  Click to naviate inside.
+👉 Take a few moments and check out what the `@sap/cds/common` package has to offer in addition.  In the editor, hold <kbd>Ctrl</kbd> (or <kbd>⌘</kbd>) and hover over the `managed` text.  Click to navigate inside.
 See the [documentation](https://cap.cloud.sap/docs/cds/common) for more.
 
 
