@@ -1,7 +1,7 @@
-code,name,descr,criticality
-N,New,An incident that has been logged but not yet worked on,2
-A,Assigned,Case has been assigned,
-I,In Process,Case is being actively worked on,
-H,On Hold,Incident has been put on hold,
-R,Resolved,Resolution has been found,3
-C,Closed,Incident was acknowleged closed by end user,3
+code,name,descr
+N,New,An incident that has been logged but not yet worked on
+A,Assigned,Case has been assigned
+I,In Process,Case is being actively worked on
+H,On Hold,Incident has been put on hold
+R,Resolved,Resolution has been found
+C,Closed,Incident was acknowleged closed by end user
