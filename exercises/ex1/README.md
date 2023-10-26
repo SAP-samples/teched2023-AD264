@@ -414,7 +414,7 @@ service StatisticsService {
 
 👉 If you got this, add these fields with more advanced syntax:
 - `modified` :  a concatenated string from `modifiedAt` and `modifiedBy` (use the `str1 || str2` syntax)
-- `convCount` :  a count for the number of conversation messages.  Hint: SQL has a `count()` function.  Don't forget the `group by` clause.
+- `conversationCount` :  a count for the number of conversation messages.  Hint: SQL has a `count()` function.  Don't forget the `group by` clause.
 
 <details>
 <summary>Solution:</summary>
@@ -429,7 +429,7 @@ service StatisticsService {
     status.name as status,  // expose with alias name using a path expression
 
     modifiedAt || ' (' || modifiedBy || ')' as modified : String,
-    count(conversations.ID) as convCount : Integer
+    count(conversations.ID) as conversationCount : Integer
   }
   where urgency.code = 'H' // filter
   group by ID              // needed for count()
@@ -438,6 +438,8 @@ service StatisticsService {
 </details>
 
 <p>
+
+Check on `/odata/v4/statistics/UrgentIncidents` for the results.  Note they will vary depending on your sample data.
 
 Remember: you got all of this power without a single line of (Javascript or Java) code!
 
