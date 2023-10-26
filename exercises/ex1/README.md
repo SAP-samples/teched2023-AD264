@@ -262,23 +262,26 @@ The `$metadata` URL serves the metadata document required for the [OData protoco
 
 Add some test data to work with.
 
-👉 Create **csv files** for all entities in the terminal:
+👉 Create **csv files** for all entities.  In a new terminal, run:
 
 ```sh
 cds add data
 ```
 
-> Note how the files names match the entity names.<br>
-  As soon as they are there, `cds watch` finds and deploys them. Check the console output:
-  ```sh
-  [cds] - connect to db > sqlite { database: ':memory:' }
-  > init from db/data/incidents.mgt-Urgency.texts.csv
-  > init from db/data/incidents.mgt-Urgency.csv
-  > init from db/data/incidents.mgt-Status.texts.csv
-  > init from db/data/incidents.mgt-Status.csv
-  > init from db/data/incidents.mgt-Incidents.csv
-  > init from db/data/incidents.mgt-Conversations.csv
-  ```
+
+As soon as they are there, `cds watch` finds and deploys them. Check the console output:
+
+```sh
+[cds] - connect to db > sqlite { database: ':memory:' }
+> init from db/data/incidents.mgt-Urgency.texts.csv
+> init from db/data/incidents.mgt-Urgency.csv
+> init from db/data/incidents.mgt-Status.texts.csv
+> init from db/data/incidents.mgt-Status.csv
+> init from db/data/incidents.mgt-Incidents.csv
+> init from db/data/incidents.mgt-Conversations.csv
+```
+
+> Note how the files names match the entity names.
 
 👉 For the two code lists, **fill in data in the terminal** real quick:
 
@@ -321,7 +324,7 @@ annotate service.Incidents with @UI : {
   LineItem  : [
     { $Type : 'UI.DataField', Value : title},
     { $Type : 'UI.DataField', Value : modifiedAt },
-    { $Type : 'UI.DataField', Value : modifiedBy },
+    { $Type : 'UI.DataField', Value : status.name },
   ],
 };
 ```
@@ -330,7 +333,7 @@ which creates 3 columns:
 
 ![Fiori list page with 3 columns](assets/Fiori-simple.png)
 
-There is even preconfigured labels for the `modifiedAt` and `modifiedBy` columns.<br>
+There is even preconfigured labels for the `modifiedAt` and `status.name` columns.<br>
 👉 Do you know how to look them up?  Hint: use editor features.
 
 <details>
@@ -341,6 +344,8 @@ On the `managed` aspect in `db/data-model.cds`, select _Go to References_ from t
 ![Dialog with all references of the managed aspect](assets/Editor-GoToReferences.png)
 
 The actual strings seem to be fetched from a resource bundle that is addressed with a `{i18n>...}` key.  See the [localization guide](https://cap.cloud.sap/docs/guides/i18n) for how this works.
+
+Same holds true for the `CodeList` aspect, which provides the `Name` label.
 
 </details>
 
