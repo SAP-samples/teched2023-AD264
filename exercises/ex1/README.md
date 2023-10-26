@@ -139,6 +139,42 @@ entity Conversations : cuid, managed {
 > In the following exercises, feel free to use the graphical modeler or the code editor as you like. Find out what works for you.<br>
 In the solutions though, we will print the textual form, as it's more convenient to copy/paste.
 
+
+## Add Status and Urgency
+
+
+```cds
+entity Status : CodeList {
+  key code        : String enum {
+        new        = 'N';
+        assigned   = 'A';
+        in_process = 'I';
+        on_hold    = 'H';
+        resolved   = 'R';
+        closed     = 'C';
+      };
+      criticality : Integer;
+}
+
+entity Urgency : CodeList {
+  key code : String enum {
+        high   = 'H';
+        medium = 'M';
+        low    = 'L';
+      };
+      criticality : Integer;
+}
+```
+
+
+```cds
+entity Incidents : cuid, managed {
+  ...
+  urgency       : Association to Urgency  default 'Medium';
+  status        : Association to Status   default 'New'   ;
+}
+```
+
 ## Create a CDS Service
 
 There shall be an API for incidents processors to maintain incidents.
@@ -204,7 +240,6 @@ Take a moment and check the output for what is going on:
 - In SAP Business Application Studio, this URL gets automatically transformed to an address like `https://port4004-workspaces-ws-...applicationstudio.cloud.sap/`
 - If you work locally, this would be http://localhost:4004.
 
-
 ## Add Sample Data
 
 Add some test data to work with.
@@ -235,11 +270,12 @@ touch db/data/incidents.mgt-Conversations.csv
 
 ## Test OData Features
 
-👉 Use the URL from above and list incidents
+👉 In the browser, use the service URL `.../odata/v4/processor/Incidents` and
+- list incidents
 - with their conversation messages,
 - limiting the list to `5` entries,
-- only showing the incidents' `title`,
-- sorting along `title`
+- only showing the `title` field,
+- sorting alphabetically along `title`
 
 How can you do that using [OData's](https://cap.cloud.sap/docs/advanced/odata) query options like `$expand` etc.?
 <details>
@@ -386,6 +422,33 @@ service StatisticsService {
 
 Remember: you got all of this power without a single line of (Javascript or Java) code!
 
+
+## Inspect the Database
+
+Upon deployment to the database, CAP creates SQL DDL statements to create the tables and views for your entities.
+
+👉 On the `db/data-model.cds` file, select `CDS Preview > Preview as sql` from the editor's context menu.  This opens a side panel with the SQL statements.
+
+<details>
+<summary>See how this looks like:</summary>
+
+![SQL preview for data model](assets/PreviewAsSQL.png)
+
+</details>
+
+You can do the same in the terminal with
+```sh
+cds compile db --to sql
+```
+
+👉 Now do the same on file `srv/statistics-service.cds`.  What is different in the result?  Can you explain where the new SQL statements come from?
+
+<details>
+<summary>This is why:</summary>
+
+For each CDS projection, an SQL view is created that captures the queries from the projections.
+
+</details>
 
 ## Summary
 
