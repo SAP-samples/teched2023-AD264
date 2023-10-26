@@ -448,7 +448,7 @@ Remember: you got all of this power without a single line of (Javascript or Java
 
 Let's inspect some of the built-in features of [OData](https://cap.cloud.sap/docs/advanced/odata).
 
-👉 In the browser, use the service URL `.../odata/v4/processor/Incidents` and
+👉 In the browser, append to the service URL `.../odata/v4/processor/Incidents` so that you can:
 - list incidents
 - with their conversation messages,
 - limiting the list to `5` entries,
@@ -481,7 +481,9 @@ Upon deployment to the database, CAP creates SQL DDL statements to create the ta
 
 </details>
 
-You can do the same in the terminal with
+<p>
+
+👉 You can do the same in the terminal with
 ```sh
 cds compile db --to sql
 ```
@@ -491,16 +493,17 @@ cds compile db --to sql
 <details>
 <summary>This is why:</summary>
 
-For each CDS projection, an SQL view is created that captures the queries from the projections.
+For each CDS projection, an SQL view is created that captures the queries from the projections.  This is why you see a lot more `CREATE VIEW ` statements.
 
 </details>
 
 ## Summary
 
 You've now created a basic version of the Incidents Management Application.  Still it's very powerful as it:
+
 - Exposes **rich API's** and OData metadata.  You will see OData clients like SAP Fiori Elements UI soon.
-- Deploys to a **database out-of-the-box**.
+- Deploys to a **database out-of-the-box**, incl. data files.
 - Let's you stay **focused on the domain model** without the need to write imperative code for simple CRUD requests.
-- Keeps boilerplate **files to the minimum**.  Just count the actual files in the project.
+- Keeps **boilerplate files to the minimum**.  Just count the few files in the project.
 
 Now continue to [exercise 2](../ex2/README.md), where you will extend the application with remote capabilities.
