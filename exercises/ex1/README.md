@@ -142,38 +142,37 @@ In the solutions though, we will print the textual form, as it's more convenient
 
 ## Add Status and Urgency
 
+Incidents shall have two more fields `status` and `urgency`, which are 'code lists', i.e. configuration data.
+
+👉 Add two entities, using the [`CodeList`](https://cap.cloud.sap/docs/cds/common#aspect-codelist) aspect.
+- `Status` for the incident's status like _new_, _in process_ etc.
+- `Urgency` to denote the priority like _high_, _medium_ etc.
+
+👉 Add two fields to `Incidents` pointing to the new entities.  This time, use the [`extend` directive](https://cap.cloud.sap/docs/cds/cdl#extend) to add the fields w/o having to modify the original definition.
+
+<details>
+<summary>See the result:</summary>
+
+In `db/data-model.cds`, add:
 
 ```cds
+using { sap.common.CodeList } from '@sap/cds/common';
+
 entity Status : CodeList {
-  key code        : String enum {
-        new        = 'N';
-        assigned   = 'A';
-        in_process = 'I';
-        on_hold    = 'H';
-        resolved   = 'R';
-        closed     = 'C';
-      };
-      criticality : Integer;
+  key code  : String;
 }
 
 entity Urgency : CodeList {
-  key code : String enum {
-        high   = 'H';
-        medium = 'M';
-        low    = 'L';
-      };
-      criticality : Integer;
+  key code : String;
 }
+
+extend Incidents with {
+  urgency       : Association to Urgency;
+  status        : Association to Status;
+};
 ```
 
-
-```cds
-entity Incidents : cuid, managed {
-  ...
-  urgency       : Association to Urgency  default 'Medium';
-  status        : Association to Status   default 'New'   ;
-}
-```
+</details>
 
 ## Create a CDS Service
 
@@ -244,51 +243,49 @@ Take a moment and check the output for what is going on:
 
 Add some test data to work with.
 
-👉 Create **csv files** in the terminal:
+👉 Create **csv files** for all entities in the terminal:
 
 ```sh
-mkdir -p db/data
-touch db/data/incidents.mgt-Incidents.csv
-touch db/data/incidents.mgt-Conversations.csv
+cds add data
 ```
 
 > Note how the files names match the entity names.<br>
   As soon as they are there, `cds watch` finds and deploys them. Check the console output:
   ```sh
   [cds] - connect to db > sqlite { database: ':memory:' }
+  > init from db/data/incidents.mgt-Urgency.texts.csv
+  > init from db/data/incidents.mgt-Urgency.csv
+  > init from db/data/incidents.mgt-Status.texts.csv
+  > init from db/data/incidents.mgt-Status.csv
   > init from db/data/incidents.mgt-Incidents.csv
   > init from db/data/incidents.mgt-Conversations.csv
   ```
 
-👉 Use the **sample data editor** to fill in some data.
-- Right click on one of the csv files and run `Open With...` > `Sample Data Editor`
+👉 For the two code lists, **fill in data in the terminal** real quick:
+
+```sh
+cat << EOF > db/data/incidents.mgt-Status.csv
+code,name
+N,New
+I,In Process
+C,Closed
+EOF
+
+cat << EOF > db/data/incidents.mgt-Urgency.csv
+code,name
+H,High
+M,Medium
+L,Low
+EOF
+```
+
+👉 For the `Incidents` and `Conversations` csv files, use the **sample data editor** to fill in some data.
+- Double click on the `db/data/incidents.mgt-Incidents.csv` file in the explorer tree.
 - In the editor, add maybe 10 rows.  Use the `Number of rows` field and click `Add` to create the records.
-- Also create records for the second csv file.
+- Also create records for the `db/data/incidents.mgt-Conversations` file. The editor automatically fills the `incidents_ID` foreign key.
 
 👉 On the applications index page, click on the `Incidents` link which runs a `GET /odata/v4/processor/Incidents` request.<br>
 
-
-## Test OData Features
-
-👉 In the browser, use the service URL `.../odata/v4/processor/Incidents` and
-- list incidents
-- with their conversation messages,
-- limiting the list to `5` entries,
-- only showing the `title` field,
-- sorting alphabetically along `title`
-
-How can you do that using [OData's](https://cap.cloud.sap/docs/advanced/odata) query options like `$expand` etc.?
-<details>
-<summary>This is how:</summary>
-
-Add
-```
-?$select=title&$orderby=title&$top=5&$expand=conversations
-```
-
-to the URL.
-
-</details>
 
 ## Add a Simple UI
 
@@ -422,6 +419,28 @@ service StatisticsService {
 
 Remember: you got all of this power without a single line of (Javascript or Java) code!
 
+
+## Test OData Features
+
+👉 In the browser, use the service URL `.../odata/v4/processor/Incidents` and
+- list incidents
+- with their conversation messages,
+- limiting the list to `5` entries,
+- only showing the `title` field,
+- sorting alphabetically along `title`
+
+How can you do that using [OData's](https://cap.cloud.sap/docs/advanced/odata) query options like `$expand` etc.?
+<details>
+<summary>This is how:</summary>
+
+Add
+```
+?$select=title&$orderby=title&$top=5&$expand=conversations
+```
+
+to the URL.
+
+</details>
 
 ## Inspect the Database
 
