@@ -11,11 +11,12 @@ To give you a consistent start for the upcoming tasks, there is a start version 
 
 > We recommend to start from this branch. You can save your previous work by pushing it to a Github repository, for example.
 
-👉 Checkout the `start` branch of the repository:
+👉 Clone this repository and checkout the `start` branch:
 
 ```sh
 cd /home/user/projects
 git clone -b start https://github.com/SAP-samples/teched2023-AD264
+cd teched2023-AD264
 npm ci  # installs app's dependencies
 ```
 
