@@ -112,8 +112,7 @@ entity Customers   as projection on S4.A_BusinessPartner {
 Then add:
 
 ```cds
-entity Incidents {
-  ...
+extend Incidents with {
   customer      : Association to Customers;
 }
 ```
@@ -121,11 +120,12 @@ entity Incidents {
 In `srv/processor-service.cds`, add this line:
 
 ```cds
-service ... {
-  ...
+extend service ProcessorService with {
   entity Customers as projection on mgt.Customers;
 }
 ```
+
+Again, you could have added these new fields and entities to the original definitions.  This way though, it's easier for you to copy.  Also, it shows you how to add things in a 'modification free' way.
 
 </details>
 
