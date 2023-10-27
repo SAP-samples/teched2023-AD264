@@ -428,7 +428,7 @@ Note how the `js` file is named the same as the `cds` file.  This is how the fra
 
 👉 Now test the logic by creating an incident through the UI.  Add the word _urgent_ in the title.  After saving it, you should see the urgency set to _High_.
 
-### Optional: Debug the Code
+## Debug the Code (Optional)
 
 If you want to debug the code using the built-in visual Javascript debugger, do this:
 - Kill the running `cds watch` process.
