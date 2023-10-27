@@ -12,6 +12,15 @@ _Build Extensions with SAP Cloud Application Programming Model_.
 
 Find out how to quickly develop side-by-side extensions using SAP Cloud Application Programming Model (CAP). Learn to define domain models and services in CDS language, all within minutes. Discover streamlined integration with SAP S/4HANA through minimal coding, leveraging both synchronous and asynchronous APIs.
 
+## SAP Build Code
+Last year, SAP launched SAP Build to empower business experts to construct applications, implement automations and compose business sites. This year, the Build family is being expanded to offer a powerful shortcut for cloud application development with the introduction of **SAP Build Code**.
+
+![](assets/img-build-code-architecture.png)
+
+**SAP Build Code** unifies essential application development tools such as SAP Business Application Studio, SAP Cloud Application Programming Model (CAP), SAPUI5, SAP Mobile Services, and SAP Document Management Services. It is powered by the generative AI copilot, Joule, and enables interoperability with ABAP Cloud. Additionally, it facilitates seamless collaboration with SAP Build's low-code solutions and provides robust governance and lifecycle management features.
+
+![](assets/img-build-code-benefits.png)
+
 ## Requirements
 
 The requirements to follow the exercises in this repository are
