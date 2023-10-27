@@ -31,8 +31,10 @@ npm ci  # installs app's dependencies
 
 ## Add Integration Package
 
-Luckily, you don't need to implement the integration from scratch, but you can use a integration package.
-It could come from any provider: SAP, partners, a team in your company etc.
+Luckily, you don't need to implement the integration to SAP S/4HANA from scratch, but you can use an integration package.<br>
+Such packages could come from any provider: SAP, partners, a team in your company etc.  They can be a published to npmjs.com or provided as simple tar files from a remote file server, or a local folder.
+
+For expediency, we use a `git` dependency to a branch in this repo as source of the package.
 
 👉 In the terminal, run this to download the package:
 
@@ -40,9 +42,7 @@ It could come from any provider: SAP, partners, a team in your company etc.
 npm add git+https://github.com/SAP-samples/teched2023-AD264#bupa-integration-package
 ```
 
-> The package was added as a `git` dependency in `package.json`. It could also be a published package from npmjs.com, a tar file from a remote file server, or a local folder.
-
-Let's see what got installed by expanding the folder `node_modules/s4-bupa-integration` (in the file explorer or in the terminal):
+👉 Let's see what got installed.  Expand the folder `node_modules/s4-bupa-integration` (in the file explorer or in the terminal):
 
 ```
 node_modules/s4-bupa-integration
