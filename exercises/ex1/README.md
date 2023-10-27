@@ -320,6 +320,10 @@ The list seems to be empty although there is data available .  This is because n
 ```cds
 using { ProcessorService as service } from '../srv/processor-service';
 
+// enable drafts for editing in the UI
+annotate service.Incidents with @odata.draft.enabled;
+
+// table columns in the list
 annotate service.Incidents with @UI : {
   LineItem  : [
     { $Type : 'UI.DataField', Value : title},
@@ -367,6 +371,81 @@ entity Incidents : cuid, managed {
 Note that annotations can be added at [different places in the CDS syntax](https://cap.cloud.sap/docs/cds/cdl#annotations).
 
 </details>
+
+## Add Business Logic
+
+Let's add some logic to the application.  When an incident is created with _urgent_ in its title, it shall set its urgency to 'High'.
+
+👉 Add a file `srv/processor-service.js` with this content:
+
+```js
+const cds = require('@sap/cds')
+
+class ProcessorService extends cds.ApplicationService {
+  async init() {
+
+    this.before('CREATE', 'Incidents', ({ data }) => {
+      if (data) {
+        const incidents = Array.isArray(data) ? data : [data]
+        incidents.forEach(incident => {
+          // TODO add code here
+        })
+      }
+    })
+
+    return super.init()
+  }
+}
+
+module.exports = ProcessorService
+```
+
+Note how the `js` file is named the same as the `cds` file.  This is how the framework finds the implementation.  You can can see this in the output of `cds watch`:
+
+```sh
+...
+[cds] - serving ProcessorService { path: '/odata/v4/processor', impl: 'srv/processor-service.js' }
+...
+```
+
+> Don't see the `js` file listed there?  Check its spelling!
+
+👉 Complete the code with the actual logic: check that the `title` includes `urgent` and in that case set its `urgency code` to `H`.
+- Handle `urgent` and `Urgent` in the same way.
+- Also be robust in the case that there is no title given.
+
+<details>
+<summary>Solution:</summary>
+
+```js
+          if (incident.title?.toLowerCase().includes('urgent')) {
+            incident.urgency = { code: 'H' }
+          }
+```
+</details>
+
+<p>
+
+👉 Now test the logic by creating an incident through the UI.  Add the word _urgent_ in the title.  After saving it, you should see the urgency set to _High_.
+
+### Optional: Debug the Code
+
+If you want to debug the code using the built-in visual Javascript debugger, do this:
+- Kill the running `cds watch` process.
+- Press <kbd>F1</kbd>, type  _debug terminal_, select _Javascript: Debug Terminal_
+- In this terminal, start `cds watch` as usual.  The debugger starts and attaches to this process.
+- At the top in the middle of the window, see the floating panel with which you can control the debugger and do step operations.<br>
+  ![Debugger controls](assets/DebuggerControls.png)
+- Set a breakpoint in the source within the `this.before(...` function. Do this by double-clicking next to the line number.<br>
+  <details>
+  <summary>Quick question: in this situation, why wouldn't the debugger halt outside of this function?</summary>
+
+  Because the `before()` function is a [request handler](https://cap.cloud.sap/docs/node.js/core-services#srv-on-before-after), and it's only such request-handling code that can be debugged now.<br>
+  The code above and below is [bootstrap](https://cap.cloud.sap/docs/node.js/cds-server) code that can only be debugged if you make the debugger halt right when the server process gets started.
+  </details>
+- Now create a new incident.  The UI freezes because the debugger has stopped.
+- For variables, press <kbd>F1</kbd>, type  _variables_, select _Run and Debug: Focus on Variables View_.
+- After having inspected the variables, don't forget to continue execution using the debug control panel, otherwise the application UI will not react (and timeout eventually).
 
 ## Add Another Service
 

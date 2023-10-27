@@ -64,7 +64,9 @@ You see a bunch of files that will get explained as you progress.
 using { API_BUSINESS_PARTNER as S4 } from 's4-bupa-integration/bupa';
 ```
 
-👉 Register it in the application configuration.  Add this top-level to `package.json` (pay attention to JSON syntax errors):
+> Note how the path in `from 's4-bupa-integration/bupa'` matches to the file path in `node_modules`.
+
+👉 Register the package in the application configuration.  Add this top-level to `package.json` (pay attention to JSON syntax errors):
 
 ```jsonc
   "cds": {
