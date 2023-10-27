@@ -104,7 +104,7 @@ To create such a relationship, the **graphical CDS modeler** in SAP Business App
 
 👉 Now **connect** the two entities.  Hover over one of the entities and find the `Add Relationship` button from the flyout menu. <br>
 In the `New Relationship` dialog:
-- Choose a releationship type so that whenever an `Incident` instance is deleted, all its conversations are deleted as well.
+- Choose a relationship type so that whenever an `Incident` instance is deleted, all its conversations are deleted as well.
 - Stay with the proposed `conversations` and `incidents` fields.
 
 
@@ -518,7 +518,7 @@ service StatisticsService {
 
 <p>
 
-Check on `/odata/v4/statistics/UrgentIncidents` for the results.  Note they will vary depending on your sample data.
+Check on `/odata/v4/statistics/UrgentIncidents` for the results.  Note that they will vary depending on your sample data.
 
 Remember: you got all of this power without a single line of (Javascript or Java) code!
 
