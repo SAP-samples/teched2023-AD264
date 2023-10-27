@@ -47,6 +47,7 @@ npm add git+https://github.com/SAP-samples/teched2023-AD264#bupa-integration-pac
 ```
 node_modules/s4-bupa-integration
 ├── bupa
+│   ├── API_BUSINESS_PARTNER.cds
 │   ├── API_BUSINESS_PARTNER.csn
 │   ├── API_BUSINESS_PARTNER.edmx
 │   ├── API_BUSINESS_PARTNER.js
@@ -56,9 +57,14 @@ node_modules/s4-bupa-integration
 └── package.json
 ```
 
-You see a bunch of files that will get explained as you progress.
+👉 Open file `API_BUSINESS_PARTNER.cds` (not the `.csn` file)
+- Find the outline view in the lower left corner of the window.  Alternatively press <kbd>F1></kbd>, type _outline_ and select _Explorer: Focus on Outline View_.
+- Use the view to make yourself familiar with which entities there are. <br>
+  ![Outline view for API_BUSINESS_PARTNER.cds file](assets/Outline-CDS.png)
 
-👉 To make the application's CDS model use the package, add this line to the top of `db/data-model.cds`:
+  Quite an API, right?  Don't worry, we will restrict it soon to what we need in the application.
+
+👉 First, to make the application's CDS model use the package, add this line to the top of `db/data-model.cds`:
 
 ```cds
 using { API_BUSINESS_PARTNER as S4 } from 's4-bupa-integration/bupa';
