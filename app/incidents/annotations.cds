@@ -1,5 +1,9 @@
 using { ProcessorService as service, incidents } from '../../srv/processor-service';
 
+// enable drafts for editing in the UI
+annotate service.Incidents with @odata.draft.enabled;
+
+// table columns in the list
 annotate service.Incidents with @(
     UI.LineItem : [
         {
