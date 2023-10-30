@@ -262,14 +262,14 @@ The `$metadata` URL serves the metadata document required for the [OData protoco
 
 Add some test data to work with.
 
-👉 Create **csv files** for all entities.  In a new terminal, run:
+👉 Create empty **csv files** for all entities.  In a new terminal, run:
 
 ```sh
 cds add data
 ```
 
 
-As soon as they are there, `cds watch` finds and deploys them. Check the console output:
+As soon as they are there, `cds watch` finds and deploys them to the database. Check the console output:
 
 ```sh
 [cds] - connect to db > sqlite { database: ':memory:' }
@@ -283,7 +283,9 @@ As soon as they are there, `cds watch` finds and deploys them. Check the console
 
 > Note how the files names match the entity names.
 
-👉 For the two code lists, **fill in data in the terminal** real quick:
+Now fill in some content:
+
+👉 For the two code lists, **add csv records in the terminal** real quick:
 
 ```sh
 cat << EOF > db/data/incidents.mgt-Status.csv
