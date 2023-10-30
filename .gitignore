@@ -8,6 +8,7 @@ default-*.json
 gen/
 node_modules/
 target/
+@cds-models/
 
 # Web IDE, App Studio
 .che/
