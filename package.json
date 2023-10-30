@@ -12,6 +12,10 @@
   },
   "devDependencies": {
     "@cap-js/sqlite": "^1",
+    "axios": "^1.6.0",
+    "chai": "^4.3.10",
+    "chai-as-promised": "^7.1.1",
+    "chai-subset": "^1.6.0",
     "@sap/ux-specification": "^1.108.16"
   },
   "scripts": {
