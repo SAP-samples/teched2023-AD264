@@ -66,7 +66,7 @@ node_modules/s4-bupa-integration
 
   Quite an API, right?  Don't worry, we will restrict it soon to what we need in the application.
 
-👉 First, to make the application's CDS model use the package, add this line to the top of `db/data-model.cds`:
+👉 First, to make the application's CDS model use the package, add this line to `db/data-model.cds`:
 
 ```cds
 using { API_BUSINESS_PARTNER as S4 } from 's4-bupa-integration/bupa';
@@ -179,6 +179,10 @@ To make requests for `Customers` work for real, you need to redirect them to the
 
 > Note how you don't need to code against any low-level layer here.  It's just the service name `API_BUSINESS_PARTNER` that is relevant.  The rest is wired up behind the scenes or outside of the application code.  How?  Keep on reading!
 
+👉 Open `/odata/v4/processor/Customers` to see the mock data from the `BusinessPartner` service.
+
+Let's change this and configured a remote system.
+
 
 ## Test with Remote System
 
@@ -196,13 +200,22 @@ cds.requires.API_BUSINESS_PARTNER.[sandbox].credentials.headers.APIKey=<Copied A
 
 Note the `[sandbox]` segment which denotes a [configuration profile](https://cap.cloud.sap/docs/node.js/cds-env#profiles) named `sandbox`.  The name has no special meaning.  You will see below how to use it.
 
-👉 Get an **API key**:
+👉 Get an **API key** for your TechEd user: for the sake of this TechEd session, you can use this [key from here](https://github.com/SAP-samples/teched2023-AD264/wiki/Misc)
+(it will not be available after TechEd).
+
+<details>
+<summary>Alternatively, get an API key for your personal user:</summary>
+
+To get an API key for you personal user for _SAP Business Accelerator Hub_ :
 
 - Go to [SAP Business Accelerator Hub](https://api.sap.com).
 - On the top right corner, expand the _Hi ..._ dropdown.  Choose _Settings_.
 - Click on _Show API Key_. Choose _Copy Key and Close_.
 
   ![Get API key from SAP API Business Hub](./assets/hub-api-key.png)
+</details>
+
+<p>
 
 👉 **Add the key** to the `.env` file
 
