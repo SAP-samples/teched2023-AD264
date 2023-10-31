@@ -14,10 +14,10 @@ The scenario will look like this:
 👉 Start by **adding a persistent table** for the replicas.  This can be done with just one line in `db/data-model.cds`:
 
 ```cds
-annotate Customers with @cds.persistence: { table,skip:false };
+annotate Customers with @cds.persistence.table;
 ```
 
-The annotation `@cds.persistence: {table,skip:false}` turns the view above into a table with the same signature (`ID` and `name` columns).  See the [documentation](https://cap.cloud.sap/docs/cds/annotations#persistence) for more on annotations that influence persistence.
+The annotation `@cds.persistence.table` turns the view above into a table with the same signature (`ID` and `name` columns).  See the [documentation](https://cap.cloud.sap/docs/cds/annotations#persistence) for more on annotations that influence persistence.
 
 > You could have added the annotation directly to the `Customers` definition.  The result would be the same.  With the [`annotate` directive](https://cap.cloud.sap/docs/cds/cdl#the-annotate-directive) though, you get the power to enhance entities (even external/base/reuse entities!) at different places in your application.
 
@@ -34,12 +34,9 @@ Now there is code needed to replicate the customer record whenever an incident i
   this.after (['CREATE','UPDATE'], 'Incidents', async (data) => {
     const { customer_ID: ID } = data
     if (ID) {
-      const replicated = await db.exists (Customers,ID)
-      if (!replicated) {
-        console.log ('>> Updating customer', ID)
-        const customer = await S4bupa.read (Customers,ID)
-        await INSERT(customer) .into (Customers)
-      }
+      console.log ('>> Updating customer', ID)
+      const customer = await S4bupa.read (Customers,ID) // read from remote
+      await UPSERT(customer) .into (Customers)          // update cache
     }
   })
 ```
@@ -128,11 +125,7 @@ To close the loop, add code to **consume events**.
       console.log('<< received', event, data)
       const { BusinessPartner: ID } = data
       const customer = await S4bupa.read (Customers, ID)
-      let exists = await db.exists (Customers,ID)
-      if (exists)
-        await UPDATE (Customers, ID) .with (customer)
-      else
-        await INSERT.into (Customers) .entries (customer)
+      await UPSERT.into (Customers) .entries (customer)
     })
 ```
 
