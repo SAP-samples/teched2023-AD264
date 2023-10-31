@@ -2,6 +2,8 @@
 
 In this exercise, you will add `Customers` to `Incidents` to specify who created an incident.
 
+![Domain model](../ex1/assets/domain.drawio.svg)
+
 Customer data is available in _SAP S/4HANA Cloud_ as part of the _Business Partners_ Service.  You will connect to this service from the _Incidents Management_ application.
 
 

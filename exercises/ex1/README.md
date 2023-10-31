@@ -402,7 +402,7 @@ class ProcessorService extends cds.ApplicationService {
 module.exports = ProcessorService
 ```
 
-Note how the `js` file is named the same as the `cds` file.  This is how the framework finds the implementation.  You can can see this in the output of `cds watch`:
+Note how the `js` file is named the same as the `cds` file.  This is how the framework finds the implementation.  You can can see this in the output of `cds watch`, where it prints the `impl` value:
 
 ```sh
 ...
@@ -443,7 +443,7 @@ If you want to debug the code using the built-in visual Javascript debugger, do 
   <summary>Quick question: in this situation, why wouldn't the debugger halt outside of this function?</summary>
 
   Because the `before()` function is a [request handler](https://cap.cloud.sap/docs/node.js/core-services#srv-on-before-after), and it's only such request-handling code that can be debugged now.<br>
-  The code above and below is [bootstrap](https://cap.cloud.sap/docs/node.js/cds-server) code that can only be debugged if you make the debugger halt right when the server process gets started.
+  The code above and below is [bootstrap](https://cap.cloud.sap/docs/node.js/cds-server) code that can only be debugged if you either set the breakpoint earlier or make the debugger halt right when the server process gets started.
   </details>
 - Now create a new incident.  The UI freezes because the debugger has stopped.
 - For variables, press <kbd>F1</kbd>, type  _variables_, select _Run and Debug: Focus on Variables View_.
