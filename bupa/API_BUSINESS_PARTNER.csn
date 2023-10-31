@@ -1,6 +1,6 @@
 {
   "meta": {
-    "creator": "cds-dk 6.3.0"
+    "creator": "cds-dk 7.3.0"
   },
   "$version": "2.0",
   "definitions": {
@@ -13,6 +13,7 @@
     },
     "API_BUSINESS_PARTNER.A_AddressEmailAddress": {
       "kind": "entity",
+      "@cds.external": true,
       "@cds.persistence.skip": true,
       "@sap.content.version": "1",
       "@sap.label": "Address Email Address",
@@ -23,7 +24,8 @@
           "length": 10,
           "doc": "Internal key for identifying a Business Address Services address.\n\nFor more information about the meaning and use of the address number and the Business Address Services concepts, see the function group SZA0 documentation.",
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Address Number"
+          "@sap.label": "Address Number",
+          "notNull": true
         },
         "Person": {
           "key": true,
@@ -31,14 +33,16 @@
           "length": 10,
           "doc": "Internal key for identifying a person in Business Address Services.\n\nFor more information about the meaning and use of the person number and Business Address Services concepts, see the function group SZA0 documentation.",
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Person number"
+          "@sap.label": "Person number",
+          "notNull": true
         },
         "OrdinalNumber": {
           "key": true,
           "type": "cds.String",
           "length": 3,
           "@sap.display.format": "NonNegative",
-          "@sap.label": "Sequence Number"
+          "@sap.label": "Sequence Number",
+          "notNull": true
         },
         "IsDefaultEmailAddress": {
           "type": "cds.Boolean",
@@ -64,6 +68,7 @@
     },
     "API_BUSINESS_PARTNER.A_AddressFaxNumber": {
       "kind": "entity",
+      "@cds.external": true,
       "@cds.persistence.skip": true,
       "@sap.content.version": "1",
       "@sap.label": "Address Fax Number",
@@ -74,7 +79,8 @@
           "length": 10,
           "doc": "Internal key for identifying a Business Address Services address.\n\nFor more information about the meaning and use of the address number and the Business Address Services concepts, see the function group SZA0 documentation.",
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Address Number"
+          "@sap.label": "Address Number",
+          "notNull": true
         },
         "Person": {
           "key": true,
@@ -82,14 +88,16 @@
           "length": 10,
           "doc": "Internal key for identifying a person in Business Address Services.\n\nFor more information about the meaning and use of the person number and Business Address Services concepts, see the function group SZA0 documentation.",
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Person number"
+          "@sap.label": "Person number",
+          "notNull": true
         },
         "OrdinalNumber": {
           "key": true,
           "type": "cds.String",
           "length": 3,
           "@sap.display.format": "NonNegative",
-          "@sap.label": "Sequence Number"
+          "@sap.label": "Sequence Number",
+          "notNull": true
         },
         "IsDefaultFaxNumber": {
           "type": "cds.Boolean",
@@ -134,6 +142,7 @@
     },
     "API_BUSINESS_PARTNER.A_AddressHomePageURL": {
       "kind": "entity",
+      "@cds.external": true,
       "@cds.persistence.skip": true,
       "@sap.content.version": "1",
       "@sap.label": "Address Home Page URL",
@@ -144,7 +153,8 @@
           "length": 10,
           "doc": "Internal key for identifying a Business Address Services address.\n\nFor more information about the meaning and use of the address number and the Business Address Services concepts, see the function group SZA0 documentation.",
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Address Number"
+          "@sap.label": "Address Number",
+          "notNull": true
         },
         "Person": {
           "key": true,
@@ -152,28 +162,32 @@
           "length": 10,
           "doc": "Internal key for identifying a person in Business Address Services.\n\nFor more information about the meaning and use of the person number and Business Address Services concepts, see the function group SZA0 documentation.",
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Person number"
+          "@sap.label": "Person number",
+          "notNull": true
         },
         "OrdinalNumber": {
           "key": true,
           "type": "cds.String",
           "length": 3,
           "@sap.display.format": "NonNegative",
-          "@sap.label": "Sequence Number"
+          "@sap.label": "Sequence Number",
+          "notNull": true
         },
         "ValidityStartDate": {
           "key": true,
           "type": "cds.Date",
           "@sap.display.format": "Date",
           "@sap.label": "from",
-          "@sap.quickinfo": "Valid-from date - in current Release only 00010101 possible"
+          "@sap.quickinfo": "Valid-from date - in current Release only 00010101 possible",
+          "notNull": true
         },
         "IsDefaultURLAddress": {
           "key": true,
           "type": "cds.Boolean",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Standard addr.",
-          "@sap.quickinfo": "Flag: this address is the default address"
+          "@sap.quickinfo": "Flag: this address is the default address",
+          "notNull": true
         },
         "SearchURLAddress": {
           "type": "cds.String",
@@ -197,6 +211,7 @@
     },
     "API_BUSINESS_PARTNER.A_AddressPhoneNumber": {
       "kind": "entity",
+      "@cds.external": true,
       "@cds.persistence.skip": true,
       "@sap.content.version": "1",
       "@sap.label": "Address Phone Number",
@@ -207,7 +222,8 @@
           "length": 10,
           "doc": "Internal key for identifying a Business Address Services address.\n\nFor more information about the meaning and use of the address number and the Business Address Services concepts, see the function group SZA0 documentation.",
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Address Number"
+          "@sap.label": "Address Number",
+          "notNull": true
         },
         "Person": {
           "key": true,
@@ -215,14 +231,16 @@
           "length": 10,
           "doc": "Internal key for identifying a person in Business Address Services.\n\nFor more information about the meaning and use of the person number and Business Address Services concepts, see the function group SZA0 documentation.",
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Person number"
+          "@sap.label": "Person number",
+          "notNull": true
         },
         "OrdinalNumber": {
           "key": true,
           "type": "cds.String",
           "length": 3,
           "@sap.display.format": "NonNegative",
-          "@sap.label": "Sequence Number"
+          "@sap.label": "Sequence Number",
+          "notNull": true
         },
         "DestinationLocationCountry": {
           "type": "cds.String",
@@ -275,6 +293,7 @@
     },
     "API_BUSINESS_PARTNER.A_BPContactToAddress": {
       "kind": "entity",
+      "@cds.external": true,
       "@cds.persistence.skip": true,
       "@sap.creatable": "false",
       "@sap.updatable": "false",
@@ -289,7 +308,8 @@
           "doc": "The business partner relationship number is an internal number that identifies the business partner relationship set.",
           "@sap.display.format": "UpperCase",
           "@sap.label": "BP Relationship No.",
-          "@sap.quickinfo": "BP Relationship Number"
+          "@sap.quickinfo": "BP Relationship Number",
+          "notNull": true
         },
         "BusinessPartnerCompany": {
           "key": true,
@@ -298,7 +318,8 @@
           "doc": "Key identifying a business partner in the SAP system. The key is unique within a client.",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Business Partner",
-          "@sap.quickinfo": "Business Partner Number"
+          "@sap.quickinfo": "Business Partner Number",
+          "notNull": true
         },
         "BusinessPartnerPerson": {
           "key": true,
@@ -307,14 +328,16 @@
           "doc": "Key identifying a business partner in the SAP system. The key is unique within a client.",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Business Partner",
-          "@sap.quickinfo": "Business Partner Number"
+          "@sap.quickinfo": "Business Partner Number",
+          "notNull": true
         },
         "ValidityEndDate": {
           "key": true,
           "type": "cds.Date",
           "@sap.display.format": "Date",
           "@sap.label": "Valid To",
-          "@sap.quickinfo": "Validity Date (Valid To)"
+          "@sap.quickinfo": "Validity Date (Valid To)",
+          "notNull": true
         },
         "AddressID": {
           "key": true,
@@ -322,7 +345,8 @@
           "length": 10,
           "doc": "Internal key for identifying a Business Address Services address.\n\nFor more information about the meaning and use of the address number and the Business Address Services concepts, see the function group SZA0 documentation.",
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Address Number"
+          "@sap.label": "Address Number",
+          "notNull": true
         },
         "AddressNumber": {
           "type": "cds.String",
@@ -623,6 +647,7 @@
     },
     "API_BUSINESS_PARTNER.A_BPContactToFuncAndDept": {
       "kind": "entity",
+      "@cds.external": true,
       "@cds.persistence.skip": true,
       "@sap.creatable": "false",
       "@sap.deletable": "false",
@@ -636,7 +661,8 @@
           "doc": "The business partner relationship number is an internal number that identifies the business partner relationship set.",
           "@sap.display.format": "UpperCase",
           "@sap.label": "BP Relationship No.",
-          "@sap.quickinfo": "BP Relationship Number"
+          "@sap.quickinfo": "BP Relationship Number",
+          "notNull": true
         },
         "BusinessPartnerCompany": {
           "key": true,
@@ -645,7 +671,8 @@
           "doc": "Key identifying a business partner in the SAP system. The key is unique within a client.",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Business Partner",
-          "@sap.quickinfo": "Business Partner Number"
+          "@sap.quickinfo": "Business Partner Number",
+          "notNull": true
         },
         "BusinessPartnerPerson": {
           "key": true,
@@ -654,14 +681,16 @@
           "doc": "Key identifying a business partner in the SAP system. The key is unique within a client.",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Business Partner",
-          "@sap.quickinfo": "Business Partner Number"
+          "@sap.quickinfo": "Business Partner Number",
+          "notNull": true
         },
         "ValidityEndDate": {
           "key": true,
           "type": "cds.Date",
           "@sap.display.format": "Date",
           "@sap.label": "Valid To",
-          "@sap.quickinfo": "Validity Date (Valid To)"
+          "@sap.quickinfo": "Validity Date (Valid To)",
+          "notNull": true
         },
         "ContactPersonFunction": {
           "type": "cds.String",
@@ -728,6 +757,7 @@
     },
     "API_BUSINESS_PARTNER.A_BuPaAddressUsage": {
       "kind": "entity",
+      "@cds.external": true,
       "@cds.persistence.skip": true,
       "@sap.content.version": "1",
       "@sap.label": "Business Partner Address Usage",
@@ -739,14 +769,16 @@
           "doc": "Key identifying a business partner in the SAP system. The key is unique within a client.",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Business Partner",
-          "@sap.quickinfo": "Business Partner Number"
+          "@sap.quickinfo": "Business Partner Number",
+          "notNull": true
         },
         "ValidityEndDate": {
           "key": true,
           "type": "cds.DateTime",
           "@odata.Type": "Edm.DateTimeOffset",
           "@sap.label": "Valid To",
-          "@sap.quickinfo": "Validity End of a Business Partner Address Usage"
+          "@sap.quickinfo": "Validity End of a Business Partner Address Usage",
+          "notNull": true
         },
         "AddressUsage": {
           "key": true,
@@ -754,7 +786,8 @@
           "length": 10,
           "doc": "Business partner attribute, which you can use to distinguish between various addresses by defining the address usage for communication with business partners.\n\nMaintain the usage types for addresses (address types) in Customizing.You can create a short description and a name for the address type.When maintaining business partners you can use the function address usage to assign business partner addresses to address types.If necessary, you can set the indicator for multiple use in Customizing.Correspondence addressDelivery address",
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Address Type"
+          "@sap.label": "Address Type",
+          "notNull": true
         },
         "AddressID": {
           "key": true,
@@ -762,7 +795,8 @@
           "length": 10,
           "doc": "Internal key for identifying a Business Address Services address.\n\nFor more information about the meaning and use of the address number and the Business Address Services concepts, see the function group SZA0 documentation.",
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Address Number"
+          "@sap.label": "Address Number",
+          "notNull": true
         },
         "ValidityStartDate": {
           "type": "cds.DateTime",
@@ -788,6 +822,7 @@
     },
     "API_BUSINESS_PARTNER.A_BuPaIdentification": {
       "kind": "entity",
+      "@cds.external": true,
       "@cds.persistence.skip": true,
       "@sap.content.version": "1",
       "@sap.label": "Business Partner Identification",
@@ -799,7 +834,8 @@
           "doc": "Key identifying a business partner in the SAP system. The key is unique within a client.",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Business Partner",
-          "@sap.quickinfo": "Business Partner Number"
+          "@sap.quickinfo": "Business Partner Number",
+          "notNull": true
         },
         "BPIdentificationType": {
           "key": true,
@@ -807,7 +843,8 @@
           "length": 6,
           "doc": "A document (such as an ID card or driver's license) or an entry in a system of records (such as a commercial register) whose key can be stored as an attribute for a business partner.\n\nThe identification type is for classifying identification numbers.You can define the identification types and their descriptions in Customizing.You can also specify for which business partner category an ID type should be valid.If necessary, assign the identification type to an Identification Category.You can only assign one identification type to an identification category.",
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Identification Type"
+          "@sap.label": "Identification Type",
+          "notNull": true
         },
         "BPIdentificationNumber": {
           "key": true,
@@ -816,7 +853,8 @@
           "doc": "Number that serves to identify a business partner, such as driver's license, or ID card number.",
           "@sap.display.format": "UpperCase",
           "@sap.label": "ID number",
-          "@sap.quickinfo": "Identification Number"
+          "@sap.quickinfo": "Identification Number",
+          "notNull": true
         },
         "BPIdnNmbrIssuingInstitute": {
           "type": "cds.String",
@@ -873,6 +911,7 @@
     },
     "API_BUSINESS_PARTNER.A_BuPaIndustry": {
       "kind": "entity",
+      "@cds.external": true,
       "@cds.persistence.skip": true,
       "@sap.content.version": "1",
       "@sap.label": "Business Partner Industry",
@@ -883,7 +922,8 @@
           "length": 10,
           "doc": "Describes an industry.\n\nAn industry is a classification of companies according to their main business activity. For example, you can use Commerce, Banking, Services, Industry, Healthcare, Public Sector, Media, and so on, as industries.You can define industries along with their descriptions in Customizing.Assign the industry key to an industry key system.",
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Industry"
+          "@sap.label": "Industry",
+          "notNull": true
         },
         "IndustrySystemType": {
           "key": true,
@@ -891,7 +931,8 @@
           "length": 4,
           "doc": "Serves to combine and categorize several industries into a group.\n\nYou can create different industry systems, each with its own catalog of industries, whereby an industry can be assigned to several industry systems.You have to select one industry system as the standard industry system. This is then automatically displayed in the initial screen for the maintenance of industry data.You can define an industry system along with its description in Customizing. You can assign several industry systems to a business partner.If you choose the button All Industry Systems, you can access all the industry systems defined in the Customizing using the input help.",
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Industry System"
+          "@sap.label": "Industry System",
+          "notNull": true
         },
         "BusinessPartner": {
           "key": true,
@@ -900,7 +941,8 @@
           "doc": "Key identifying a business partner in the SAP system. The key is unique within a client.",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Business Partner",
-          "@sap.quickinfo": "Business Partner Number"
+          "@sap.quickinfo": "Business Partner Number",
+          "notNull": true
         },
         "IsStandardIndustry": {
           "type": "cds.String",
@@ -919,6 +961,7 @@
     },
     "API_BUSINESS_PARTNER.A_BusinessPartner": {
       "kind": "entity",
+      "@cds.external": true,
       "@cds.persistence.skip": true,
       "@sap.deletable": "false",
       "@sap.content.version": "1",
@@ -931,7 +974,8 @@
           "doc": "Key identifying a business partner in the SAP system. The key is unique within a client.",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Business Partner",
-          "@sap.quickinfo": "Business Partner Number"
+          "@sap.quickinfo": "Business Partner Number",
+          "notNull": true
         },
         "Customer": {
           "type": "cds.String",
@@ -1407,6 +1451,7 @@
     },
     "API_BUSINESS_PARTNER.A_BusinessPartnerAddress": {
       "kind": "entity",
+      "@cds.external": true,
       "@cds.persistence.skip": true,
       "@sap.content.version": "1",
       "@sap.label": "Business Partner Address",
@@ -1418,7 +1463,8 @@
           "doc": "Key identifying a business partner in the SAP system. The key is unique within a client.",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Business Partner",
-          "@sap.quickinfo": "Business Partner Number"
+          "@sap.quickinfo": "Business Partner Number",
+          "notNull": true
         },
         "AddressID": {
           "key": true,
@@ -1426,7 +1472,8 @@
           "length": 10,
           "doc": "Internal key for identifying a Business Address Services address.\n\nFor more information about the meaning and use of the address number and the Business Address Services concepts, see the function group SZA0 documentation.",
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Address Number"
+          "@sap.label": "Address Number",
+          "notNull": true
         },
         "ValidityStartDate": {
           "type": "cds.DateTime",
@@ -1763,6 +1810,7 @@
     },
     "API_BUSINESS_PARTNER.A_BusinessPartnerBank": {
       "kind": "entity",
+      "@cds.external": true,
       "@cds.persistence.skip": true,
       "@sap.content.version": "1",
       "@sap.label": "Business Partner Bank",
@@ -1774,7 +1822,8 @@
           "doc": "Key identifying a business partner in the SAP system. The key is unique within a client.",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Business Partner",
-          "@sap.quickinfo": "Business Partner Number"
+          "@sap.quickinfo": "Business Partner Number",
+          "notNull": true
         },
         "BankIdentification": {
           "key": true,
@@ -1782,7 +1831,8 @@
           "length": 4,
           "doc": "Key identifying a business partner's bank details.\n\nEnter a bank details ID for each separate set of bank details for a business partner.Business Partner: H. MillerBD-ID Fin.institution Acct no. 0001 Chemical Bank, NYC 56234560002 Chemical Bank, NYC 56231220003 First Bank of Pittsburgh ...Business partner: T.Wolsey and Co.BD-ID Fin.institution Acct no.GIR0 Citibank, Charleston ...GIR1 Chemical Bank, NYC ...",
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Bank details ID"
+          "@sap.label": "Bank details ID",
+          "notNull": true
         },
         "BankCountryKey": {
           "type": "cds.String",
@@ -1905,6 +1955,7 @@
     },
     "API_BUSINESS_PARTNER.A_BusinessPartnerContact": {
       "kind": "entity",
+      "@cds.external": true,
       "@cds.persistence.skip": true,
       "@sap.content.version": "1",
       "@sap.label": "Business Partner Contact",
@@ -1916,7 +1967,8 @@
           "doc": "The business partner relationship number is an internal number that identifies the business partner relationship set.",
           "@sap.display.format": "UpperCase",
           "@sap.label": "BP Relationship No.",
-          "@sap.quickinfo": "BP Relationship Number"
+          "@sap.quickinfo": "BP Relationship Number",
+          "notNull": true
         },
         "BusinessPartnerCompany": {
           "key": true,
@@ -1925,7 +1977,8 @@
           "doc": "Key identifying a business partner in the SAP system. The key is unique within a client.",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Business Partner",
-          "@sap.quickinfo": "Business Partner Number"
+          "@sap.quickinfo": "Business Partner Number",
+          "notNull": true
         },
         "BusinessPartnerPerson": {
           "key": true,
@@ -1934,14 +1987,16 @@
           "doc": "Key identifying a business partner in the SAP system. The key is unique within a client.",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Business Partner",
-          "@sap.quickinfo": "Business Partner Number"
+          "@sap.quickinfo": "Business Partner Number",
+          "notNull": true
         },
         "ValidityEndDate": {
           "key": true,
           "type": "cds.Date",
           "@sap.display.format": "Date",
           "@sap.label": "Valid To",
-          "@sap.quickinfo": "Validity Date (Valid To)"
+          "@sap.quickinfo": "Validity Date (Valid To)",
+          "notNull": true
         },
         "ValidityStartDate": {
           "type": "cds.Date",
@@ -1983,6 +2038,7 @@
     },
     "API_BUSINESS_PARTNER.A_BusinessPartnerRole": {
       "kind": "entity",
+      "@cds.external": true,
       "@cds.persistence.skip": true,
       "@sap.deletable": "false",
       "@sap.content.version": "1",
@@ -1995,7 +2051,8 @@
           "doc": "Key identifying a business partner in the SAP system. The key is unique within a client.",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Business Partner",
-          "@sap.quickinfo": "Business Partner Number"
+          "@sap.quickinfo": "Business Partner Number",
+          "notNull": true
         },
         "BusinessPartnerRole": {
           "key": true,
@@ -2003,7 +2060,8 @@
           "length": 6,
           "doc": "Function that a business partner takes on, depending on a business transaction.\n\nYou can define business partner roles along with their attributes in Customizing.You can create an alphanumeric, 6-digit key for the BP role. You can also choose a title as the short form and a description as the long form for the role text.Screen control in the dialog takes place by assigning a BP view.A program can access specific business partner roles for a business partner using thebusiness partner role category . The role categories are also in the TB003 table.",
           "@sap.display.format": "UpperCase",
-          "@sap.label": "BP Role"
+          "@sap.label": "BP Role",
+          "notNull": true
         },
         "ValidFrom": {
           "type": "cds.DateTime",
@@ -2028,6 +2086,7 @@
     },
     "API_BUSINESS_PARTNER.A_BusinessPartnerTaxNumber": {
       "kind": "entity",
+      "@cds.external": true,
       "@cds.persistence.skip": true,
       "@sap.content.version": "1",
       "@sap.label": "Business Partner Tax Number",
@@ -2039,7 +2098,8 @@
           "doc": "Key identifying a business partner in the SAP system. The key is unique within a client.",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Business Partner",
-          "@sap.quickinfo": "Business Partner Number"
+          "@sap.quickinfo": "Business Partner Number",
+          "notNull": true
         },
         "BPTaxType": {
           "key": true,
@@ -2047,7 +2107,8 @@
           "length": 4,
           "doc": "Specifies the tax number category.",
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Tax Number Category"
+          "@sap.label": "Tax Number Category",
+          "notNull": true
         },
         "BPTaxNumber": {
           "type": "cds.String",
@@ -2076,6 +2137,7 @@
     },
     "API_BUSINESS_PARTNER.A_Customer": {
       "kind": "entity",
+      "@cds.external": true,
       "@cds.persistence.skip": true,
       "@sap.creatable": "false",
       "@sap.deletable": "false",
@@ -2089,7 +2151,8 @@
           "doc": "Gives an alphanumeric key, which clearly identifies the customer or vendor in the SAP system.",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Customer",
-          "@sap.quickinfo": "Customer Number"
+          "@sap.quickinfo": "Customer Number",
+          "notNull": true
         },
         "AuthorizationGroup": {
           "type": "cds.String",
@@ -2378,6 +2441,7 @@
     },
     "API_BUSINESS_PARTNER.A_CustomerCompany": {
       "kind": "entity",
+      "@cds.external": true,
       "@cds.persistence.skip": true,
       "@sap.deletable": "false",
       "@sap.content.version": "1",
@@ -2390,7 +2454,8 @@
           "doc": "Gives an alphanumeric key, which clearly identifies the customer or vendor in the SAP system.",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Customer",
-          "@sap.quickinfo": "Customer Number"
+          "@sap.quickinfo": "Customer Number",
+          "notNull": true
         },
         "CompanyCode": {
           "key": true,
@@ -2398,7 +2463,8 @@
           "length": 4,
           "doc": "The company code is an organizational unit within financial accounting.",
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Company Code"
+          "@sap.label": "Company Code",
+          "notNull": true
         },
         "APARToleranceGroup": {
           "type": "cds.String",
@@ -2638,6 +2704,7 @@
     },
     "API_BUSINESS_PARTNER.A_CustomerDunning": {
       "kind": "entity",
+      "@cds.external": true,
       "@cds.persistence.skip": true,
       "@sap.content.version": "1",
       "@sap.label": "Customer Company Dunning",
@@ -2649,7 +2716,8 @@
           "doc": "Gives an alphanumeric key, which clearly identifies the customer or vendor in the SAP system.",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Customer",
-          "@sap.quickinfo": "Customer Number"
+          "@sap.quickinfo": "Customer Number",
+          "notNull": true
         },
         "CompanyCode": {
           "key": true,
@@ -2657,7 +2725,8 @@
           "length": 4,
           "doc": "The company code is an organizational unit within financial accounting.",
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Company Code"
+          "@sap.label": "Company Code",
+          "notNull": true
         },
         "DunningArea": {
           "key": true,
@@ -2665,7 +2734,8 @@
           "length": 2,
           "doc": "The dunning area represents an organizational entity that is responsible for dunning. The dunning areas represent a sub-structure of the company codes.\n\nIf different responsibilities or different dunning procedures exist within a company code, you can set up corresponding dunning areas.All dunning notices are made separately according to dunning areas, and if necessary with different dunning procedures.The dunning area must be noted in the line items. As long as documents are copied from preliminary work areas (billing documents), the dunning area can be derived from details such as division or sales area, if necessary.",
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Dunning Area"
+          "@sap.label": "Dunning Area",
+          "notNull": true
         },
         "DunningBlock": {
           "type": "cds.String",
@@ -2737,6 +2807,7 @@
     },
     "API_BUSINESS_PARTNER.A_CustomerSalesArea": {
       "kind": "entity",
+      "@cds.external": true,
       "@cds.persistence.skip": true,
       "@sap.deletable": "false",
       "@sap.content.version": "1",
@@ -2749,7 +2820,8 @@
           "doc": "Gives an alphanumeric key, which clearly identifies the customer or vendor in the SAP system.",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Customer",
-          "@sap.quickinfo": "Customer Number"
+          "@sap.quickinfo": "Customer Number",
+          "notNull": true
         },
         "SalesOrganization": {
           "key": true,
@@ -2757,7 +2829,8 @@
           "length": 4,
           "doc": "An organizational unit responsible for the sale of certain products or services. The responsibility of a sales organization may include legal liability for products and customer claims.\n\nYou can assign any number of distribution channels and divisions to a sales organization. A particular combination of sales organization, distribution channel, and division is known as a sales area.",
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Sales Organization"
+          "@sap.label": "Sales Organization",
+          "notNull": true
         },
         "DistributionChannel": {
           "key": true,
@@ -2765,7 +2838,8 @@
           "length": 2,
           "doc": "The way in which products or services reach the customer. Typical examples of distribution channels are wholesale, retail, or direct sales.\n\nYou can maintain information about customers and materials by sales organization and distribution channel. Within a sales organization you can deliver goods to a given customer through more than one distribution channel.You can assign a distribution channel to one or more sales organizations. If, for example, you have numerous sales organizations, each sales organization may use the &quot;Wholesale&quot; distribution channel.For each combination of sales organization and distribution channel, you can further assign one or more of the divisions that are defined for the sales organization. You can, for example, assign &quot;Food&quot; and &quot;Non-food&quot; divisions to the &quot;Wholesale&quot; distribution channel. A particular combination of sales organization, distribution channel, and division is known as a sales area.",
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Distribution Channel"
+          "@sap.label": "Distribution Channel",
+          "notNull": true
         },
         "Division": {
           "key": true,
@@ -2773,7 +2847,8 @@
           "length": 2,
           "doc": "A way of grouping materials, products, or services. The system uses divisions to determine the sales areas and the business areas for a material, product, or service.\n\nA product or service is always assigned to just one division. From the point of view of sales and distribution, the use of divisions lets you organize your sales structure around groups of similar products or product lines. This allows the people in a division who process orders and service customers to specialize within a manageable area of expertise.If a sales organization sells food and non-food products through both retail and wholesaledistribution channels each distribution channel could then be further split into food and non-food divisions.",
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Division"
+          "@sap.label": "Division",
+          "notNull": true
         },
         "AccountByCustomer": {
           "type": "cds.String",
@@ -3024,6 +3099,7 @@
     },
     "API_BUSINESS_PARTNER.A_CustomerSalesAreaTax": {
       "kind": "entity",
+      "@cds.external": true,
       "@cds.persistence.skip": true,
       "@sap.deletable": "false",
       "@sap.content.version": "1",
@@ -3036,7 +3112,8 @@
           "doc": "Gives an alphanumeric key, which clearly identifies the customer or vendor in the SAP system.",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Customer",
-          "@sap.quickinfo": "Customer Number"
+          "@sap.quickinfo": "Customer Number",
+          "notNull": true
         },
         "SalesOrganization": {
           "key": true,
@@ -3044,7 +3121,8 @@
           "length": 4,
           "doc": "An organizational unit responsible for the sale of certain products or services. The responsibility of a sales organization may include legal liability for products and customer claims.\n\nYou can assign any number of distribution channels and divisions to a sales organization. A particular combination of sales organization, distribution channel, and division is known as a sales area.",
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Sales Organization"
+          "@sap.label": "Sales Organization",
+          "notNull": true
         },
         "DistributionChannel": {
           "key": true,
@@ -3053,7 +3131,8 @@
           "doc": "Specifies a distribution channel that you want to use as a reference for customer and material master data for other distribution channels.\n\nYou can specify one distribution channel as the source of customer and material master data for other distribution channels. You need then only to maintain the data in one place.Distrib.channel Ref.distrib.channel01 0102 0103 0104 04In this example, only distribution channels 01 and 04 have customer and material master data defined. Distribution channels 01, 02, and 03 share the master data that you defined for distribution channel 01. Distribution channel 04 has its own master data. When you create a sales order in distribution channel 03, the system checks the customer and material master data against the data defined for distribution channel 01.",
           "@sap.display.format": "UpperCase",
           "@sap.label": "RefDistCh-Cust/Mat.",
-          "@sap.quickinfo": "Reference distrib.channel for cust.and material masters"
+          "@sap.quickinfo": "Reference distrib.channel for cust.and material masters",
+          "notNull": true
         },
         "Division": {
           "key": true,
@@ -3061,7 +3140,8 @@
           "length": 2,
           "doc": "A way of grouping materials, products, or services. The system uses divisions to determine the sales areas and the business areas for a material, product, or service.\n\nA product or service is always assigned to just one division. From the point of view of sales and distribution, the use of divisions lets you organize your sales structure around groups of similar products or product lines. This allows the people in a division who process orders and service customers to specialize within a manageable area of expertise.If a sales organization sells food and non-food products through both retail and wholesaledistribution channels each distribution channel could then be further split into food and non-food divisions.",
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Division"
+          "@sap.label": "Division",
+          "notNull": true
         },
         "DepartureCountry": {
           "key": true,
@@ -3070,7 +3150,8 @@
           "doc": "Identifies the country in which the delivery originates.\n\nYou can define the country key in a table. As a rule, it is a good idea to use the existing international standards for identifying vehicles from different countries (for example: USA = United States, I = Italy, and so on). The system uses the key tohelp determine the relevant taxes during pricingdetermine important country-specific standards (the length of postal codes and bank account numbers, for example)",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Country",
-          "@sap.quickinfo": "Departure country (country from which the goods are sent)"
+          "@sap.quickinfo": "Departure country (country from which the goods are sent)",
+          "notNull": true
         },
         "CustomerTaxCategory": {
           "key": true,
@@ -3079,7 +3160,8 @@
           "doc": "Identifies the condition that the system uses to automatically determine country-specific taxes during pricing.\n\nYou can define one or more tax categories for each country. During sales order processing, the system applies the tax category according tothe geographical location of your delivering plant and the location of the customer receiving the goodstax classifications in the customer master record and the material master record.In the USA, for example, you can define tax categories for Federal Sales Tax and Federal Excise Tax. In the U.K., you can define a tax category for Value Added Tax (VAT).",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Tax Category",
-          "@sap.quickinfo": "Tax category (sales tax, federal sales tax,...)"
+          "@sap.quickinfo": "Tax category (sales tax, federal sales tax,...)",
+          "notNull": true
         },
         "CustomerTaxClassification": {
           "type": "cds.String",
@@ -3093,6 +3175,7 @@
     },
     "API_BUSINESS_PARTNER.A_CustomerWithHoldingTax": {
       "kind": "entity",
+      "@cds.external": true,
       "@cds.persistence.skip": true,
       "@sap.content.version": "1",
       "@sap.label": "Customer WithHolding Tax",
@@ -3104,7 +3187,8 @@
           "doc": "Gives an alphanumeric key, which clearly identifies the customer or vendor in the SAP system.",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Customer",
-          "@sap.quickinfo": "Customer Number"
+          "@sap.quickinfo": "Customer Number",
+          "notNull": true
         },
         "CompanyCode": {
           "key": true,
@@ -3112,7 +3196,8 @@
           "length": 4,
           "doc": "The company code is an organizational unit within financial accounting.",
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Company Code"
+          "@sap.label": "Company Code",
+          "notNull": true
         },
         "WithholdingTaxType": {
           "key": true,
@@ -3121,7 +3206,8 @@
           "doc": "This indicator is used to classify the different types of withholding tax.\n\nWithholding tax types classify particular features of a withholding tax including:The time at which the withholding tax is postedThe basis on which the base amount is calculatedThe basis for accumulation (if applicable)Withholding tax types are to be distinguished from withholding tax codes, to which are allocated the withholding tax percentage rate example.Whether a withholding tax can be defined as an existing type by means of a new code, or if a new type needs to be defined will depend on the type of transaction (see below).Note that a business transaction can only be assigned one withholding tax code per withholding tax type. If the business transaction is subject to several withholding taxes simultaneously, these must be represented by different types.This is the case in Argentina for example, where up to four kinds of withholding tax per business transaction are possible.",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Withholding Tax Type",
-          "@sap.quickinfo": "Indicator for Withholding Tax Type"
+          "@sap.quickinfo": "Indicator for Withholding Tax Type",
+          "notNull": true
         },
         "WithholdingTaxCode": {
           "type": "cds.String",
@@ -3208,6 +3294,7 @@
     },
     "API_BUSINESS_PARTNER.A_CustSalesPartnerFunc": {
       "kind": "entity",
+      "@cds.external": true,
       "@cds.persistence.skip": true,
       "@sap.content.version": "1",
       "@sap.label": "Customer Sales Area Partner Function",
@@ -3219,7 +3306,8 @@
           "doc": "Gives an alphanumeric key, which clearly identifies the customer or vendor in the SAP system.",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Customer",
-          "@sap.quickinfo": "Customer Number"
+          "@sap.quickinfo": "Customer Number",
+          "notNull": true
         },
         "SalesOrganization": {
           "key": true,
@@ -3227,7 +3315,8 @@
           "length": 4,
           "doc": "An organizational unit responsible for the sale of certain products or services. The responsibility of a sales organization may include legal liability for products and customer claims.\n\nYou can assign any number of distribution channels and divisions to a sales organization. A particular combination of sales organization, distribution channel, and division is known as a sales area.",
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Sales Organization"
+          "@sap.label": "Sales Organization",
+          "notNull": true
         },
         "DistributionChannel": {
           "key": true,
@@ -3235,7 +3324,8 @@
           "length": 2,
           "doc": "The way in which products or services reach the customer. Typical examples of distribution channels are wholesale, retail, or direct sales.\n\nYou can maintain information about customers and materials by sales organization and distribution channel. Within a sales organization you can deliver goods to a given customer through more than one distribution channel.You can assign a distribution channel to one or more sales organizations. If, for example, you have numerous sales organizations, each sales organization may use the &quot;Wholesale&quot; distribution channel.For each combination of sales organization and distribution channel, you can further assign one or more of the divisions that are defined for the sales organization. You can, for example, assign &quot;Food&quot; and &quot;Non-food&quot; divisions to the &quot;Wholesale&quot; distribution channel. A particular combination of sales organization, distribution channel, and division is known as a sales area.",
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Distribution Channel"
+          "@sap.label": "Distribution Channel",
+          "notNull": true
         },
         "Division": {
           "key": true,
@@ -3243,7 +3333,8 @@
           "length": 2,
           "doc": "A way of grouping materials, products, or services. The system uses divisions to determine the sales areas and the business areas for a material, product, or service.\n\nA product or service is always assigned to just one division. From the point of view of sales and distribution, the use of divisions lets you organize your sales structure around groups of similar products or product lines. This allows the people in a division who process orders and service customers to specialize within a manageable area of expertise.If a sales organization sells food and non-food products through both retail and wholesaledistribution channels each distribution channel could then be further split into food and non-food divisions.",
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Division"
+          "@sap.label": "Division",
+          "notNull": true
         },
         "PartnerCounter": {
           "key": true,
@@ -3251,7 +3342,8 @@
           "length": 3,
           "doc": "The sequential number that the system applies when there is more than one partner for a particular partner function.\n\nWhen you create a sales order for a particular customer, there may be more than one ship-to party defined. The different ship-to parties are numbered sequentially.",
           "@sap.display.format": "NonNegative",
-          "@sap.label": "Partner counter"
+          "@sap.label": "Partner counter",
+          "notNull": true
         },
         "PartnerFunction": {
           "key": true,
@@ -3259,7 +3351,8 @@
           "length": 2,
           "doc": "The abbreviated form of the name that identifies the partner function.",
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Partner Function"
+          "@sap.label": "Partner Function",
+          "notNull": true
         },
         "BPCustomerNumber": {
           "type": "cds.String",
@@ -3293,6 +3386,7 @@
     },
     "API_BUSINESS_PARTNER.A_Supplier": {
       "kind": "entity",
+      "@cds.external": true,
       "@cds.persistence.skip": true,
       "@sap.creatable": "false",
       "@sap.deletable": "false",
@@ -3306,7 +3400,8 @@
           "doc": "Specifies an alphanumeric key that uniquely identifies the supplier in the SAP system.",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Supplier",
-          "@sap.quickinfo": "Account Number of Supplier"
+          "@sap.quickinfo": "Account Number of Supplier",
+          "notNull": true
         },
         "AlternativePayeeAccountNumber": {
           "type": "cds.String",
@@ -3592,6 +3687,7 @@
     },
     "API_BUSINESS_PARTNER.A_SupplierCompany": {
       "kind": "entity",
+      "@cds.external": true,
       "@cds.persistence.skip": true,
       "@sap.deletable": "false",
       "@sap.content.version": "1",
@@ -3604,7 +3700,8 @@
           "doc": "Specifies an alphanumeric key that uniquely identifies the supplier in the SAP system.",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Supplier",
-          "@sap.quickinfo": "Account Number of Supplier"
+          "@sap.quickinfo": "Account Number of Supplier",
+          "notNull": true
         },
         "CompanyCode": {
           "key": true,
@@ -3612,7 +3709,8 @@
           "length": 4,
           "doc": "The company code is an organizational unit within financial accounting.",
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Company Code"
+          "@sap.label": "Company Code",
+          "notNull": true
         },
         "AuthorizationGroup": {
           "type": "cds.String",
@@ -3889,6 +3987,7 @@
     },
     "API_BUSINESS_PARTNER.A_SupplierDunning": {
       "kind": "entity",
+      "@cds.external": true,
       "@cds.persistence.skip": true,
       "@sap.content.version": "1",
       "@sap.label": "Supplier Company Dunning",
@@ -3900,7 +3999,8 @@
           "doc": "Specifies an alphanumeric key that uniquely identifies the supplier in the SAP system.",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Supplier",
-          "@sap.quickinfo": "Account Number of Supplier"
+          "@sap.quickinfo": "Account Number of Supplier",
+          "notNull": true
         },
         "CompanyCode": {
           "key": true,
@@ -3908,7 +4008,8 @@
           "length": 4,
           "doc": "The company code is an organizational unit within financial accounting.",
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Company Code"
+          "@sap.label": "Company Code",
+          "notNull": true
         },
         "DunningArea": {
           "key": true,
@@ -3916,7 +4017,8 @@
           "length": 2,
           "doc": "The dunning area represents an organizational entity that is responsible for dunning. The dunning areas represent a sub-structure of the company codes.\n\nIf different responsibilities or different dunning procedures exist within a company code, you can set up corresponding dunning areas.All dunning notices are made separately according to dunning areas, and if necessary with different dunning procedures.The dunning area must be noted in the line items. As long as documents are copied from preliminary work areas (billing documents), the dunning area can be derived from details such as division or sales area, if necessary.",
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Dunning Area"
+          "@sap.label": "Dunning Area",
+          "notNull": true
         },
         "DunningBlock": {
           "type": "cds.String",
@@ -3988,6 +4090,7 @@
     },
     "API_BUSINESS_PARTNER.A_SupplierPartnerFunc": {
       "kind": "entity",
+      "@cds.external": true,
       "@cds.persistence.skip": true,
       "@sap.content.version": "1",
       "@sap.label": "Supplier Purchasing Partner Function",
@@ -3999,7 +4102,8 @@
           "doc": "Specifies an alphanumeric key that uniquely identifies the supplier in the SAP system.",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Supplier",
-          "@sap.quickinfo": "Account Number of Supplier"
+          "@sap.quickinfo": "Account Number of Supplier",
+          "notNull": true
         },
         "PurchasingOrganization": {
           "key": true,
@@ -4008,7 +4112,8 @@
           "doc": "Denotes the purchasing organization.",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Purch. Organization",
-          "@sap.quickinfo": "Purchasing Organization"
+          "@sap.quickinfo": "Purchasing Organization",
+          "notNull": true
         },
         "SupplierSubrange": {
           "key": true,
@@ -4016,7 +4121,8 @@
           "length": 6,
           "doc": "Subdivision of a supplier's overall product range according to various criteria.\n\nFor each supplier sub-range:The master data is kept on a common basisCertain conditions applyIn the supplier master, you can create different purchasing data and different partner functions for each supplier sub-range.You can also maintain and change the conditions for each supplier sub-range. You assign a material to a supplier sub-range in the info record.In the supplier master, you can maintain different data for particular supplier sub-ranges, such as ordering addresses or terms of payment, for example.When creating a purchase order with a known supplier, different data is only determined if the supplier sub-range is entered in the initial screen.Your supplier Smith in Houston has two sub-ranges: paint and glue.All materials from the &quot;paint&quot; sub-range are ordered in Houston.You have maintained an alternative ordering address in Detroit for the &quot;glue&quot; sub-range.If you order materials from the &quot;glue&quot; sub-range, the supplier sub-range finds the Detroit ordering address.",
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Supplier Subrange"
+          "@sap.label": "Supplier Subrange",
+          "notNull": true
         },
         "Plant": {
           "key": true,
@@ -4024,7 +4130,8 @@
           "length": 4,
           "doc": "Key uniquely identifying a plant.",
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Plant"
+          "@sap.label": "Plant",
+          "notNull": true
         },
         "PartnerFunction": {
           "key": true,
@@ -4032,7 +4139,8 @@
           "length": 2,
           "doc": "The abbreviated form of the name that identifies the partner function.",
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Partner Function"
+          "@sap.label": "Partner Function",
+          "notNull": true
         },
         "PartnerCounter": {
           "key": true,
@@ -4040,7 +4148,8 @@
           "length": 3,
           "doc": "The sequential number that the system applies when there is more than one partner for a particular partner function.\n\nWhen you create a sales order for a particular customer, there may be more than one ship-to party defined. The different ship-to parties are numbered sequentially.",
           "@sap.display.format": "NonNegative",
-          "@sap.label": "Partner counter"
+          "@sap.label": "Partner counter",
+          "notNull": true
         },
         "DefaultPartner": {
           "type": "cds.Boolean",
@@ -4084,6 +4193,7 @@
     },
     "API_BUSINESS_PARTNER.A_SupplierPurchasingOrg": {
       "kind": "entity",
+      "@cds.external": true,
       "@cds.persistence.skip": true,
       "@sap.deletable": "false",
       "@sap.content.version": "1",
@@ -4096,7 +4206,8 @@
           "doc": "Alphanumeric key uniquely identifying the document.\n\nWith the supplier number, information from the supplier master record (such as the supplier's address and bank details) is copied into a purchasing document (such as a request for quotation or a purchase order).You can use the supplier number to keep track of requests for quotation, purchase orders and outline agreements.",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Supplier",
-          "@sap.quickinfo": "Supplier's Account Number"
+          "@sap.quickinfo": "Supplier's Account Number",
+          "notNull": true
         },
         "PurchasingOrganization": {
           "key": true,
@@ -4105,7 +4216,8 @@
           "doc": "Denotes the purchasing organization.",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Purch. Organization",
-          "@sap.quickinfo": "Purchasing Organization"
+          "@sap.quickinfo": "Purchasing Organization",
+          "notNull": true
         },
         "CalculationSchemaGroupCode": {
           "type": "cds.String",
@@ -4279,6 +4391,7 @@
     },
     "API_BUSINESS_PARTNER.A_SupplierWithHoldingTax": {
       "kind": "entity",
+      "@cds.external": true,
       "@cds.persistence.skip": true,
       "@sap.content.version": "1",
       "@sap.label": "Supplier Company WithHolding Tax",
@@ -4290,7 +4403,8 @@
           "doc": "Specifies an alphanumeric key that uniquely identifies the supplier in the SAP system.",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Supplier",
-          "@sap.quickinfo": "Account Number of Supplier"
+          "@sap.quickinfo": "Account Number of Supplier",
+          "notNull": true
         },
         "CompanyCode": {
           "key": true,
@@ -4298,7 +4412,8 @@
           "length": 4,
           "doc": "The company code is an organizational unit within financial accounting.",
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Company Code"
+          "@sap.label": "Company Code",
+          "notNull": true
         },
         "WithholdingTaxType": {
           "key": true,
@@ -4307,7 +4422,8 @@
           "doc": "This indicator is used to classify the different types of withholding tax.\n\nWithholding tax types classify particular features of a withholding tax including:The time at which the withholding tax is postedThe basis on which the base amount is calculatedThe basis for accumulation (if applicable)Withholding tax types are to be distinguished from withholding tax codes, to which are allocated the withholding tax percentage rate example.Whether a withholding tax can be defined as an existing type by means of a new code, or if a new type needs to be defined will depend on the type of transaction (see below).Note that a business transaction can only be assigned one withholding tax code per withholding tax type. If the business transaction is subject to several withholding taxes simultaneously, these must be represented by different types.This is the case in Argentina for example, where up to four kinds of withholding tax per business transaction are possible.",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Withholding Tax Type",
-          "@sap.quickinfo": "Indicator for Withholding Tax Type"
+          "@sap.quickinfo": "Indicator for Withholding Tax Type",
+          "notNull": true
         },
         "ExemptionDateBegin": {
           "type": "cds.Date",

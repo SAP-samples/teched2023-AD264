@@ -4,6 +4,7 @@
 @sap.supported.formats : 'atom json xlsx'
 service API_BUSINESS_PARTNER {};
 
+@cds.external : true
 @cds.persistence.skip : true
 @sap.content.version : '1'
 @sap.label : 'Address Email Address'
@@ -15,7 +16,7 @@ entity API_BUSINESS_PARTNER.A_AddressEmailAddress {
    */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Address Number'
-  key AddressID : String(10);
+  key AddressID : String(10) not null;
   /**
    * Internal key for identifying a person in Business Address Services.
    * 
@@ -23,10 +24,10 @@ entity API_BUSINESS_PARTNER.A_AddressEmailAddress {
    */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Person number'
-  key Person : String(10);
+  key Person : String(10) not null;
   @sap.display.format : 'NonNegative'
   @sap.label : 'Sequence Number'
-  key OrdinalNumber : String(3);
+  key OrdinalNumber : String(3) not null;
   @sap.display.format : 'UpperCase'
   @sap.label : 'Standard addr.'
   @sap.quickinfo : 'Flag: this address is the default address'
@@ -49,6 +50,7 @@ entity API_BUSINESS_PARTNER.A_AddressEmailAddress {
   SearchEmailAddress : String(20);
 };
 
+@cds.external : true
 @cds.persistence.skip : true
 @sap.content.version : '1'
 @sap.label : 'Address Fax Number'
@@ -60,7 +62,7 @@ entity API_BUSINESS_PARTNER.A_AddressFaxNumber {
    */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Address Number'
-  key AddressID : String(10);
+  key AddressID : String(10) not null;
   /**
    * Internal key for identifying a person in Business Address Services.
    * 
@@ -68,10 +70,10 @@ entity API_BUSINESS_PARTNER.A_AddressFaxNumber {
    */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Person number'
-  key Person : String(10);
+  key Person : String(10) not null;
   @sap.display.format : 'NonNegative'
   @sap.label : 'Sequence Number'
-  key OrdinalNumber : String(3);
+  key OrdinalNumber : String(3) not null;
   /**
    * If several addresses are maintained for one communication type, the user in the SAP System can be reached under one of these addresses. One address can be set as theStandard Address.
    * 
@@ -119,6 +121,7 @@ entity API_BUSINESS_PARTNER.A_AddressFaxNumber {
   InternationalFaxNumber : String(30);
 };
 
+@cds.external : true
 @cds.persistence.skip : true
 @sap.content.version : '1'
 @sap.label : 'Address Home Page URL'
@@ -130,7 +133,7 @@ entity API_BUSINESS_PARTNER.A_AddressHomePageURL {
    */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Address Number'
-  key AddressID : String(10);
+  key AddressID : String(10) not null;
   /**
    * Internal key for identifying a person in Business Address Services.
    * 
@@ -138,18 +141,18 @@ entity API_BUSINESS_PARTNER.A_AddressHomePageURL {
    */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Person number'
-  key Person : String(10);
+  key Person : String(10) not null;
   @sap.display.format : 'NonNegative'
   @sap.label : 'Sequence Number'
-  key OrdinalNumber : String(3);
+  key OrdinalNumber : String(3) not null;
   @sap.display.format : 'Date'
   @sap.label : 'from'
   @sap.quickinfo : 'Valid-from date - in current Release only 00010101 possible'
-  key ValidityStartDate : Date;
+  key ValidityStartDate : Date not null;
   @sap.display.format : 'UpperCase'
   @sap.label : 'Standard addr.'
   @sap.quickinfo : 'Flag: this address is the default address'
-  key IsDefaultURLAddress : Boolean;
+  key IsDefaultURLAddress : Boolean not null;
   @sap.display.format : 'UpperCase'
   @sap.label : 'URI address'
   @sap.quickinfo : 'URI address search field'
@@ -162,6 +165,7 @@ entity API_BUSINESS_PARTNER.A_AddressHomePageURL {
   WebsiteURL : String(2048);
 };
 
+@cds.external : true
 @cds.persistence.skip : true
 @sap.content.version : '1'
 @sap.label : 'Address Phone Number'
@@ -173,7 +177,7 @@ entity API_BUSINESS_PARTNER.A_AddressPhoneNumber {
    */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Address Number'
-  key AddressID : String(10);
+  key AddressID : String(10) not null;
   /**
    * Internal key for identifying a person in Business Address Services.
    * 
@@ -181,10 +185,10 @@ entity API_BUSINESS_PARTNER.A_AddressPhoneNumber {
    */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Person number'
-  key Person : String(10);
+  key Person : String(10) not null;
   @sap.display.format : 'NonNegative'
   @sap.label : 'Sequence Number'
-  key OrdinalNumber : String(3);
+  key OrdinalNumber : String(3) not null;
   /**
    * The country for the telephone number or fax number is maintained here.
    * 
@@ -241,6 +245,7 @@ entity API_BUSINESS_PARTNER.A_AddressPhoneNumber {
   PhoneNumberType : String(1);
 };
 
+@cds.external : true
 @cds.persistence.skip : true
 @sap.creatable : 'false'
 @sap.updatable : 'false'
@@ -252,21 +257,21 @@ entity API_BUSINESS_PARTNER.A_BPContactToAddress {
   @sap.display.format : 'UpperCase'
   @sap.label : 'BP Relationship No.'
   @sap.quickinfo : 'BP Relationship Number'
-  key RelationshipNumber : String(12);
+  key RelationshipNumber : String(12) not null;
   /** Key identifying a business partner in the SAP system. The key is unique within a client. */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Business Partner'
   @sap.quickinfo : 'Business Partner Number'
-  key BusinessPartnerCompany : String(10);
+  key BusinessPartnerCompany : String(10) not null;
   /** Key identifying a business partner in the SAP system. The key is unique within a client. */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Business Partner'
   @sap.quickinfo : 'Business Partner Number'
-  key BusinessPartnerPerson : String(10);
+  key BusinessPartnerPerson : String(10) not null;
   @sap.display.format : 'Date'
   @sap.label : 'Valid To'
   @sap.quickinfo : 'Validity Date (Valid To)'
-  key ValidityEndDate : Date;
+  key ValidityEndDate : Date not null;
   /**
    * Internal key for identifying a Business Address Services address.
    * 
@@ -274,7 +279,7 @@ entity API_BUSINESS_PARTNER.A_BPContactToAddress {
    */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Address Number'
-  key AddressID : String(10);
+  key AddressID : String(10) not null;
   /**
    * Internal key for identifying a Business Address Services address.
    * 
@@ -565,6 +570,7 @@ entity API_BUSINESS_PARTNER.A_BPContactToAddress {
   to_URLAddress : Association to many API_BUSINESS_PARTNER.A_AddressHomePageURL {  };
 };
 
+@cds.external : true
 @cds.persistence.skip : true
 @sap.creatable : 'false'
 @sap.deletable : 'false'
@@ -575,21 +581,21 @@ entity API_BUSINESS_PARTNER.A_BPContactToFuncAndDept {
   @sap.display.format : 'UpperCase'
   @sap.label : 'BP Relationship No.'
   @sap.quickinfo : 'BP Relationship Number'
-  key RelationshipNumber : String(12);
+  key RelationshipNumber : String(12) not null;
   /** Key identifying a business partner in the SAP system. The key is unique within a client. */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Business Partner'
   @sap.quickinfo : 'Business Partner Number'
-  key BusinessPartnerCompany : String(10);
+  key BusinessPartnerCompany : String(10) not null;
   /** Key identifying a business partner in the SAP system. The key is unique within a client. */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Business Partner'
   @sap.quickinfo : 'Business Partner Number'
-  key BusinessPartnerPerson : String(10);
+  key BusinessPartnerPerson : String(10) not null;
   @sap.display.format : 'Date'
   @sap.label : 'Valid To'
   @sap.quickinfo : 'Validity Date (Valid To)'
-  key ValidityEndDate : Date;
+  key ValidityEndDate : Date not null;
   /**
    * Identifies the function that a person has within a company.
    * 
@@ -661,6 +667,7 @@ entity API_BUSINESS_PARTNER.A_BPContactToFuncAndDept {
   RelationshipCategory : String(6);
 };
 
+@cds.external : true
 @cds.persistence.skip : true
 @sap.content.version : '1'
 @sap.label : 'Business Partner Address Usage'
@@ -669,11 +676,11 @@ entity API_BUSINESS_PARTNER.A_BuPaAddressUsage {
   @sap.display.format : 'UpperCase'
   @sap.label : 'Business Partner'
   @sap.quickinfo : 'Business Partner Number'
-  key BusinessPartner : String(10);
+  key BusinessPartner : String(10) not null;
   @odata.Type : 'Edm.DateTimeOffset'
   @sap.label : 'Valid To'
   @sap.quickinfo : 'Validity End of a Business Partner Address Usage'
-  key ValidityEndDate : DateTime;
+  key ValidityEndDate : DateTime not null;
   /**
    * Business partner attribute, which you can use to distinguish between various addresses by defining the address usage for communication with business partners.
    * 
@@ -681,7 +688,7 @@ entity API_BUSINESS_PARTNER.A_BuPaAddressUsage {
    */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Address Type'
-  key AddressUsage : String(10);
+  key AddressUsage : String(10) not null;
   /**
    * Internal key for identifying a Business Address Services address.
    * 
@@ -689,7 +696,7 @@ entity API_BUSINESS_PARTNER.A_BuPaAddressUsage {
    */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Address Number'
-  key AddressID : String(10);
+  key AddressID : String(10) not null;
   @odata.Type : 'Edm.DateTimeOffset'
   @sap.label : 'Valid From'
   @sap.quickinfo : 'Validity Start of a Business Partner Address Usage'
@@ -713,6 +720,7 @@ entity API_BUSINESS_PARTNER.A_BuPaAddressUsage {
   AuthorizationGroup : String(4);
 };
 
+@cds.external : true
 @cds.persistence.skip : true
 @sap.content.version : '1'
 @sap.label : 'Business Partner Identification'
@@ -721,7 +729,7 @@ entity API_BUSINESS_PARTNER.A_BuPaIdentification {
   @sap.display.format : 'UpperCase'
   @sap.label : 'Business Partner'
   @sap.quickinfo : 'Business Partner Number'
-  key BusinessPartner : String(10);
+  key BusinessPartner : String(10) not null;
   /**
    * A document (such as an ID card or driver's license) or an entry in a system of records (such as a commercial register) whose key can be stored as an attribute for a business partner.
    * 
@@ -729,12 +737,12 @@ entity API_BUSINESS_PARTNER.A_BuPaIdentification {
    */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Identification Type'
-  key BPIdentificationType : String(6);
+  key BPIdentificationType : String(6) not null;
   /** Number that serves to identify a business partner, such as driver's license, or ID card number. */
   @sap.display.format : 'UpperCase'
   @sap.label : 'ID number'
   @sap.quickinfo : 'Identification Number'
-  key BPIdentificationNumber : String(60);
+  key BPIdentificationNumber : String(60) not null;
   /** Institution that adminsters or assigns an ID number. */
   @sap.label : 'Responsible Institn'
   @sap.quickinfo : 'Responsible Institution for ID Number'
@@ -778,6 +786,7 @@ entity API_BUSINESS_PARTNER.A_BuPaIdentification {
   AuthorizationGroup : String(4);
 };
 
+@cds.external : true
 @cds.persistence.skip : true
 @sap.content.version : '1'
 @sap.label : 'Business Partner Industry'
@@ -789,7 +798,7 @@ entity API_BUSINESS_PARTNER.A_BuPaIndustry {
    */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Industry'
-  key IndustrySector : String(10);
+  key IndustrySector : String(10) not null;
   /**
    * Serves to combine and categorize several industries into a group.
    * 
@@ -797,12 +806,12 @@ entity API_BUSINESS_PARTNER.A_BuPaIndustry {
    */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Industry System'
-  key IndustrySystemType : String(4);
+  key IndustrySystemType : String(4) not null;
   /** Key identifying a business partner in the SAP system. The key is unique within a client. */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Business Partner'
   @sap.quickinfo : 'Business Partner Number'
-  key BusinessPartner : String(10);
+  key BusinessPartner : String(10) not null;
   /**
    * Identifies the industry in an industry system that can be defined as the standard industry.
    * 
@@ -816,6 +825,7 @@ entity API_BUSINESS_PARTNER.A_BuPaIndustry {
   IndustryKeyDescription : String(100);
 };
 
+@cds.external : true
 @cds.persistence.skip : true
 @sap.deletable : 'false'
 @sap.content.version : '1'
@@ -825,7 +835,7 @@ entity API_BUSINESS_PARTNER.A_BusinessPartner {
   @sap.display.format : 'UpperCase'
   @sap.label : 'Business Partner'
   @sap.quickinfo : 'Business Partner Number'
-  key BusinessPartner : String(10);
+  key BusinessPartner : String(10) not null;
   /** Gives an alphanumeric key, which clearly identifies the customer or vendor in the SAP system. */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Customer'
@@ -1169,6 +1179,7 @@ entity API_BUSINESS_PARTNER.A_BusinessPartner {
   to_Supplier : Association to API_BUSINESS_PARTNER.A_Supplier {  };
 };
 
+@cds.external : true
 @cds.persistence.skip : true
 @sap.content.version : '1'
 @sap.label : 'Business Partner Address'
@@ -1177,7 +1188,7 @@ entity API_BUSINESS_PARTNER.A_BusinessPartnerAddress {
   @sap.display.format : 'UpperCase'
   @sap.label : 'Business Partner'
   @sap.quickinfo : 'Business Partner Number'
-  key BusinessPartner : String(10);
+  key BusinessPartner : String(10) not null;
   /**
    * Internal key for identifying a Business Address Services address.
    * 
@@ -1185,7 +1196,7 @@ entity API_BUSINESS_PARTNER.A_BusinessPartnerAddress {
    */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Address Number'
-  key AddressID : String(10);
+  key AddressID : String(10) not null;
   @odata.Type : 'Edm.DateTimeOffset'
   @sap.label : 'Valid From'
   @sap.quickinfo : 'Validity Start of a Business Partner Address'
@@ -1500,6 +1511,7 @@ entity API_BUSINESS_PARTNER.A_BusinessPartnerAddress {
   to_URLAddress : Association to many API_BUSINESS_PARTNER.A_AddressHomePageURL {  };
 };
 
+@cds.external : true
 @cds.persistence.skip : true
 @sap.content.version : '1'
 @sap.label : 'Business Partner Bank'
@@ -1508,7 +1520,7 @@ entity API_BUSINESS_PARTNER.A_BusinessPartnerBank {
   @sap.display.format : 'UpperCase'
   @sap.label : 'Business Partner'
   @sap.quickinfo : 'Business Partner Number'
-  key BusinessPartner : String(10);
+  key BusinessPartner : String(10) not null;
   /**
    * Key identifying a business partner's bank details.
    * 
@@ -1516,7 +1528,7 @@ entity API_BUSINESS_PARTNER.A_BusinessPartnerBank {
    */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Bank details ID'
-  key BankIdentification : String(4);
+  key BankIdentification : String(4) not null;
   /**
    * Identifies the country in which the bank is based.
    * 
@@ -1624,6 +1636,7 @@ entity API_BUSINESS_PARTNER.A_BusinessPartnerBank {
   AuthorizationGroup : String(4);
 };
 
+@cds.external : true
 @cds.persistence.skip : true
 @sap.content.version : '1'
 @sap.label : 'Business Partner Contact'
@@ -1632,21 +1645,21 @@ entity API_BUSINESS_PARTNER.A_BusinessPartnerContact {
   @sap.display.format : 'UpperCase'
   @sap.label : 'BP Relationship No.'
   @sap.quickinfo : 'BP Relationship Number'
-  key RelationshipNumber : String(12);
+  key RelationshipNumber : String(12) not null;
   /** Key identifying a business partner in the SAP system. The key is unique within a client. */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Business Partner'
   @sap.quickinfo : 'Business Partner Number'
-  key BusinessPartnerCompany : String(10);
+  key BusinessPartnerCompany : String(10) not null;
   /** Key identifying a business partner in the SAP system. The key is unique within a client. */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Business Partner'
   @sap.quickinfo : 'Business Partner Number'
-  key BusinessPartnerPerson : String(10);
+  key BusinessPartnerPerson : String(10) not null;
   @sap.display.format : 'Date'
   @sap.label : 'Valid To'
   @sap.quickinfo : 'Validity Date (Valid To)'
-  key ValidityEndDate : Date;
+  key ValidityEndDate : Date not null;
   @sap.display.format : 'Date'
   @sap.label : 'Valid From'
   @sap.quickinfo : 'Validity Date (Valid From)'
@@ -1675,6 +1688,7 @@ entity API_BUSINESS_PARTNER.A_BusinessPartnerContact {
   to_ContactRelationship : Association to API_BUSINESS_PARTNER.A_BPContactToFuncAndDept {  };
 };
 
+@cds.external : true
 @cds.persistence.skip : true
 @sap.deletable : 'false'
 @sap.content.version : '1'
@@ -1684,7 +1698,7 @@ entity API_BUSINESS_PARTNER.A_BusinessPartnerRole {
   @sap.display.format : 'UpperCase'
   @sap.label : 'Business Partner'
   @sap.quickinfo : 'Business Partner Number'
-  key BusinessPartner : String(10);
+  key BusinessPartner : String(10) not null;
   /**
    * Function that a business partner takes on, depending on a business transaction.
    * 
@@ -1692,7 +1706,7 @@ entity API_BUSINESS_PARTNER.A_BusinessPartnerRole {
    */
   @sap.display.format : 'UpperCase'
   @sap.label : 'BP Role'
-  key BusinessPartnerRole : String(6);
+  key BusinessPartnerRole : String(6) not null;
   @odata.Type : 'Edm.DateTimeOffset'
   @sap.label : 'Valid From'
   @sap.quickinfo : 'Validity Start of a BP Role'
@@ -1711,6 +1725,7 @@ entity API_BUSINESS_PARTNER.A_BusinessPartnerRole {
   AuthorizationGroup : String(4);
 };
 
+@cds.external : true
 @cds.persistence.skip : true
 @sap.content.version : '1'
 @sap.label : 'Business Partner Tax Number'
@@ -1719,11 +1734,11 @@ entity API_BUSINESS_PARTNER.A_BusinessPartnerTaxNumber {
   @sap.display.format : 'UpperCase'
   @sap.label : 'Business Partner'
   @sap.quickinfo : 'Business Partner Number'
-  key BusinessPartner : String(10);
+  key BusinessPartner : String(10) not null;
   /** Specifies the tax number category. */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Tax Number Category'
-  key BPTaxType : String(4);
+  key BPTaxType : String(4) not null;
   /** Specifies the tax number. */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Tax number'
@@ -1748,6 +1763,7 @@ entity API_BUSINESS_PARTNER.A_BusinessPartnerTaxNumber {
   AuthorizationGroup : String(4);
 };
 
+@cds.external : true
 @cds.persistence.skip : true
 @sap.creatable : 'false'
 @sap.deletable : 'false'
@@ -1758,7 +1774,7 @@ entity API_BUSINESS_PARTNER.A_Customer {
   @sap.display.format : 'UpperCase'
   @sap.label : 'Customer'
   @sap.quickinfo : 'Customer Number'
-  key Customer : String(10);
+  key Customer : String(10) not null;
   /** The authorization group allows extended authorization protection for particular objects. The authorization groups are freely definable. The authorization groups usually occur in authorization objects together with an activity. */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Authorization'
@@ -2033,6 +2049,7 @@ entity API_BUSINESS_PARTNER.A_Customer {
   to_CustomerSalesArea : Association to many API_BUSINESS_PARTNER.A_CustomerSalesArea {  };
 };
 
+@cds.external : true
 @cds.persistence.skip : true
 @sap.deletable : 'false'
 @sap.content.version : '1'
@@ -2042,11 +2059,11 @@ entity API_BUSINESS_PARTNER.A_CustomerCompany {
   @sap.display.format : 'UpperCase'
   @sap.label : 'Customer'
   @sap.quickinfo : 'Customer Number'
-  key Customer : String(10);
+  key Customer : String(10) not null;
   /** The company code is an organizational unit within financial accounting. */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Company Code'
-  key CompanyCode : String(4);
+  key CompanyCode : String(4) not null;
   /** Contains settings that control how the system handles differences between the invoice amount and the amount received from a customer or the amount paid to a supplier. A tolerance group is unique within a company code. */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Tolerance Group'
@@ -2258,6 +2275,7 @@ entity API_BUSINESS_PARTNER.A_CustomerCompany {
   to_WithHoldingTax : Association to many API_BUSINESS_PARTNER.A_CustomerWithHoldingTax {  };
 };
 
+@cds.external : true
 @cds.persistence.skip : true
 @sap.content.version : '1'
 @sap.label : 'Customer Company Dunning'
@@ -2266,11 +2284,11 @@ entity API_BUSINESS_PARTNER.A_CustomerDunning {
   @sap.display.format : 'UpperCase'
   @sap.label : 'Customer'
   @sap.quickinfo : 'Customer Number'
-  key Customer : String(10);
+  key Customer : String(10) not null;
   /** The company code is an organizational unit within financial accounting. */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Company Code'
-  key CompanyCode : String(4);
+  key CompanyCode : String(4) not null;
   /**
    * The dunning area represents an organizational entity that is responsible for dunning. The dunning areas represent a sub-structure of the company codes.
    * 
@@ -2278,7 +2296,7 @@ entity API_BUSINESS_PARTNER.A_CustomerDunning {
    */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Dunning Area'
-  key DunningArea : String(2);
+  key DunningArea : String(2) not null;
   /** Key which reflects the reason for a dunning block indicator. */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Dunning Block'
@@ -2342,6 +2360,7 @@ entity API_BUSINESS_PARTNER.A_CustomerDunning {
   CustomerAccountGroup : String(4);
 };
 
+@cds.external : true
 @cds.persistence.skip : true
 @sap.deletable : 'false'
 @sap.content.version : '1'
@@ -2351,7 +2370,7 @@ entity API_BUSINESS_PARTNER.A_CustomerSalesArea {
   @sap.display.format : 'UpperCase'
   @sap.label : 'Customer'
   @sap.quickinfo : 'Customer Number'
-  key Customer : String(10);
+  key Customer : String(10) not null;
   /**
    * An organizational unit responsible for the sale of certain products or services. The responsibility of a sales organization may include legal liability for products and customer claims.
    * 
@@ -2359,7 +2378,7 @@ entity API_BUSINESS_PARTNER.A_CustomerSalesArea {
    */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Sales Organization'
-  key SalesOrganization : String(4);
+  key SalesOrganization : String(4) not null;
   /**
    * The way in which products or services reach the customer. Typical examples of distribution channels are wholesale, retail, or direct sales.
    * 
@@ -2367,7 +2386,7 @@ entity API_BUSINESS_PARTNER.A_CustomerSalesArea {
    */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Distribution Channel'
-  key DistributionChannel : String(2);
+  key DistributionChannel : String(2) not null;
   /**
    * A way of grouping materials, products, or services. The system uses divisions to determine the sales areas and the business areas for a material, product, or service.
    * 
@@ -2375,7 +2394,7 @@ entity API_BUSINESS_PARTNER.A_CustomerSalesArea {
    */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Division'
-  key Division : String(2);
+  key Division : String(2) not null;
   /** This field contains the account number your company is listed under at the customer or vendor. */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Account at customer'
@@ -2615,6 +2634,7 @@ entity API_BUSINESS_PARTNER.A_CustomerSalesArea {
   to_SalesAreaTax : Association to many API_BUSINESS_PARTNER.A_CustomerSalesAreaTax {  };
 };
 
+@cds.external : true
 @cds.persistence.skip : true
 @sap.deletable : 'false'
 @sap.content.version : '1'
@@ -2624,7 +2644,7 @@ entity API_BUSINESS_PARTNER.A_CustomerSalesAreaTax {
   @sap.display.format : 'UpperCase'
   @sap.label : 'Customer'
   @sap.quickinfo : 'Customer Number'
-  key Customer : String(10);
+  key Customer : String(10) not null;
   /**
    * An organizational unit responsible for the sale of certain products or services. The responsibility of a sales organization may include legal liability for products and customer claims.
    * 
@@ -2632,7 +2652,7 @@ entity API_BUSINESS_PARTNER.A_CustomerSalesAreaTax {
    */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Sales Organization'
-  key SalesOrganization : String(4);
+  key SalesOrganization : String(4) not null;
   /**
    * Specifies a distribution channel that you want to use as a reference for customer and material master data for other distribution channels.
    * 
@@ -2641,7 +2661,7 @@ entity API_BUSINESS_PARTNER.A_CustomerSalesAreaTax {
   @sap.display.format : 'UpperCase'
   @sap.label : 'RefDistCh-Cust/Mat.'
   @sap.quickinfo : 'Reference distrib.channel for cust.and material masters'
-  key DistributionChannel : String(2);
+  key DistributionChannel : String(2) not null;
   /**
    * A way of grouping materials, products, or services. The system uses divisions to determine the sales areas and the business areas for a material, product, or service.
    * 
@@ -2649,7 +2669,7 @@ entity API_BUSINESS_PARTNER.A_CustomerSalesAreaTax {
    */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Division'
-  key Division : String(2);
+  key Division : String(2) not null;
   /**
    * Identifies the country in which the delivery originates.
    * 
@@ -2658,7 +2678,7 @@ entity API_BUSINESS_PARTNER.A_CustomerSalesAreaTax {
   @sap.display.format : 'UpperCase'
   @sap.label : 'Country'
   @sap.quickinfo : 'Departure country (country from which the goods are sent)'
-  key DepartureCountry : String(3);
+  key DepartureCountry : String(3) not null;
   /**
    * Identifies the condition that the system uses to automatically determine country-specific taxes during pricing.
    * 
@@ -2667,7 +2687,7 @@ entity API_BUSINESS_PARTNER.A_CustomerSalesAreaTax {
   @sap.display.format : 'UpperCase'
   @sap.label : 'Tax Category'
   @sap.quickinfo : 'Tax category (sales tax, federal sales tax,...)'
-  key CustomerTaxCategory : String(4);
+  key CustomerTaxCategory : String(4) not null;
   /**
    * Specifies the tax liability of the customer, based on the tax structure of the customer's country.
    * 
@@ -2679,6 +2699,7 @@ entity API_BUSINESS_PARTNER.A_CustomerSalesAreaTax {
   CustomerTaxClassification : String(1);
 };
 
+@cds.external : true
 @cds.persistence.skip : true
 @sap.content.version : '1'
 @sap.label : 'Customer WithHolding Tax'
@@ -2687,11 +2708,11 @@ entity API_BUSINESS_PARTNER.A_CustomerWithHoldingTax {
   @sap.display.format : 'UpperCase'
   @sap.label : 'Customer'
   @sap.quickinfo : 'Customer Number'
-  key Customer : String(10);
+  key Customer : String(10) not null;
   /** The company code is an organizational unit within financial accounting. */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Company Code'
-  key CompanyCode : String(4);
+  key CompanyCode : String(4) not null;
   /**
    * This indicator is used to classify the different types of withholding tax.
    * 
@@ -2700,7 +2721,7 @@ entity API_BUSINESS_PARTNER.A_CustomerWithHoldingTax {
   @sap.display.format : 'UpperCase'
   @sap.label : 'Withholding Tax Type'
   @sap.quickinfo : 'Indicator for Withholding Tax Type'
-  key WithholdingTaxType : String(2);
+  key WithholdingTaxType : String(2) not null;
   /**
    * One or more &quot;withholding tax codes&quot; are assigned to each withholding tax type. One of the things these codes determine is the various percentage rates for the withholding tax type.
    * 
@@ -2783,6 +2804,7 @@ entity API_BUSINESS_PARTNER.A_CustomerWithHoldingTax {
   AuthorizationGroup : String(4);
 };
 
+@cds.external : true
 @cds.persistence.skip : true
 @sap.content.version : '1'
 @sap.label : 'Customer Sales Area Partner Function'
@@ -2791,7 +2813,7 @@ entity API_BUSINESS_PARTNER.A_CustSalesPartnerFunc {
   @sap.display.format : 'UpperCase'
   @sap.label : 'Customer'
   @sap.quickinfo : 'Customer Number'
-  key Customer : String(10);
+  key Customer : String(10) not null;
   /**
    * An organizational unit responsible for the sale of certain products or services. The responsibility of a sales organization may include legal liability for products and customer claims.
    * 
@@ -2799,7 +2821,7 @@ entity API_BUSINESS_PARTNER.A_CustSalesPartnerFunc {
    */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Sales Organization'
-  key SalesOrganization : String(4);
+  key SalesOrganization : String(4) not null;
   /**
    * The way in which products or services reach the customer. Typical examples of distribution channels are wholesale, retail, or direct sales.
    * 
@@ -2807,7 +2829,7 @@ entity API_BUSINESS_PARTNER.A_CustSalesPartnerFunc {
    */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Distribution Channel'
-  key DistributionChannel : String(2);
+  key DistributionChannel : String(2) not null;
   /**
    * A way of grouping materials, products, or services. The system uses divisions to determine the sales areas and the business areas for a material, product, or service.
    * 
@@ -2815,7 +2837,7 @@ entity API_BUSINESS_PARTNER.A_CustSalesPartnerFunc {
    */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Division'
-  key Division : String(2);
+  key Division : String(2) not null;
   /**
    * The sequential number that the system applies when there is more than one partner for a particular partner function.
    * 
@@ -2823,11 +2845,11 @@ entity API_BUSINESS_PARTNER.A_CustSalesPartnerFunc {
    */
   @sap.display.format : 'NonNegative'
   @sap.label : 'Partner counter'
-  key PartnerCounter : String(3);
+  key PartnerCounter : String(3) not null;
   /** The abbreviated form of the name that identifies the partner function. */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Partner Function'
-  key PartnerFunction : String(2);
+  key PartnerFunction : String(2) not null;
   @sap.display.format : 'UpperCase'
   @sap.label : 'Customer'
   @sap.quickinfo : 'Customer number of business partner'
@@ -2855,6 +2877,7 @@ entity API_BUSINESS_PARTNER.A_CustSalesPartnerFunc {
   AuthorizationGroup : String(4);
 };
 
+@cds.external : true
 @cds.persistence.skip : true
 @sap.creatable : 'false'
 @sap.deletable : 'false'
@@ -2865,7 +2888,7 @@ entity API_BUSINESS_PARTNER.A_Supplier {
   @sap.display.format : 'UpperCase'
   @sap.label : 'Supplier'
   @sap.quickinfo : 'Account Number of Supplier'
-  key Supplier : String(10);
+  key Supplier : String(10) not null;
   /**
    * The account number of the vendor with whom automatic payment transactions are carried out.
    * 
@@ -3118,6 +3141,7 @@ entity API_BUSINESS_PARTNER.A_Supplier {
   to_SupplierPurchasingOrg : Association to many API_BUSINESS_PARTNER.A_SupplierPurchasingOrg {  };
 };
 
+@cds.external : true
 @cds.persistence.skip : true
 @sap.deletable : 'false'
 @sap.content.version : '1'
@@ -3127,11 +3151,11 @@ entity API_BUSINESS_PARTNER.A_SupplierCompany {
   @sap.display.format : 'UpperCase'
   @sap.label : 'Supplier'
   @sap.quickinfo : 'Account Number of Supplier'
-  key Supplier : String(10);
+  key Supplier : String(10) not null;
   /** The company code is an organizational unit within financial accounting. */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Company Code'
-  key CompanyCode : String(4);
+  key CompanyCode : String(4) not null;
   /** The authorization group allows extended authorization protection for particular objects. The authorization groups are freely definable. The authorization groups usually occur in authorization objects together with an activity. */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Authorization'
@@ -3384,6 +3408,7 @@ entity API_BUSINESS_PARTNER.A_SupplierCompany {
   to_SupplierWithHoldingTax : Association to many API_BUSINESS_PARTNER.A_SupplierWithHoldingTax {  };
 };
 
+@cds.external : true
 @cds.persistence.skip : true
 @sap.content.version : '1'
 @sap.label : 'Supplier Company Dunning'
@@ -3392,11 +3417,11 @@ entity API_BUSINESS_PARTNER.A_SupplierDunning {
   @sap.display.format : 'UpperCase'
   @sap.label : 'Supplier'
   @sap.quickinfo : 'Account Number of Supplier'
-  key Supplier : String(10);
+  key Supplier : String(10) not null;
   /** The company code is an organizational unit within financial accounting. */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Company Code'
-  key CompanyCode : String(4);
+  key CompanyCode : String(4) not null;
   /**
    * The dunning area represents an organizational entity that is responsible for dunning. The dunning areas represent a sub-structure of the company codes.
    * 
@@ -3404,7 +3429,7 @@ entity API_BUSINESS_PARTNER.A_SupplierDunning {
    */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Dunning Area'
-  key DunningArea : String(2);
+  key DunningArea : String(2) not null;
   /** Key which reflects the reason for a dunning block indicator. */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Dunning Block'
@@ -3468,6 +3493,7 @@ entity API_BUSINESS_PARTNER.A_SupplierDunning {
   SupplierAccountGroup : String(4);
 };
 
+@cds.external : true
 @cds.persistence.skip : true
 @sap.content.version : '1'
 @sap.label : 'Supplier Purchasing Partner Function'
@@ -3476,12 +3502,12 @@ entity API_BUSINESS_PARTNER.A_SupplierPartnerFunc {
   @sap.display.format : 'UpperCase'
   @sap.label : 'Supplier'
   @sap.quickinfo : 'Account Number of Supplier'
-  key Supplier : String(10);
+  key Supplier : String(10) not null;
   /** Denotes the purchasing organization. */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Purch. Organization'
   @sap.quickinfo : 'Purchasing Organization'
-  key PurchasingOrganization : String(4);
+  key PurchasingOrganization : String(4) not null;
   /**
    * Subdivision of a supplier's overall product range according to various criteria.
    * 
@@ -3489,15 +3515,15 @@ entity API_BUSINESS_PARTNER.A_SupplierPartnerFunc {
    */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Supplier Subrange'
-  key SupplierSubrange : String(6);
+  key SupplierSubrange : String(6) not null;
   /** Key uniquely identifying a plant. */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Plant'
-  key Plant : String(4);
+  key Plant : String(4) not null;
   /** The abbreviated form of the name that identifies the partner function. */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Partner Function'
-  key PartnerFunction : String(2);
+  key PartnerFunction : String(2) not null;
   /**
    * The sequential number that the system applies when there is more than one partner for a particular partner function.
    * 
@@ -3505,7 +3531,7 @@ entity API_BUSINESS_PARTNER.A_SupplierPartnerFunc {
    */
   @sap.display.format : 'NonNegative'
   @sap.label : 'Partner counter'
-  key PartnerCounter : String(3);
+  key PartnerCounter : String(3) not null;
   /**
    * Specifies a partner as the default for a particular partner function.
    * 
@@ -3537,6 +3563,7 @@ entity API_BUSINESS_PARTNER.A_SupplierPartnerFunc {
   AuthorizationGroup : String(4);
 };
 
+@cds.external : true
 @cds.persistence.skip : true
 @sap.deletable : 'false'
 @sap.content.version : '1'
@@ -3550,12 +3577,12 @@ entity API_BUSINESS_PARTNER.A_SupplierPurchasingOrg {
   @sap.display.format : 'UpperCase'
   @sap.label : 'Supplier'
   @sap.quickinfo : 'Supplier''s Account Number'
-  key Supplier : String(10);
+  key Supplier : String(10) not null;
   /** Denotes the purchasing organization. */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Purch. Organization'
   @sap.quickinfo : 'Purchasing Organization'
-  key PurchasingOrganization : String(4);
+  key PurchasingOrganization : String(4) not null;
   /**
    * Determines which calculation schema (pricing procedure) is to be used in purchasing documents containing this supplier number.
    * 
@@ -3707,6 +3734,7 @@ entity API_BUSINESS_PARTNER.A_SupplierPurchasingOrg {
   to_PartnerFunction : Association to many API_BUSINESS_PARTNER.A_SupplierPartnerFunc {  };
 };
 
+@cds.external : true
 @cds.persistence.skip : true
 @sap.content.version : '1'
 @sap.label : 'Supplier Company WithHolding Tax'
@@ -3715,11 +3743,11 @@ entity API_BUSINESS_PARTNER.A_SupplierWithHoldingTax {
   @sap.display.format : 'UpperCase'
   @sap.label : 'Supplier'
   @sap.quickinfo : 'Account Number of Supplier'
-  key Supplier : String(10);
+  key Supplier : String(10) not null;
   /** The company code is an organizational unit within financial accounting. */
   @sap.display.format : 'UpperCase'
   @sap.label : 'Company Code'
-  key CompanyCode : String(4);
+  key CompanyCode : String(4) not null;
   /**
    * This indicator is used to classify the different types of withholding tax.
    * 
@@ -3728,7 +3756,7 @@ entity API_BUSINESS_PARTNER.A_SupplierWithHoldingTax {
   @sap.display.format : 'UpperCase'
   @sap.label : 'Withholding Tax Type'
   @sap.quickinfo : 'Indicator for Withholding Tax Type'
-  key WithholdingTaxType : String(2);
+  key WithholdingTaxType : String(2) not null;
   /** Date from which withholding tax exemption applies. */
   @sap.display.format : 'Date'
   @sap.label : 'Exemption Start Date'
