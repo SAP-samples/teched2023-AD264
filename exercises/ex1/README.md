@@ -18,7 +18,7 @@ The conceptual domain model for this _Incidents Management_ application is as fo
 
 ## Create a Project
 
-👉 In SAP Business Application Studio, create a new _CAP Project_.
+👉 In SAP Business Application Studio, create a new _CAP Project_ through the project wizard.
 - Name it `incidents-mgt`, for example.
 - Accept the rest of the defaults.  No sample code needed; you will fill the project as you go.
 
