@@ -37,6 +37,10 @@ The conceptual domain model for this _Incidents Management_ application is as fo
 
 ## Add Incidents
 
+You should now have (been) switched to a new workspace with the created project.
+
+👉 Open the file explorer again.
+
 👉 Create a file `data-model.cds` in the `db` folder.
 - There, add an `Incidents` [entity](https://cap.cloud.sap/docs/cds/cdl#entities) with a key field `ID` and a `title`.
 - Choose appropriate data types.  Use code completion (intellisense) to pick a fitting data type.
