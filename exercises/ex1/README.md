@@ -61,14 +61,14 @@ entity Incidents {
 
 ## Use Predefined Aspects
 
-The situation of `ID` key fields is so common that there is a prebuilt CDS aspect available named `cuid` that provides just that.<br>
+The situation of `ID` key fields is so common that there is a prebuilt CDS aspect available named [`cuid`](https://cap.cloud.sap/docs/cds/common#aspect-cuid) that provides just that.<br>
 It can be imported with `using ... from '@sap/cds/common';` and used in an entity with the `:` (colon) syntax.
 
 Also, the `Incidents` entity shall carry information on when it was created and updated and by whom.  There is a [`managed` aspect from `@sap/cds/common`](https://cap.cloud.sap/docs/cds/common#aspect-managed) that does that.
 
 👉 Make use of the two aspects and:
-- Replace the hand-crafted `ID` field with `cuid`<br>
-- Add the `managed` aspect.
+- Replace the hand-crafted `ID` field with [`cuid`](https://cap.cloud.sap/docs/cds/common#aspect-cuid)<br>
+- Add the [`managed`](https://cap.cloud.sap/docs/cds/common#aspect-managed) aspect.
 
 
 <details>
@@ -106,10 +106,11 @@ To create such a relationship, the **graphical CDS modeler** in SAP Business App
 - In the `Aspects` tab in the property sheet, add the `ID` key field from CDS aspect `cuid`.
 - Add `timestamp`, `author`, and `message` fields with appropriate types.
 
-👉 Now **connect** the two entities.  Hover over one of the entities and find the `Add Relationship` button from the flyout menu. <br>
-In the `New Relationship` dialog:
-- Choose a relationship type so that whenever an `Incident` instance is deleted, all its conversations are deleted as well.
-- Stay with the proposed `conversations` and `incidents` fields.
+👉 Now **connect** the two entities.
+- Hover over the `Incidents` entity and find the `Add Relationship` button from the flyout menu.  Drag it **from** `Incidents` **to** the `Conversations` entity.
+- In the `New Relationship` dialog:
+  - Choose a relationship type so that whenever an `Incident` instance is deleted, all its conversations are deleted as well.
+  - Stay with the proposed `conversations` and `incidents` fields.
 
 
 <details>
@@ -141,19 +142,21 @@ entity Conversations : cuid, managed {
 
 > To open the code editor, just double-click on the `db/data-model.cds` file in the explorer tree.
 
-> In the following exercises, feel free to use the graphical modeler or the code editor as you like. Find out what works for you.<br>
-In the solutions though, we will print the textual form, as it's more convenient to copy/paste.
+<!-- > In the following exercises, feel free to use the graphical modeler or the code editor as you like. Find out what works for you.<br>
+In the solutions though, we will print the textual form, as it's more convenient to copy/paste. -->
 
 
 ## Add Status and Urgency
 
 Incidents shall have two more fields `status` and `urgency`, which are 'code lists', i.e. configuration data.
 
-👉 Add two entities, using the [`CodeList`](https://cap.cloud.sap/docs/cds/common#aspect-codelist) aspect.
+👉 Add two entities, using the [`sap.common.CodeList`](https://cap.cloud.sap/docs/cds/common#aspect-codelist) aspect.
 - `Status` for the incident's status like _new_, _in process_ etc.
+  - Name its key field `code`
 - `Urgency` to denote the priority like _high_, _medium_ etc.
+  - Name its key field `code`
 
-👉 Add two fields to `Incidents` pointing to the new entities.  This time, use the [`extend` directive](https://cap.cloud.sap/docs/cds/cdl#extend) to add the fields w/o having to modify the original definition.
+👉 Add one [association](https://cap.cloud.sap/docs/guides/domain-modeling#associations) to `Incidents` pointing to the each new entity.  The associations shall be _unidirectional_ only, i.e. pointing _from_ `Incidents` to `Status` or `Urgency`, but not in the other direction.
 
 <details>
 <summary>See the result:</summary>
@@ -171,7 +174,8 @@ entity Urgency : CodeList {
   key code : String;
 }
 
-extend Incidents with {
+entity Incidents {
+  ...
   urgency       : Association to Urgency;
   status        : Association to Status;
 };
@@ -335,19 +339,20 @@ annotate service.Incidents with @UI : {
     { $Type : 'UI.DataField', Value : title},
     { $Type : 'UI.DataField', Value : modifiedAt },
     { $Type : 'UI.DataField', Value : status.name, Label: 'Status' },
+    { $Type : 'UI.DataField', Value : urgency.name, Label: 'Urgency' },
   ],
 };
 
-// title in header
+// title in object page
 annotate service.Incidents with @(
     UI.HeaderInfo : {
-        Title : {
-            $Type : 'UI.DataField',
-            Value : title,
-        },
-        TypeName : '',
-        TypeNamePlural : '',
-        TypeImageUrl : 'sap-icon://alert',
+      Title : {
+        $Type : 'UI.DataField',
+        Value : title,
+      },
+      TypeName : 'Incident',
+      TypeNamePlural : 'Incidents',
+      TypeImageUrl : 'sap-icon://alert',
     }
 );
 ```
@@ -445,7 +450,7 @@ Note how the `js` file is named the same as the `cds` file.  This is how the fra
 
 <p>
 
-👉 Now test the logic by creating an incident through the UI.  Add the word _urgent_ in the title.  After saving it, you should see the urgency set to _High_.
+👉 Now test the logic by creating an incident through the UI.  Add the word _urgent_ in the title.  After saving it, go back to the list.  You should see the urgency set to _High_.
 
 ## Debug the Code (Optional)
 
