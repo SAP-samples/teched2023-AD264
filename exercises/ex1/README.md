@@ -117,7 +117,7 @@ In the `New Relationship` dialog:
 
 ![Incidents and Conversations entities in graphical modeler](assets/Incidents-Conversations-graphical.png)
 
-As text, it looks like this:
+As text, it looks like this. Note the `Composition` between the two entities.
 
 ```cds
 using { cuid, managed } from '@sap/cds/common';
