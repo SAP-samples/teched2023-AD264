@@ -15,6 +15,7 @@ In exercises 2 and 3, you have seen the **basic steps to integrate a remote serv
 - **Delegate queries** to the remote service
 - **Mash up** the remote service with local services
 - **Optimize** performance by adding on-demand replication
+- **Eventing** helps your app keep data up to date
 - **Mock** the remote service for local development
 - **Integration packages** that can be used to provide reusable projections, event definitions, service implementations, and sample data.
 
