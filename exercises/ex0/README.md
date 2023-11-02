@@ -6,29 +6,36 @@ Please make sure you have completed all the necessary prerequisites listed below
 ## Prerequisites
 Please keep the following links and resources available:
 
-1. Make sure you have access to a browser, preferably Google Chrome.
-2. Log on to **https://lcapteched.eu10cf.applicationstudio.cloud.sap/**
+Make sure you have access to a browser, preferably Google Chrome.
 
-    - Your **user** is `lowcodeuser+01XX@gmail.com` where `XX` is a number.  This number is assigned to you by the moderator.
-    - The **password** is given to you by the moderator as well.
+👉 Log on to **https://lcapteched.eu10cf.applicationstudio.cloud.sap/**
 
-3. Click on the dev space `AD264` to log in to your workspace.
-    ![Dev Space](assets/BAS-DevSpace.png)
+- Your **user** is
+    ```
+    lowcodeuser+01XX@gmail.com
+    ```
+    where `XX` is a number.  This number is assigned to you by the moderator.
+- The **password** is given to you by the moderator as well.
 
-    <details>
-    <summary>Dev space not started?</summary>
+<p>
 
-    If it's `AD264`, then just start it by clicking on the _Play_ icon.
+👉 Click on the dev space `AD264` to log in to your workspace.
+![Dev Space](assets/BAS-DevSpace.png)
 
-    </details>
+<details>
+<summary>Dev space not started?</summary>
 
-    <details>
-    <summary>No dev space available?</summary>
+If it's `AD264`, then just start it by clicking on the _Play_ icon.
 
-    Select _Full-Stack Application Using Productivity Tools_, enter an arbitrary name.
-    ![New Dev Space in SAP Business Application Studio](assets/BAS-NewDevSpace.png)
+</details>
 
-    </details>
+<details>
+<summary>No dev space available?</summary>
+
+Select _Full-Stack Application Using Productivity Tools_, enter an arbitrary name.
+![New Dev Space in SAP Business Application Studio](assets/BAS-NewDevSpace.png)
+
+</details>
 
 ## General troubleshooting
 
