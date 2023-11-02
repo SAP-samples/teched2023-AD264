@@ -9,7 +9,7 @@ Please keep the following links and resources available:
 1. Make sure you have access to a browser, preferably Google Chrome.
 2. Log on to **https://lcapteched.eu10cf.applicationstudio.cloud.sap/**
 
-    - Your **user** is `lowcodeuser+1XX@gmail.com` where `XX` is a number.  This number is assigned to you by the moderator.
+    - Your **user** is `lowcodeuser+01XX@gmail.com` where `XX` is a number.  This number is assigned to you by the moderator.
     - The **password** is given to you by the moderator as well.
 
 3. Click on the dev space `AD264` to log in to your workspace.
