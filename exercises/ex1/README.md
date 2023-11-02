@@ -337,6 +337,19 @@ annotate service.Incidents with @UI : {
     { $Type : 'UI.DataField', Value : status.name, Label: 'Status' },
   ],
 };
+
+// title in header
+annotate service.Incidents with @(
+    UI.HeaderInfo : {
+        Title : {
+            $Type : 'UI.DataField',
+            Value : title,
+        },
+        TypeName : '',
+        TypeNamePlural : '',
+        TypeImageUrl : 'sap-icon://alert',
+    }
+);
 ```
 
 which creates 3 columns:
