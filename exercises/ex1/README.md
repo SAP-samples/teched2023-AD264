@@ -547,7 +547,7 @@ Check on `/odata/v4/statistics/UrgentIncidents` for the results.  Note that they
 Remember: you got all of this power without a single line of (Javascript or Java) code!
 
 
-## Test OData Features
+## Test OData Features (Optional)
 
 Let's inspect some of the built-in features of [OData](https://cap.cloud.sap/docs/advanced/odata).
 
@@ -571,7 +571,7 @@ to the URL.
 
 </details>
 
-## Inspect the Database
+## Inspect the Database (Optional)
 
 Upon deployment to the database, CAP creates SQL DDL statements to create the tables and views for your entities.
 
