@@ -152,9 +152,9 @@ Incidents shall have two more fields `status` and `urgency`, which are 'code lis
 
 👉 Add two entities, using the [`sap.common.CodeList`](https://cap.cloud.sap/docs/cds/common#aspect-codelist) aspect.
 - `Status` for the incident's status like _new_, _in process_ etc.
-  - Name its key field `code`
+  - Name its key field `code` instead of `ID`.
 - `Urgency` to denote the priority like _high_, _medium_ etc.
-  - Name its key field `code`
+  - Name its key field `code` instead of `ID`.
 
 👉 Add one [association](https://cap.cloud.sap/docs/guides/domain-modeling#associations) to `Incidents` pointing to the each new entity.  The associations shall be _unidirectional_ only, i.e. pointing _from_ `Incidents` to `Status` or `Urgency`, but not in the other direction.
 
