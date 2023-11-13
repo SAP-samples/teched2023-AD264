@@ -45,3 +45,15 @@ entity Conversations : cuid, managed {
   author    : String   @cds.on.insert: $user  @title: 'Author' ;
   message   : String                          @title: 'Message';
 }
+
+
+using { API_BUSINESS_PARTNER as S4 } from 's4-bupa-integration/bupa';
+
+entity Customers   as projection on S4.A_BusinessPartner {
+  key BusinessPartner         as ID,
+      BusinessPartnerFullName as name
+}
+
+extend Incidents with {
+  customer      : Association to Customers;
+}

@@ -134,3 +134,35 @@ annotate service.Conversations with @(
             Label : '{i18n>Message}',
         },]
 );
+
+annotate service.Customers with @UI.Identification : [{ Value:name }];
+annotate service.Customers with @cds.odata.valuelist;
+annotate service.Customers with {
+  ID   @title : 'Customer ID';
+  name @title : 'Customer Name';
+};
+
+annotate service.Incidents with @(
+  UI: {
+    // insert table column
+    LineItem : [
+      ...up to { Value: title },
+      { Value: customer.name, Label: 'Customer' },
+      ...
+    ],
+
+    // insert customer to field group
+    FieldGroup #GeneralInformation : {
+      Data: [
+        ...,
+        { Value: customer_ID, Label: 'Customer'}
+      ]
+    },
+  }
+);
+
+// for an incident's customer, show both name and ID
+annotate service.Incidents:customer with @Common: {
+  Text: customer.name,
+  TextArrangement: #TextFirst
+};
