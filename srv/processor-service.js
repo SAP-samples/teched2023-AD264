@@ -25,6 +25,26 @@ class ProcessorService extends cds.ApplicationService {
       return result
     })
 
+    const db = await cds.connect.to('db')                // our primary database
+    const { Customers }  = db.entities('incidents.mgt')  // CDS definition of the Customers entity
+
+    this.after (['CREATE','UPDATE'], 'Incidents', async (data) => {
+      const { customer_ID: ID } = data
+      if (ID) {
+        console.log ('>> Updating customer', ID)
+        const customer = await S4bupa.read (Customers,ID) // read from remote
+        await UPSERT(customer) .into (Customers)          // update cache
+      }
+    })
+
+    // update cache if BusinessPartner has changed
+    S4bupa.on('BusinessPartner.Changed', async ({ event, data }) => {
+      console.log('<< received', event, data)
+      const { BusinessPartner: ID } = data
+      const customer = await S4bupa.read (Customers, ID)
+      await UPSERT.into (Customers) .entries (customer)
+    })
+
 
     // <<< And not below here
 
