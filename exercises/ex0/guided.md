@@ -1,6 +1,6 @@
 # Guided Hands-on Sessions
 
-This is only relevant for guided hands-on session by SAP, like for SAP TechEd.
+This is **only** relevant for guided hands-on sessions by SAP, like SAP TechEd.
 
 ## Logon to Shared Account
 
