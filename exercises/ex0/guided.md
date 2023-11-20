@@ -18,13 +18,6 @@ This is **only** relevant for guided hands-on sessions by SAP, like SAP TechEd.
 👉 Click on the **dev space** given by the moderator.
 
 <details>
-<summary>Dev space not started?</summary>
-
-If it's `AD264`, then just start it by clicking on the _Play_ icon.
-
-</details>
-
-<details>
 <summary>No dev space available?</summary>
 
 Select _Full-Stack Application Using Productivity Tools_, enter an arbitrary name.
