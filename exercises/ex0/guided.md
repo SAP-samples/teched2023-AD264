@@ -15,7 +15,7 @@ This is **only** relevant for guided hands-on sessions by SAP, like SAP TechEd.
 
 <p>
 
-👉 Click on the **dev space** given by the moderator.
+👉 Click on the **dev space** given by the moderator. If it's stopped, start it by clicking on the _Play_ icon.
 
 <details>
 <summary>No dev space available?</summary>
